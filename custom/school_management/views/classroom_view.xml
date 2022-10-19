@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_classroom_tree" model="ir.ui.view">
+        <field name="name">school.classroom.tree</field>
+        <field name="model">school.classroom</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="room_number"/>
+
+            </tree>
+        </field>
+    </record>
+    <record id="view_classroom_form" model="ir.ui.view">
+        <field name="name">school.classroom.form</field>
+        <field name="model">school.classroom</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="room_number"/>
+
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+    <record id="view_classroom_search" model="ir.ui.view">
+        <field name="name">school.classroom.search</field>
+        <field name="model">school.classroom</field>
+        <field name="arch" type="xml">
+            <search>
+                <field name="name"/>
+                <field name="room_number"/>
+                <separator/>
+            </search>
+        </field>
+    </record>
+    <record id="action_school_classroom" model="ir.actions.act_window">
+        <field name="name">classrooms</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.classroom</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first classroom
+            </p>
+        </field>
+    </record>
+
+    <menuitem
+            id="school_config_standards_classrooms_menu"
+            name="classrooms"
+            parent="school_config_standards_root_menu"
+            action="action_school_classroom"
+            sequence="20"/>
+<!--    <menuitem-->
+<!--            id="school_config_standards_classrooms_menu"-->
+<!--            name="Classrooms"-->
+<!--            parent="school_config_standards_root_menu"-->
+<!--            action="action_school_classroom"-->
+<!--            sequence="10"/>-->
+
+</odoo>

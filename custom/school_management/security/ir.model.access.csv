@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_school_class,access.school.class,model_school_class,,1,1,1,1
+access_school_standard,access.school.standard,model_school_standard,,1,1,1,1
+access_school_classroom,access.school.classroom,model_school_classroom,,1,1,1,1
+access_school_subject,access.school.subject,model_school_subject,,1,1,1,1
+access_school_student,"access.school,student",model_school_student,,1,1,1,1
+access_school_teacher,access.school.teacher,model_school_teacher,,1,1,1,1

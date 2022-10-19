@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--   school root menu-->
+    <menuitem id="school_management_root_menu"
+              name="School"
+              sequence="10"/>
+
+<!--    school sub root menu and sub root menus-->
+    <menuitem id="school_root_menu"
+              name="School"
+              parent="school_management_root_menu"
+              sequence="10"/>
+
+    <menuitem id="school_school_admission_root_menu"
+                  name="Admission"
+                  parent="school_management.school_root_menu"
+                  sequence="0"/>
+
+    <menuitem id="school_school_profiles_root_menu"
+                  name="Profiles"
+                  parent="school_management.school_root_menu"
+                  sequence="10"/>
+
+
+<!--    configuration sub root menu  and sub root menus-->
+    <menuitem id="config_root_menu"
+              name="Configuration"
+              parent="school_management_root_menu"
+              sequence="20"/>
+
+    <menuitem id="school_config_config_root_menu"
+                  name="School Configuration"
+                  parent="school_management.config_root_menu"
+                  sequence="0"
+                  groups="base.group_system"/>
+    <menuitem
+            id="school_config_standards_root_menu"
+            name="Standards"
+            parent="config_root_menu"
+            sequence="10"/>
+    <menuitem
+            id="school_config_subjects_root_menu"
+            name="Subjects"
+            parent="config_root_menu"
+            sequence="20"/>
+
+</odoo>
