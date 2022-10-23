@@ -10,15 +10,22 @@
     'depends': ['base', 'mail'],
     'data': [
         'security/ir.model.access.csv',
+        'security/security.xml',
         'views/res_config_settings_views.xml',
         'views/class_view.xml',
         'views/standard_view.xml',
         'views/classroom_view.xml',
         'views/subject_view.xml',
         'views/student_admission_request_view.xml',
-        'views/student_view.xml',
+        # 'views/student_view.xml',
         'views/teacher_view.xml',
-        'views/menu.xml'
+        'views/student_user_view.xml',
+        'report/student_card.xml',
+        'report/student_details_template.xml',
+        'report/report.xml',
+        'views/menu.xml',
+
+
     ],
     'demo': [],
     'qweb': [],

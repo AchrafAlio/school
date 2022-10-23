@@ -38,13 +38,5 @@
         </record>
 
 
-
-        <menuitem id="school_config_school_menu"
-                  name="School"
-                  parent="school_config_config_root_menu"
-                  sequence="0"
-                  action="school_config_settings_action"
-                  groups="base.group_system"/>
-
     </data>
 </odoo>

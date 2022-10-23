@@ -63,11 +63,4 @@
         </field>
     </record>
 
-    <menuitem
-            id="school_config_standards_standards_menu"
-            name="standards"
-            parent="school_config_standards_root_menu"
-            action="action_school_standard"
-            sequence="10"/>
-
 </odoo>

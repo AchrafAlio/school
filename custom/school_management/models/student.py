@@ -7,7 +7,7 @@ from odoo import api, fields, models
 class SchoolStudent(models.Model):
     _name = "school.student"
     # _inherits = {'res.partner': 'partner_id'}
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    # _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "School Student"
 
     # Admission Request fields
@@ -64,6 +64,9 @@ class SchoolStudent(models.Model):
             if int(admission_age) == int(rec.age):
                 rec.state = 'approved'
                 rec.admission_date = datetime.date.today()
+                # create new student user
+                # student_user1 = rec.env['school.student.user'].create(self)
+                # print(self.env['ir.config_parameter'].sudo().get_parm()
             else:
                 rec.state = 'cancel'
 

@@ -57,12 +57,7 @@
         </field>
     </record>
 
-    <menuitem
-            id="school_config_standards_classrooms_menu"
-            name="classrooms"
-            parent="school_config_standards_root_menu"
-            action="action_school_classroom"
-            sequence="20"/>
+
 <!--    <menuitem-->
 <!--            id="school_config_standards_classrooms_menu"-->
 <!--            name="Classrooms"-->

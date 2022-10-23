@@ -6,7 +6,7 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="picture" widget="image" class="oe_avatar"/>
+                <field name="picture" widget="image" />
             </tree>
         </field>
     </record>
@@ -84,10 +84,5 @@
     </record>
 
 
-    <menuitem
-            id="school_school_profiles_teachers_menu"
-            name="Teachers"
-            parent="school_management.school_school_profiles_root_menu"
-            action="action_teacher_profile"
-            sequence="0"/>
+
 </odoo>

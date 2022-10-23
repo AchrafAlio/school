@@ -24,7 +24,7 @@
                 <field name="gender"/>
                 <field name="birth_date"/>
                 <field name="age"/>
-                <field name="admission_date" />
+                <field name="admission_date"/>
                 <field name="marital_status"/>
             </tree>
         </field>
@@ -52,40 +52,40 @@
                     <field name="state" widget="statusbar" statusbar_visible="new,approved,alumni,terminate,cancel"/>
                 </header>
                 <sheet>
+                    <field name="picture" widget='image' class="oe_avatar" options='{"preview_image": "avatar_128"}'/>
                     <group>
-                        <group>
+                        <group string="contact">
                             <field name="first_name"/>
                             <field name="last_name"/>
-                            <field name="picture"/>
                             <field name="code"/>
                             <field name="roll_number"/>
                             <field name="class_id"/>
                         </group>
-                    </group>
-                    <group string="Detailed Adress">
-                        <field name="street1"/>
-                        <field name="street2"/>
-                        <field name="country"/>
-                        <field name="city"/>
-                        <field name="state_adress"/>
-                        <field name="zip_code"/>
-                        <field name="phone_number"/>
-                        <field name="mobile_number"/>
-                        <field name="email"/>
+                        <group string="Detailed Adress">
+                            <field name="street1"/>
+                            <field name="street2"/>
+                            <field name="country"/>
+                            <field name="city"/>
+                            <field name="state_adress"/>
+                            <field name="zip_code"/>
+                            <field name="phone_number"/>
+                            <field name="mobile_number"/>
+                            <field name="email"/>
+                        </group>
                     </group>
                     <group string="General Informations">
                         <field name="gender"/>
                         <field name="birth_date"/>
                         <field name="age"/>
-                        <field name="admission_date" readonly="1"/>
+                        <field name="admission_date" readonly="1" invisible="1"/>
                         <field name="marital_status"/>
                     </group>
                 </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids"/>
-                    <field name="activity_ids"/>
-                    <field name="message_ids"/>
-                </div>
+<!--                <div class="oe_chatter">-->
+<!--                    <field name="message_follower_ids"/>-->
+<!--                    <field name="activity_ids"/>-->
+<!--                    <field name="message_ids"/>-->
+<!--                </div>-->
             </form>
         </field>
     </record>
@@ -175,11 +175,5 @@
             </p>
         </field>
     </record>
-    <!--Admission Register menu-->
-    <menuitem
-            id="school_school_admission_register_menu"
-            name="Admission Register"
-            parent="school_management.school_school_admission_root_menu"
-            action="action_student_admission_request"
-            sequence="0"/>
+
 </odoo>
