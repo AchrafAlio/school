@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
+import datetime
+
 from odoo import api, fields, models
 
 
 class SchoolStudent(models.Model):
     _name = "school.student"
     # _inherits = {'res.partner': 'partner_id'}
-    _inherit = ['mail.thread', 'mail.activity.mixin']
+    # _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "School Student"
 
     # Admission Request fields
@@ -32,7 +34,7 @@ class SchoolStudent(models.Model):
         ('others', 'Others')
     ], required=True, default='male', tracking=True)
     birth_date = fields.Date(string='Birth Date')
-    age = fields.Integer(string='Age')
+    age = fields.Integer(string='Age', compute='get_age')
     admission_date = fields.Date(string='Admission Date')
     marital_status = fields.Selection([
         ('single', 'Single'),
@@ -48,6 +50,7 @@ class SchoolStudent(models.Model):
     state = fields.Selection([('new', 'New'), ('approved', 'Approved'), ('alumni', 'Alumni'),
                               ('terminate', 'Terminate'), ('cancel', 'Cancelled')],
                              string='Status', tracking=True, default="new")
+    standard_id = fields.Many2one(comodel_name="school.standard", string='Standard')
 
     def action_new(self):
         for rec in self:
@@ -55,7 +58,17 @@ class SchoolStudent(models.Model):
 
     def action_approved(self):
         for rec in self:
-            rec.state = 'approved'
+            # check age
+            admission_age = self.env['ir.config_parameter'].sudo().get_param('school_management.student_admission_age')
+            print("adm age ", admission_age, ' age : ', rec.age, " res : ", int(admission_age) == int(rec.age))
+            if int(admission_age) == int(rec.age):
+                rec.state = 'approved'
+                rec.admission_date = datetime.date.today()
+                # create new student user
+                # student_user1 = rec.env['school.student.user'].create(self)
+                # print(self.env['ir.config_parameter'].sudo().get_parm()
+            else:
+                rec.state = 'cancel'
 
     def action_alumni(self):
         for rec in self:
@@ -72,3 +85,19 @@ class SchoolStudent(models.Model):
     def full_name(self):
         for rec in self:
             rec.name = rec.first_name + ' ' + rec.last_name
+
+    def get_age(self):
+        for rec in self:
+            today = datetime.date.today()
+            if rec.birth_date:
+                born = rec.birth_date
+                age = today.year - born.year - ((today.month, today.day) < (born.month, born.day))
+            else:
+                age = 0
+            rec.age = age
+            # print("birth date : ", born, " today : ", today, " age : ", rec.age)
+
+    @api.onchange('birth_date')
+    def on_change_birth_date(self):
+        for rec in self:
+            rec.get_age()

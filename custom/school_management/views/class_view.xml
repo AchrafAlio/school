@@ -151,10 +151,4 @@
         </field>
     </record>
 
-    <menuitem
-            id="school_config_standards_classes_menu"
-            name="Classes"
-            parent="school_config_standards_root_menu"
-            action="action_school_class"
-            sequence="0"/>
 </odoo>

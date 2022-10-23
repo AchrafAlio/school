@@ -96,12 +96,6 @@
         </field>
     </record>
 
-    <menuitem
-            id="school_config_subjects_subjects_menu"
-            name="subjects"
-            parent="school_management.school_config_subjects_root_menu"
-            action="action_school_subject"
-            sequence="0"/>
 
 
 </odoo>

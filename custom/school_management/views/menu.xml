@@ -1,48 +1,105 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-<!--   school root menu-->
+    <!--   school root menu-->
     <menuitem id="school_management_root_menu"
               name="School"
               sequence="10"/>
 
-<!--    school sub root menu and sub root menus-->
+    <!--    school sub root menu and sub root menus-->
     <menuitem id="school_root_menu"
               name="School"
               parent="school_management_root_menu"
               sequence="10"/>
 
     <menuitem id="school_school_admission_root_menu"
-                  name="Admission"
-                  parent="school_management.school_root_menu"
-                  sequence="0"/>
+              name="Admission"
+              parent="school_management.school_root_menu"
+              sequence="0"/>
+
+    <!--Admission Register menu-->
+    <menuitem
+            id="school_school_admission_register_menu"
+            name="Admission Register"
+            parent="school_management.school_school_admission_root_menu"
+            action="action_student_admission_request"
+            sequence="0"/>
 
     <menuitem id="school_school_profiles_root_menu"
-                  name="Profiles"
-                  parent="school_management.school_root_menu"
-                  sequence="10"/>
+              name="Profiles"
+              parent="school_management.school_root_menu"
+              sequence="10"/>
 
+    <!--   student menu-->
+    <menuitem
+            id="school_school_profiles_students_menu"
+            name="Students"
+            parent="school_management.school_school_profiles_root_menu"
+            action="action_student_user_profile"
+            sequence="0"/>
 
-<!--    configuration sub root menu  and sub root menus-->
+    <menuitem
+            id="school_school_profiles_teachers_menu"
+            name="Teachers"
+            parent="school_management.school_school_profiles_root_menu"
+            action="action_teacher_profile"
+            sequence="0"/>
+
+    <!--    configuration sub root menu  and sub root menus-->
     <menuitem id="config_root_menu"
               name="Configuration"
-              parent="school_management_root_menu"
+              parent="school_management.school_management_root_menu"
               sequence="20"/>
 
     <menuitem id="school_config_config_root_menu"
-                  name="School Configuration"
-                  parent="school_management.config_root_menu"
-                  sequence="0"
-                  groups="base.group_system"/>
+              name="School Configuration"
+              parent="school_management.config_root_menu"
+              sequence="0"
+              groups="base.group_system"/>
+
+    <menuitem id="school_config_school_menu"
+              name="School"
+              parent="school_management.school_config_config_root_menu"
+              sequence="0"
+              action="school_management.school_config_settings_action"
+              groups="base.group_system"/>
     <menuitem
             id="school_config_standards_root_menu"
             name="Standards"
-            parent="config_root_menu"
+            parent="school_management.config_root_menu"
             sequence="10"/>
+    <menuitem
+            id="school_config_standards_standards_menu"
+            name="standards"
+            parent="school_management.school_config_standards_root_menu"
+            action="action_school_standard"
+            sequence="10"/>
+
+    <menuitem
+            id="school_config_standards_classrooms_menu"
+            name="classrooms"
+            parent="school_management.school_config_standards_root_menu"
+            action="action_school_classroom"
+            sequence="20"/>
+    <menuitem
+            id="school_config_standards_classes_menu"
+            name="Classes"
+            parent="school_management.school_config_standards_root_menu"
+            action="action_school_class"
+            sequence="0"/>
+
     <menuitem
             id="school_config_subjects_root_menu"
             name="Subjects"
-            parent="config_root_menu"
+            parent="school_management.config_root_menu"
             sequence="20"/>
+
+    <menuitem
+            id="school_config_subjects_subjects_menu"
+            name="subjects"
+            parent="school_management.school_config_subjects_root_menu"
+            action="action_school_subject"
+            sequence="0"/>
+
 
 </odoo>

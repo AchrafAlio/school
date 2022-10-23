@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.module.category" id="module_category_school">
+        <field name="name">School Management</field>
+        <field name="description">Category for school</field>
+        <field name="sequence">45</field>
+    </record>
+    <record id="group_school_administrator" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="category_id" ref="module_category_school"/>
+    </record>
+    <record id="group_school_teacher" model="res.groups">
+        <field name="name">Teacher</field>
+        <field name="category_id" ref="module_category_school"/>
+    </record>
+    <record id="group_school_student" model="res.groups">
+        <field name="name">Student</field>
+        <field name="category_id" ref="module_category_school"/>
+    </record>
+</odoo>

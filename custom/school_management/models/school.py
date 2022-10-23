@@ -10,7 +10,7 @@ class SchoolClass(models.Model):
     name = fields.Char(string='Name', required=True, tracking=True)
     capacity = fields.Integer(string='Capacity')
     total_students = fields.Integer(string='Total Students')
-    remaining_seats = fields.Integer(string='Remaining Seats')
+    remaining_seats = fields.Integer(string='Remaining Seats', compute="_remaining_seats")
     color = fields.Char(string='Color')
     standard_id = fields.Many2one(comodel_name='school.standard', string="Standard")
     teacher_id = fields.Many2one(comodel_name='school.teacher', string="Teacher")
@@ -18,6 +18,9 @@ class SchoolClass(models.Model):
     student_ids = fields.One2many(comodel_name='school.student', inverse_name='class_id', string="Students")
     subject_ids = fields.One2many(comodel_name='school.subject', inverse_name='class_id', string="Subjects")
 
+    def _remaining_seats(self):
+        for rec in self:
+            rec.remaining_seats = rec.capacity - rec.total_students
 
 class SchoolStandard(models.Model):
     _name = "school.standard"
