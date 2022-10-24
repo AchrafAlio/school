@@ -3,7 +3,7 @@
 
     <!--   school root menu-->
     <menuitem id="school_management_root_menu"
-              name="School"
+              name="School Management"
               sequence="10"/>
 
     <!--    school sub root menu and sub root menus-->

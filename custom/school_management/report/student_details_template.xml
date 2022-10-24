@@ -31,27 +31,79 @@
                                                 <tr>
                                                     <td>
                                                         <span>
-                                                            <strong>Age:</strong>
+                                                            <strong>Roll No.</strong>
                                                         </span>
                                                     </td>
                                                     <td>
                                                         <span>:</span>
                                                     </td>
                                                     <td>
-                                                        <span t-field="o.age"/>
+                                                        <span t-field="o.roll_number"/>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <td>
                                                         <span>
-                                                            <strong>code:</strong>
+                                                            <strong>Standard</strong>
                                                         </span>
                                                     </td>
                                                     <td>
                                                         <span>:</span>
                                                     </td>
                                                     <td>
-                                                        <span t-field="o.code"/>
+                                                        <span t-field="o.standard_id"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Division</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.standard_id"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Medium</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.standard_id"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Birth Date</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.birth_date"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>Blood Group</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td>
+                                                        <span>:</span>
+                                                    </td>
+                                                    <td>
+                                                        <span t-field="o.standard_id"/>
                                                     </td>
                                                 </tr>
                                             </table>

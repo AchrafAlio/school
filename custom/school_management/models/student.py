@@ -25,7 +25,7 @@ class SchoolStudent(models.Model):
     zip_code = fields.Char(string='Zip Code')
     phone_number = fields.Char(string='Phone Number')
     mobile_number = fields.Char(string='Mobile Number')
-    email = fields.Char(string='Email')
+    email = fields.Char(string='Email' , required=True)
 
     # Student Request fields
     gender = fields.Selection([
@@ -63,6 +63,7 @@ class SchoolStudent(models.Model):
         user_id = self.env["res.users"].create(
             {"login": self.email, "name": self.name}
         )
+        return  user_id
 
     def action_approved(self):
         for rec in self:
@@ -73,9 +74,15 @@ class SchoolStudent(models.Model):
                 rec.state = 'approved'
                 rec.admission_date = datetime.date.today()
                 # create new student user
-                # student_user1 = rec.env['school.student.user'].create(self)
-                # print(self.env['ir.config_parameter'].sudo().get_parm()
-                self.create_user()
+                self.user_id = self.create_user()
+                # add a group on a user
+                group = self.env.ref('school_management.group_school_student')
+                self.user_id.groups_id += group
+                # users = self.env['res.users'].search(
+                #     [])  # if you not want to set group to all user then set proper domain instead of []
+                #
+                # group_id = self.env.ref('school_management.group_school_student')
+                # group_id.users = [(4, self.user_id) for user in users]
             else:
                 rec.state = 'cancel'
 
