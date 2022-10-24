@@ -26,6 +26,7 @@
                 <field name="age"/>
                 <field name="admission_date"/>
                 <field name="marital_status"/>
+                <field name="user_id"/>
             </tree>
         </field>
     </record>
@@ -79,6 +80,8 @@
                         <field name="age"/>
                         <field name="admission_date" readonly="1" invisible="1"/>
                         <field name="marital_status"/>
+                        <field name="user_id" attrs="{'invisible':[('state', '!=', 'approved')]}"/>
+
                     </group>
                 </sheet>
 <!--                <div class="oe_chatter">-->
@@ -137,6 +140,10 @@
                                     <li>
                                         Admission Date :
                                         <field name="admission_date"/>
+                                    </li>
+                                    <li>
+                                        User ID :
+                                        <field name="user_id"/>
                                     </li>
                                 </ul>
                             </div>
