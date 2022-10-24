@@ -51,10 +51,18 @@ class SchoolStudent(models.Model):
                               ('terminate', 'Terminate'), ('cancel', 'Cancelled')],
                              string='Status', tracking=True, default="new")
     standard_id = fields.Many2one(comodel_name="school.standard", string='Standard')
+    user_id = fields.Many2one(comodel_name='res.users', string='Student user')
+                                # related='res.users.id', related_sudo=True,
+                                # compute_sudo=True, store=True, readonly=True)
 
     def action_new(self):
         for rec in self:
             rec.state = 'new'
+
+    def create_user(self):
+        user_id = self.env["res.users"].create(
+            {"login": self.email, "name": self.name}
+        )
 
     def action_approved(self):
         for rec in self:
@@ -67,6 +75,7 @@ class SchoolStudent(models.Model):
                 # create new student user
                 # student_user1 = rec.env['school.student.user'].create(self)
                 # print(self.env['ir.config_parameter'].sudo().get_parm()
+                self.create_user()
             else:
                 rec.state = 'cancel'
 

@@ -35,7 +35,7 @@
             id="school_school_profiles_students_menu"
             name="Students"
             parent="school_management.school_school_profiles_root_menu"
-            action="action_student_user_profile"
+            action="action_student_profile"
             sequence="0"/>
 
     <menuitem
