@@ -4,7 +4,7 @@
 <!--    tree view -->
     <record id="view_student_user_tree" model="ir.ui.view">
         <field name="name">school.student.user.tree</field>
-        <field name="model">school.student.user</field>
+        <field name="model">school.student</field>
         <field name="arch" type="xml">
             <tree>
                 <field name="first_name"/>
@@ -17,7 +17,7 @@
    form view
     <record id="view_student_user_form" model="ir.ui.view">
         <field name="name">school.student.user.form</field>
-        <field name="model">school.student.user</field>
+        <field name="model">school.student</field>
         <field name="arch" type="xml">
             <form>
                 <header>
@@ -100,7 +100,7 @@
     <record id="action_student_user_profile" model="ir.actions.act_window">
         <field name="name">Students Users</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">school.student.user</field>
+        <field name="res_model">school.student</field>
         <field name="view_mode">tree,kanban,form</field>
         <field name="context">{}</field>
        <field name="domain">['|','|',('state', '=', 'approved'),('state', '=', 'alumni')
