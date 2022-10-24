@@ -5,4 +5,3 @@ access_school_classroom,access.school.classroom,model_school_classroom,,1,1,1,1
 access_school_subject,access.school.subject,model_school_subject,,1,1,1,1
 access_school_student,"access.school,student",model_school_student,,1,1,1,1
 access_school_teacher,access.school.teacher,model_school_teacher,,1,1,1,1
-access_school_student_user,"access.school,student,user",model_school_student_user,,1,1,1,1
