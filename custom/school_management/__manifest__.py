@@ -16,7 +16,6 @@
         'views/standard_view.xml',
         'views/classroom_view.xml',
         'views/subject_view.xml',
-        'views/student_admission_request_view.xml',
         'views/student_view.xml',
         'views/teacher_view.xml',
         'report/student_card.xml',
