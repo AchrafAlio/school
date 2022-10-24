@@ -51,7 +51,9 @@ class SchoolStudent(models.Model):
                               ('terminate', 'Terminate'), ('cancel', 'Cancelled')],
                              string='Status', tracking=True, default="new")
     standard_id = fields.Many2one(comodel_name="school.standard", string='Standard')
-
+    user_id = fields.Many2one(comodel_name='res.users', string='Student user')
+                                # related='res.users.id', related_sudo=True,
+                                # compute_sudo=True, store=True, readonly=True)
 
     def action_new(self):
         for rec in self:

@@ -1,18 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-<!--    <record id="view_student_form" model="ir.ui.view">-->
-<!--        <field name="name">school.student.form</field>-->
-<!--        <field name="model">school.student</field>-->
-<!--        <field name="inherit_id" ref="school.student.admission.request.form"/>-->
-<!--        <field name="arch" type="xml">-->
-<!--            <xpath expr="//field[@name='user_id']" position="attributes">-->
-<!--                 <attribute name="invisible">True</attribute>-->
-<!--            </xpath>-->
-<!--        </field>-->
-
-
-<!--    </record>-->
     <!--    tree view-->
     <record id="view_admission_request_tree" model="ir.ui.view">
         <field name="name">school.student.admission.request.tree</field>
@@ -188,5 +175,20 @@
             </p>
         </field>
     </record>
-
+<!--    students profiles action-->
+    <record id="action_student_profile" model="ir.actions.act_window">
+        <field name="name">Students</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.student</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="context">{}</field>
+        <field name="domain">['|','|',('state', '=', 'approved'),('state', '=', 'alumni')
+            ,('state', '=', 'terminate')]
+        </field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first student
+            </p>
+        </field>
+    </record>
 </odoo>
