@@ -6,7 +6,11 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="picture" widget="image" />
+                <field name="email"/>
+<!--                <field name="picture" widget="image"/>-->
+                <field name="subject_id"/>
+                <field name="user_id"/>
+
             </tree>
         </field>
     </record>
@@ -19,7 +23,10 @@
                     <group>
                         <group>
                             <field name="name"/>
+                            <field name="email"/>
                             <field name="picture"/>
+                            <field name="subject_id"/>
+                            <field name="user_id"/>
                         </group>
                     </group>
                 </sheet>
@@ -45,12 +52,25 @@
                                 <ul>
                                     <li>
                                         Teacher Name :
-                                       <field name="name"/>
+                                        <field name="name"/>
+                                    </li>
+                                    <li>
+                                        Teacher Email :
+                                        <field name="email"/>
                                     </li>
                                     <li>
                                         Picture :
-                                            <field name="picture"/>
+                                        <field name="picture"/>
                                     </li>
+                                    <li>
+                                        Subject Id :
+                                        <field name="subject_id"/>
+                                    </li>
+                                    <li>
+                                        User Id :
+                                        <field name="user_id"/>
+                                    </li>
+
                                 </ul>
                             </div>
                         </div>
@@ -82,7 +102,6 @@
             </p>
         </field>
     </record>
-
 
 
 </odoo>

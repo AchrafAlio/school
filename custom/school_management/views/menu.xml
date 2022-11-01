@@ -1,23 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!--   school root menu-->
+    <!--   School Management  -->
     <menuitem id="school_management_root_menu"
               name="School Management"
+              groups="group_school_administrator,group_school_teacher,group_school_student"
               sequence="10"/>
 
-    <!--    school sub root menu and sub root menus-->
+    <!--    School Management => School  -->
     <menuitem id="school_root_menu"
               name="School"
               parent="school_management_root_menu"
+              groups="group_school_administrator,group_school_teacher,group_school_student"
               sequence="10"/>
 
+    <!--    School Management => School => Admission  -->
     <menuitem id="school_school_admission_root_menu"
               name="Admission"
               parent="school_management.school_root_menu"
+              groups="group_school_administrator"
               sequence="0"/>
 
-    <!--Admission Register menu-->
+    <!--    School Management => School => Admission => Admission Register -->
     <menuitem
             id="school_school_admission_register_menu"
             name="Admission Register"
@@ -25,62 +29,59 @@
             action="action_student_admission_request"
             sequence="0"/>
 
+    <!--    School Management => School => Profiles  -->
     <menuitem id="school_school_profiles_root_menu"
               name="Profiles"
               parent="school_management.school_root_menu"
+              groups="group_school_administrator,group_school_teacher,group_school_student"
               sequence="10"/>
 
-    <!--   student menu-->
+    <!--    School Management => School => Profiles => Students -->
     <menuitem
             id="school_school_profiles_students_menu"
             name="Students"
             parent="school_management.school_school_profiles_root_menu"
+            groups="group_school_administrator,group_school_student"
             action="action_student_profile"
             sequence="0"/>
 
+    <!--    School Management => School => Profiles => Teachers -->
     <menuitem
             id="school_school_profiles_teachers_menu"
             name="Teachers"
             parent="school_management.school_school_profiles_root_menu"
+            groups="group_school_administrator,group_school_teacher"
             action="action_teacher_profile"
             sequence="0"/>
 
-    <!--    configuration sub root menu  and sub root menus-->
+    <!--    School Management => Configuration -->
     <menuitem id="config_root_menu"
               name="Configuration"
               parent="school_management.school_management_root_menu"
+              groups="group_school_administrator"
               sequence="20"/>
 
+    <!--    School Management => Configuration => School Configuration-->
     <menuitem id="school_config_config_root_menu"
               name="School Configuration"
               parent="school_management.config_root_menu"
-              sequence="0"
-              groups="base.group_system"/>
+              sequence="0"/>
 
+    <!--  School Management => Configuration => School Configuration => School-->
     <menuitem id="school_config_school_menu"
               name="School"
               parent="school_management.school_config_config_root_menu"
               sequence="0"
-              action="school_management.school_config_settings_action"
-              groups="base.group_system"/>
+              action="school_management.school_config_settings_action"/>
+
+    <!--  School Management => Configuration => Standards -->
     <menuitem
             id="school_config_standards_root_menu"
             name="Standards"
             parent="school_management.config_root_menu"
             sequence="10"/>
-    <menuitem
-            id="school_config_standards_standards_menu"
-            name="standards"
-            parent="school_management.school_config_standards_root_menu"
-            action="action_school_standard"
-            sequence="10"/>
 
-    <menuitem
-            id="school_config_standards_classrooms_menu"
-            name="classrooms"
-            parent="school_management.school_config_standards_root_menu"
-            action="action_school_classroom"
-            sequence="20"/>
+    <!--  School Management => Configuration => Standards => Classes -->
     <menuitem
             id="school_config_standards_classes_menu"
             name="Classes"
@@ -88,15 +89,33 @@
             action="action_school_class"
             sequence="0"/>
 
+    <!--  School Management => Configuration => Standards =>  Standards -->
+    <menuitem
+            id="school_config_standards_standards_menu"
+            name="Standards"
+            parent="school_management.school_config_standards_root_menu"
+            action="action_school_standard"
+            sequence="10"/>
+
+    <!--  School Management => Configuration => Standards => Classrooms -->
+    <menuitem
+            id="school_config_standards_classrooms_menu"
+            name="Classrooms"
+            parent="school_management.school_config_standards_root_menu"
+            action="action_school_classroom"
+            sequence="20"/>
+
+    <!--  School Management => Configuration => Subjects -->
     <menuitem
             id="school_config_subjects_root_menu"
             name="Subjects"
             parent="school_management.config_root_menu"
             sequence="20"/>
 
+    <!--  School Management => Configuration => Subjects => Subjects -->
     <menuitem
             id="school_config_subjects_subjects_menu"
-            name="subjects"
+            name="Subjects"
             parent="school_management.school_config_subjects_root_menu"
             action="action_school_subject"
             sequence="0"/>

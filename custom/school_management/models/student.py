@@ -11,7 +11,7 @@ class SchoolStudent(models.Model):
     _description = "School Student"
 
     # Admission Request fields
-    first_name = fields.Char(string='First Name', required=True, tracking=True)
+    first_name = fields.Char(string='First Name', required=True)
     last_name = fields.Char(string='Last Name', required=True)
     name = fields.Char(string='Name', compute='full_name')
     picture = fields.Binary(string='Picture')
@@ -32,7 +32,7 @@ class SchoolStudent(models.Model):
         ('male', 'Male'),
         ('female', 'Female'),
         ('others', 'Others')
-    ], required=True, default='male', tracking=True)
+    ], required=True, default='male')
     birth_date = fields.Date(string='Birth Date')
     age = fields.Integer(string='Age', compute='get_age')
     admission_date = fields.Date(string='Admission Date')
@@ -41,7 +41,7 @@ class SchoolStudent(models.Model):
         ('married', 'Married'),
         ('divorced', 'Divorced'),
         ('others', 'Others')
-    ], required=True, default='single', tracking=True)
+    ], required=True, default='single')
     remarks = fields.Char(string='Remarks')
 
     class_id = fields.Many2one(comodel_name='school.class', string='Class')
@@ -49,7 +49,7 @@ class SchoolStudent(models.Model):
 
     state = fields.Selection([('new', 'New'), ('approved', 'Approved'), ('alumni', 'Alumni'),
                               ('terminate', 'Terminate'), ('cancel', 'Cancelled')],
-                             string='Status', tracking=True, default="new")
+                             string='Status', default="new")
     standard_id = fields.Many2one(comodel_name="school.standard", string='Standard')
     user_id = fields.Many2one(comodel_name='res.users', string='Student user')
                                 # related='res.users.id', related_sudo=True,
@@ -63,7 +63,7 @@ class SchoolStudent(models.Model):
         user_id = self.env["res.users"].create(
             {"login": self.email, "name": self.name}
         )
-        return  user_id
+        return user_id
 
     def action_approved(self):
         for rec in self:
@@ -75,7 +75,7 @@ class SchoolStudent(models.Model):
                 rec.admission_date = datetime.date.today()
                 # create new student user
                 self.user_id = self.create_user()
-                # add a group on a user
+                # add a group to this user
                 group = self.env.ref('school_management.group_school_student')
                 self.user_id.groups_id += group
                 # users = self.env['res.users'].search(
