@@ -43,28 +43,25 @@
                         </group>
                     </group>
                     <notebook>
-                        <!--                        Students page-->
+                        <!--    Students page     -->
                         <page string="Students" name="students">
-                            <field
-                                name="student_ids"
-                                widget="section_and_note_one2many"
-                                mode="tree,kanban"
-                            >
-<!--&lt;!&ndash;                            <field name="student_ids">&ndash;&gt;-->
-<!--                                <tree create="1" delete="1" edit="1">-->
-<!--                                    <field name="student_id"/>-->
-<!--                                    <field name="first_name" />-->
-<!--                                    <field name="last_name" />-->
-<!--                                    <field name="email" />-->
-<!--                                </tree>-->
-<!--                                <form string="Create Student">-->
-<!--                                    <group>-->
-<!--                                        <field name="student_id"/>-->
-<!--                                        <field name="first_name" />-->
-<!--                                        <field name="last_name" />-->
-<!--                                        <field name="email" />-->
-<!--                                    </group>-->
-<!--                                </form>-->
+                            <field name="student_ids">
+<!--                            <field name="student_ids">-->
+                                <tree create="1" delete="1" edit="1" editable="1">
+                                    <field name="student_ref"/>
+                                    <field name="first_name" />
+                                    <field name="last_name" />
+                                    <field name="email" />
+                                </tree>
+
+                                <form string="Create Student" editable="1">
+                                    <group>
+                                         <field name="student_ref"/>
+                                        <field name="first_name" />
+                                        <field name="last_name" />
+                                        <field name="email" />
+                                    </group>
+                                </form>
                             </field>
                         </page>
                         <page string="Subjects" name="subjects">

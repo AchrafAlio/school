@@ -31,38 +31,64 @@
             <form>
                 <header>
                     <button id="button_approved" name="action_approved" states="new"
+                            groups="school_management.group_school_administrator"
                             string="Approve" class="btn-primary" type="object"/>
 
-                    <button id="button_cancel" name="action_cancel"
-                            confirm="Are you sure that you need to cancel ?"
+                    <button id="button_cancel" name="action_cancel" states="new"
+                            confirm="Are you sure that you need to cancel ?" class="btn-danger"
+                            groups="school_management.group_school_administrator"
                             string="Cancel" type="object"/>
 
-                    <button id="button_alumni" name="action_alumni" states="approved"
+                    <button id="button_alumni" name="action_alumni" states="approved" icon="fa-archive"
+                            groups="school_management.group_school_administrator"
                             string="Alumni" class="btn-primary" type="object"/>
 
-                    <button id="button_terminate" name="action_terminate" states="alumni"
-                            string="Terminate" class="btn-primary" type="object"/>
+                    <button id="button_terminate" name="action_terminate" states="approved" icon="fa-ban"
+                            groups="school_management.group_school_administrator"
+                            string="Terminate" class="btn-primary" type="object" />
 
-                    <field name="state" widget="statusbar" statusbar_visible="new,approved,alumni,terminate,cancel"/>
+                    <field name="state" widget="statusbar" statusbar_visible="new, cancel"/>
                 </header>
                 <sheet>
-                    <div class="oe_title">
-                        <h1>
-                            <field name="student_ref" readonly="1"/>
-                        </h1>
+                    <div class="oe_inline">
+                        <separator string="Personal Information"/>
+                        <field name="picture" widget='image' class="oe_avatar oe_right" style="max-width:100px;max-height:100px" />
+                        <div class="oe_title">
+                            <group>
+                                <field name="student_ref" readonly="1" nolabel="1" /><br/>
+                                <field name="first_name" nolabel="1" placeholder="First Name" required="1"
+                                       attrs="{'read-only':[('state','=','alumni')]}"/><br/>
+                                <field name="last_name" nolabel="1" placeholder="Last Name" required="1"
+                                       attrs="{'read-only':[('state','=','alumni')]}"/><br/>
+                            </group>
+                        </div>
                     </div>
                     <group>
-                        <field name="picture" widget='image' class="oe_avatar"
-                               options='{"preview_image": "avatar_128"}'/>
-                        <group string="contact">
-                            <field name="student_ref" readonly="1"/>
-                            <field name="first_name"/>
-                            <field name="last_name"/>
-                            <field name="code"/>
-                            <field name="roll_number"/>
-                            <field name="class_id"/>
+                        <group string="School Information">
+                            <b><field name="school_name" readonly="1" nolabel="1"/></b><br />
+                            <field name="academic_year" placeholder="Academic Year" nolabel="1"/>
                         </group>
-                        <group string="Detailed Adress">
+                        <group string="Class Information">
+                            <field name="school_name" readonly="1" />
+                            <field name="academic_year" placeholder="Academic Year" />
+                        </group>
+                    </group>
+                    <group string="General Informations">
+
+                        <field name="student_ref" readonly="1"/>
+                        <field name="code"/>
+                        <field name="roll_number"/>
+                        <field name="class_id"/>
+
+                        <field name="gender"/>
+                        <field name="birth_date"/>
+                        <field name="age"/>
+                        <field name="admission_date" readonly="1" invisible="1"/>
+                        <field name="marital_status"/>
+                        <field name="user_id" attrs="{'invisible':[('state', '!=', 'approved')]}"/>
+
+                    </group>
+                    <group string="Detailed Adress">
                             <field name="street1"/>
                             <field name="street2"/>
                             <field name="country"/>
@@ -73,16 +99,6 @@
                             <field name="mobile_number"/>
                             <field name="email"/>
                         </group>
-                    </group>
-                    <group string="General Informations">
-                        <field name="gender"/>
-                        <field name="birth_date"/>
-                        <field name="age"/>
-                        <field name="admission_date" readonly="1" invisible="1"/>
-                        <field name="marital_status"/>
-                        <field name="user_id" attrs="{'invisible':[('state', '!=', 'approved')]}"/>
-
-                    </group>
                 </sheet>
                 <!--                <div class="oe_chatter">-->
                 <!--                    <field name="message_follower_ids"/>-->

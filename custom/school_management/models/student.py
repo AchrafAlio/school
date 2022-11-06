@@ -10,6 +10,8 @@ class SchoolStudent(models.Model):
     # _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "School Student"
 
+    school_name = fields.Char(string="School Name", default="West High School", readonly=True)
+    academic_year = fields.Char(string="Academic Year")
     student_ref = fields.Char(string='Student ID', copy=False, readonly=True, required=True,
                               default=lambda self: _('New'))
     # Admission Request fields
@@ -45,13 +47,12 @@ class SchoolStudent(models.Model):
         ('others', 'Others')
     ], required=True, default='single')
     remarks = fields.Char(string='Remarks')
-
-    class_id = fields.Many2one(comodel_name='school.class', string='Class')
-    student_id = fields.Many2one(comodel_name='school.student', string='Student')
-
     state = fields.Selection([('new', 'New'), ('approved', 'Approved'), ('alumni', 'Alumni'),
                               ('terminate', 'Terminate'), ('cancel', 'Cancelled')],
                              string='Status', default="new")
+
+    class_id = fields.Many2one(comodel_name='school.class', string='Class')
+    # student_id = fields.Many2one(comodel_name='school.student', string='Student')
     standard_id = fields.Many2one(comodel_name="school.standard", string='Standard')
     user_id = fields.Many2one(comodel_name='res.users', string='Student user')
 
@@ -110,7 +111,10 @@ class SchoolStudent(models.Model):
 
     def full_name(self):
         for rec in self:
-            rec.name = rec.first_name + ' ' + rec.last_name
+            if rec.first_name and rec.last_name:
+                rec.name = rec.first_name + ' ' + rec.last_name
+            else:
+                rec.name = ''
 
     def get_age(self):
         for rec in self:
@@ -127,3 +131,4 @@ class SchoolStudent(models.Model):
     def on_change_birth_date(self):
         for rec in self:
             rec.get_age()
+

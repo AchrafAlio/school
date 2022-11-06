@@ -45,5 +45,8 @@ package.json
 /share/
 /src/
 
+# school test code
+custom/school_test
+
 # avoid adding it after generation from tsconfig command
 tsconfig.json

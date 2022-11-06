@@ -14,12 +14,13 @@ class SchoolClass(models.Model):
     total_students = fields.Integer(string='Total Students', compute="_total_students")
     remaining_seats = fields.Integer(string='Remaining Seats', compute="_remaining_seats")
     color = fields.Char(string='Color')
+
     standard_id = fields.Many2one(comodel_name='school.standard', string="Standard")
     teacher_id = fields.Many2one(comodel_name='school.teacher', string="Teacher")
     classroom_id = fields.Many2one(comodel_name='school.classroom', string="Room Number")
 
-    student_ids = fields.One2many(comodel_name='school.student', inverse_name='class_id', string="Students")
-    subject_ids = fields.One2many(comodel_name='school.subject', inverse_name='class_id', string="Subjects")
+    student_ids = fields.Many2many(comodel_name='school.student', string="Students")
+    subject_ids = fields.Many2many(comodel_name='school.subject', inverse_name='class_id', string="Subjects")
 
     @api.model
     def create(self, vals):
@@ -36,6 +37,7 @@ class SchoolClass(models.Model):
 
     @api.onchange('student_ids')
     def _total_students(self):
+        print("student_ids changed!!!!!!!!!!!!!!!!")
         for rec in self:
             rec.total_students = 0
             for student in rec.student_ids:
@@ -44,7 +46,6 @@ class SchoolClass(models.Model):
 
 class SchoolStandard(models.Model):
     _name = "school.standard"
-    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "School Standard"
 
     name = fields.Char(string='Name', required=True)
@@ -53,6 +54,24 @@ class SchoolStandard(models.Model):
     description = fields.Char(string='Description')
     subject_id = fields.Many2one('school.subject', string='Subject')
 
+
+class SchoolMedium(models.Model):
+    _name = "school.medium"
+    _description = "School Medium"
+
+    name = fields.Char(string='Name', required=True)
+    sequence = fields.Char(string='Sequence')
+    code = fields.Char(string='Code')
+    description = fields.Char(string='Description')
+
+class SchoolDivision(models.Model):
+    _name = "school.division"
+    _description = "School Division"
+
+    name = fields.Char(string='Name', required=True)
+    sequence = fields.Char(string='Sequence')
+    code = fields.Char(string='Code')
+    description = fields.Char(string='Description')
 
 class SchoolClassroom(models.Model):
     _name = "school.classroom"
