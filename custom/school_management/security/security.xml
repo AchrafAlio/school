@@ -25,7 +25,7 @@
         <field name="category_id" ref="module_category_school"/>
     </record>
 
-    <!--    Rule : Student see only his profile  -->
+    <!--    Rule : Student see and modify only his profile  -->
     <record model="ir.rule" id="student_record_rule">
         <field name="name">See only his profile</field>
         <field name="model_id" ref="model_school_student"/>

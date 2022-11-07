@@ -64,6 +64,7 @@ class SchoolMedium(models.Model):
     code = fields.Char(string='Code')
     description = fields.Char(string='Description')
 
+
 class SchoolDivision(models.Model):
     _name = "school.division"
     _description = "School Division"
@@ -72,6 +73,7 @@ class SchoolDivision(models.Model):
     sequence = fields.Char(string='Sequence')
     code = fields.Char(string='Code')
     description = fields.Char(string='Description')
+
 
 class SchoolClassroom(models.Model):
     _name = "school.classroom"

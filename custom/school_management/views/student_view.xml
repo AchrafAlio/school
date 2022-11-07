@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <!--  Student  tree view-->
+    <!--  Student Admission Request tree view-->
     <record id="view_admission_request_tree" model="ir.ui.view">
         <field name="name">school.student.admission.request.tree</field>
         <field name="model">school.student</field>
         <field name="arch" type="xml">
-            <tree sample="1">
+            <tree sample="1" string="Student Admission Register">
                 <field name="student_ref" decoration-bf="1" optional="show"/>
                 <field name="name" optional="show"/>
-                <field name="picture" optional="hide"/>
                 <field name="email" optional="show"/>
                 <field name="gender" optional="show"/>
                 <field name="state" optional="show" widget="badge"
@@ -18,12 +17,12 @@
                 <field name="age" optional="show"/>
                 <field name="admission_date" widget="date" optional="hide"/>
                 <field name="marital_status" optional="show"/>
-                <field name="user_id" widget="many2one_avatar_user" optional="show"/>
+                <field name="user_id" widget="many2one_avatar_user" optional="hide"/>
             </tree>
         </field>
     </record>
 
-    <!--   Student form view  -->
+    <!--   Student Admission Request form view  -->
     <record id="view_admission_request_form" model="ir.ui.view">
         <field name="name">school.student.admission.request.form</field>
         <field name="model">school.student</field>
@@ -31,11 +30,12 @@
             <form>
                 <header>
                     <button id="button_approved" name="action_approved" states="new"
-                            groups="school_management.group_school_administrator"
+                            groups="school_management.group_school_administrator" icon="fa-check"
                             string="Approve" class="btn-primary" type="object"/>
 
                     <button id="button_cancel" name="action_cancel" states="new"
-                            confirm="Are you sure that you need to cancel ?" class="btn-danger"
+                            confirm="Are you sure that you need to cancel ?"
+                            class="ml-1 btn-outline-danger rounded-pill"
                             groups="school_management.group_school_administrator"
                             string="Cancel" type="object"/>
 
@@ -45,129 +45,143 @@
 
                     <button id="button_terminate" name="action_terminate" states="approved" icon="fa-ban"
                             groups="school_management.group_school_administrator"
-                            string="Terminate" class="btn-primary" type="object" />
+                            string="Terminate" class="btn-primary" type="object"/>
 
                     <field name="state" widget="statusbar" statusbar_visible="new, cancel"/>
                 </header>
                 <sheet>
                     <div class="oe_inline">
                         <separator string="Personal Information"/>
-                        <field name="picture" widget='image' class="oe_avatar oe_right" style="max-width:100px;max-height:100px" />
+                        <field name="picture" widget='image' class="oe_avatar oe_right"
+                               style="max-width:100px;max-height:100px"/>
                         <div class="oe_title">
                             <group>
-                                <field name="student_ref" readonly="1" nolabel="1" /><br/>
+                                <field name="student_ref" readonly="1" nolabel="1"/>
+                                <br/>
                                 <field name="first_name" nolabel="1" placeholder="First Name" required="1"
-                                       attrs="{'read-only':[('state','=','alumni')]}"/><br/>
+                                       attrs="{'read-only':[('state','=','alumni')]}"/>
+                                <br/>
                                 <field name="last_name" nolabel="1" placeholder="Last Name" required="1"
-                                       attrs="{'read-only':[('state','=','alumni')]}"/><br/>
+                                       attrs="{'read-only':[('state','=','alumni')]}"/>
                             </group>
                         </div>
                     </div>
+                    <hr/>
                     <group>
                         <group string="School Information">
-                            <b><field name="school_name" readonly="1" nolabel="1"/></b><br />
+                            <b>
+                                <field name="school_name" readonly="1" nolabel="1"/>
+                            </b>
+                            <br/>
                             <field name="academic_year" placeholder="Academic Year" nolabel="1"/>
                         </group>
                         <group string="Class Information">
-                            <field name="school_name" readonly="1" />
-                            <field name="academic_year" placeholder="Academic Year" />
+                            <field name="standard_id" placeholder="Standard" nolabel="1"/>
+                            <br/>
+                            <field name="medium_id" placeholder="Medium" nolabel="1"/>
+                            <br/>
+                            <field name="division_id" placeholder="Division" nolabel="1"/>
                         </group>
                     </group>
-                    <group string="General Informations">
-
-                        <field name="student_ref" readonly="1"/>
-                        <field name="code"/>
-                        <field name="roll_number"/>
-                        <field name="class_id"/>
-
-                        <field name="gender"/>
-                        <field name="birth_date"/>
-                        <field name="age"/>
-                        <field name="admission_date" readonly="1" invisible="1"/>
-                        <field name="marital_status"/>
-                        <field name="user_id" attrs="{'invisible':[('state', '!=', 'approved')]}"/>
-
-                    </group>
-                    <group string="Detailed Adress">
-                            <field name="street1"/>
-                            <field name="street2"/>
-                            <field name="country"/>
-                            <field name="city"/>
-                            <field name="state_adress"/>
-                            <field name="zip_code"/>
-                            <field name="phone_number"/>
-                            <field name="mobile_number"/>
-                            <field name="email"/>
+                    <hr/>
+                    <group>
+                        <group>
+                            <label for="street1" string="Address"/>
+                            <div class="o_address_format">
+                                <field name="street1" placeholder="Street..." class="o_address_street"/>
+                                <field name="street1" placeholder="Street2..." class="o_address_street"/>
+                                <field name="country" placeholder="Country" class="o_address_country,oe_no_button"/>
+                                <field name="city" placeholder="City" class="o_address_city"/>
+                                <field name="state_address" placeholder="State" class="o_address_state"/>
+                                <field name="zip_code" placeholder="ZIP" class="o_address_zip"/>
+                            </div>
                         </group>
+                        <group>
+                            <field name="phone_number" placeholder="Phone Number" nolabel="1"/>
+                            <br/>
+                            <field name="mobile_number" placeholder="Mobile Number" nolabel="1"/>
+                            <br/>
+                            <field name="email" placeholder="Email Address" String="Email" nolabel="1"/>
+                        </group>
+                    </group>
+                    <hr/>
+                    <group>
+                        <group string="General Information">
+                            <group>
+                                <field name="gender" placeholder="Gender"/>
+                                <field name="birth_date" placeholder="Birthdate" required="1"/>
+                                <field name="age"/>
+                            </group>
+                        </group>
+                        <group string="Remarks">
+                            <field name="remarks" placeholder="Remarks" nolabel="1"/>
+                        </group>
+                    </group>
                 </sheet>
-                <!--                <div class="oe_chatter">-->
-                <!--                    <field name="message_follower_ids"/>-->
-                <!--                    <field name="activity_ids"/>-->
-                <!--                    <field name="message_ids"/>-->
-                <!--                </div>-->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
             </form>
         </field>
     </record>
 
-    <!--  Student  kanban view-->
+    <!--  Student Admission Request kanban view-->
     <record id="view_admission_request_kanban" model="ir.ui.view">
         <field name="name">school.student.admission.request.kanban</field>
         <field name="model">school.student</field>
         <field name="arch" type="xml">
             <kanban>
-                <field name="age"/>
-                <field name="admission_date"/>
+                <field name="name"/>
+                <field name="email"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="on_kanban_global_click">
-                            <div class="on_kanban_details">
-                                <ul>
-                                    <li>
-                                        Student Ref :
-                                        <field name="student_ref" readonly="1"/>
-                                    </li>
-                                    <li>
-                                        Name :
-                                        <field name="name"/>
-                                    </li>
-                                    <li>
-                                        Picture :
-                                        <field name="picture"/>
-                                    </li>
-                                    <li>
-                                        Code :
-                                        <field name="code"/>
-                                    </li>
-                                    <li>
-                                        Roll Number :
-                                        <field name="roll_number"/>
-                                    </li>
-                                    <li>
-                                        Class ID :
-                                        <field name="class_id"/>
-                                    </li>
-                                    <li>
-                                        Status :
-                                        <field name="state"/>
-                                    </li>
-                                    <li>
-                                        Gender :
-                                        <field name="gender"/>
-                                    </li>
-                                    <li>
-                                        Standard :
-                                        <field name="standard_id"/>
-                                    </li>
-                                    <li>
-                                        Admission Date :
-                                        <field name="admission_date"/>
-                                    </li>
-                                    <li>
-                                        User ID :
-                                        <field name="user_id"/>
-                                    </li>
-                                </ul>
+
+                            <div class="oe_kanban_box oe_kanban_color_border">
+                                <table class="oe_kanban_table" border="0">
+                                    <tr>
+                                        <td class="oe_kanban_title1 pl-1" align="left" valign="middle">
+                                            <h2><a type="open"><field name="name"/></a></h2>
+                                        </td>
+                                    </tr>
+                                </table>
                             </div>
+
+                            <div class="oe_kanban_box_content oe_kanban_color_bglight oe_kanban_box_show_onclick_trigger oe_kanban_color_border">
+                                    <table class="oe_kanban_table">
+                                        <tr width="300">
+                                            <td valign="top" width="64" align="left">
+                                                <a type="open">
+                                                    <img heigh="80" width="80" t-att-src="kanban_image('school.student', 'picture')" alt="image"/>
+                                                </a>
+                                            </td>
+                                            <td valign="top" align="left" style="padding-left:10px;">
+                                                <table>
+                                                    <tr>
+                                                        <td>Student Ref :</td>
+                                                        <td>
+                                                            <b><field name="student_ref" /></b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Standard : </td>
+                                                        <td><b><field name="standard_id" /></b>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Admission Date : </td>
+                                                        <td><b><field name="admission_date" /></b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Gender : </td>
+                                                        <td><b><field name="gender" /></b></td>
+                                                    </tr>
+                                                </table>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                </div>
                         </div>
                     </t>
                 </templates>
@@ -175,7 +189,46 @@
         </field>
     </record>
 
-    <!--   Student search view-->
+    <!-- Student form view -->
+    <record id="view_student_form" model="ir.ui.view">
+        <field name="name">school.student.form</field>
+        <field name="model">school.student</field>
+        <field name="arch" type="xml">
+            <form string="Student Information" create="false" delete="false">
+                <header>
+                    <button id="button_approved" name="action_approved" states="new"
+                            groups="school_management.group_school_administrator" icon="fa-check"
+                            string="Approve" class="btn-primary" type="object"/>
+
+                    <button id="button_alumni" name="action_alumni" states="approved" icon="fa-archive"
+                            groups="school_management.group_school_administrator"
+                            string="Alumni" class="btn-primary" type="object"/>
+
+                    <button id="button_terminate" name="action_terminate" states="approved" icon="fa-ban"
+                            groups="school_management.group_school_administrator"
+                            string="Terminate" class="btn-primary" type="object"/>
+
+                    <field name="state" widget="statusbar" statusbar_visible="alumni, terminate"/>
+                </header>
+                <sheet>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+
+
+
+
+
+
+
+
+
+
+
+    <!--   Student Register search view-->
     <record id="view_admission_request_search" model="ir.ui.view">
         <field name="name">school.student.admission.request.search</field>
         <field name="model">school.student</field>
@@ -191,11 +244,13 @@
         </field>
     </record>
 
-    <!--   Student admission request action-->
+    <!--   Student Admission Register action-->
     <record id="action_student_admission_request" model="ir.actions.act_window">
-        <field name="name">Admission Requests</field>
+        <field name="name">Admission Register</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">school.student</field>
+        <field name="view_id" ref="view_admission_request_form" />
+        <field name="search_view_id" ref="view_admission_request_search" />
         <field name="view_mode">tree,kanban,form</field>
         <field name="context">{}</field>
         <field name="domain">['|',('state', '=' , 'new'),('state','=','cancel')]</field>
@@ -211,6 +266,7 @@
         <field name="name">Students</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">school.student</field>
+        <field name="view_id" ref="view_student_form" />
         <field name="view_mode">tree,kanban,form</field>
         <field name="context">{}</field>
         <field name="domain">['|','|',('state', '=', 'approved'),('state', '=', 'alumni')

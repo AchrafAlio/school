@@ -7,7 +7,7 @@ from odoo import api, fields, models, _
 class SchoolStudent(models.Model):
     _name = "school.student"
     # _inherits = {'res.partner': 'partner_id'}
-    # _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "School Student"
 
     school_name = fields.Char(string="School Name", default="West High School", readonly=True)
@@ -25,7 +25,7 @@ class SchoolStudent(models.Model):
     street2 = fields.Char(string='Street2')
     country = fields.Char(string='Country')
     city = fields.Char(string='City')
-    state_adress = fields.Char(string='State')
+    state_address = fields.Char(string='State Address')
     zip_code = fields.Char(string='Zip Code')
     phone_number = fields.Char(string='Phone Number')
     mobile_number = fields.Char(string='Mobile Number')
@@ -55,7 +55,8 @@ class SchoolStudent(models.Model):
     # student_id = fields.Many2one(comodel_name='school.student', string='Student')
     standard_id = fields.Many2one(comodel_name="school.standard", string='Standard')
     user_id = fields.Many2one(comodel_name='res.users', string='Student user')
-
+    medium_id = fields.Many2one(comodel_name='school.medium', string='Medium')
+    division_id = fields.Many2one(comodel_name='school.division', string='Division')
     # related='res.users.id', related_sudo=True,
     # compute_sudo=True, store=True, readonly=True)
 
