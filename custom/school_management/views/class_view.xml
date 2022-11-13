@@ -21,7 +21,7 @@
         <field name="name">school.class.form</field>
         <field name="model">school.class</field>
         <field name="arch" type="xml">
-            <form string="Sales Order" class="o_sale_order" js_class="sale_discount_form">
+            <form>
                 <sheet>
                     <div class="oe_title">
                         <h1>
@@ -46,19 +46,11 @@
                         <!--    Students page     -->
                         <page string="Students" name="students">
                             <field name="student_ids">
-<!--                            <field name="student_ids">-->
-                                <tree create="1" delete="1" edit="1" editable="1">
-                                    <field name="student_ref"/>
-                                    <field name="first_name" />
-                                    <field name="last_name" />
+                                <tree>
                                     <field name="email" />
                                 </tree>
-
-                                <form string="Create Student" editable="1">
+                                <form string="Create Student">
                                     <group>
-                                         <field name="student_ref"/>
-                                        <field name="first_name" />
-                                        <field name="last_name" />
                                         <field name="email" />
                                     </group>
                                 </form>

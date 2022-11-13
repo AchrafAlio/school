@@ -19,8 +19,10 @@ class SchoolClass(models.Model):
     teacher_id = fields.Many2one(comodel_name='school.teacher', string="Teacher")
     classroom_id = fields.Many2one(comodel_name='school.classroom', string="Room Number")
 
-    student_ids = fields.Many2many(comodel_name='school.student', string="Students")
-    subject_ids = fields.Many2many(comodel_name='school.subject', inverse_name='class_id', string="Subjects")
+    # student_ids = fields.Many2many(comodel_name='school.student', string="Students")
+
+    student_ids = fields.One2many('school.student', 'class_id')
+    subject_ids = fields.One2many(comodel_name='school.subject', inverse_name='class_id', string="Subjects")
 
     @api.model
     def create(self, vals):
@@ -94,4 +96,4 @@ class SchoolSubject(models.Model):
     standard_ids = fields.One2many(comodel_name='school.standard', inverse_name='subject_id', string="Standards")
     teacher_ids = fields.One2many(comodel_name='school.teacher', inverse_name='subject_id', string="Teachers")
     student_id = fields.Many2one(comodel_name='school.student', string='Student')
-    class_id = fields.Many2one(comodel_name='school.class', string='Class')
+    class_id = fields.Many2one('school.class')

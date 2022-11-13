@@ -15,6 +15,7 @@ class SchoolStudent(models.Model):
     student_ref = fields.Char(string='Student ID', copy=False, readonly=True, required=True,
                               default=lambda self: _('New'))
     # Admission Request fields
+
     first_name = fields.Char(string='First Name', required=True)
     last_name = fields.Char(string='Last Name', required=True)
     name = fields.Char(string='Name', compute='full_name')
@@ -51,7 +52,7 @@ class SchoolStudent(models.Model):
                               ('terminate', 'Terminate'), ('cancel', 'Cancelled')],
                              string='Status', default="new")
 
-    class_id = fields.Many2one(comodel_name='school.class', string='Class')
+    class_id = fields.Many2one('school.class', string='Class')
     # student_id = fields.Many2one(comodel_name='school.student', string='Student')
     standard_id = fields.Many2one(comodel_name="school.standard", string='Standard')
     user_id = fields.Many2one(comodel_name='res.users', string='Student user')
