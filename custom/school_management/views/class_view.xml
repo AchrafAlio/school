@@ -6,6 +6,7 @@
         <field name="model">school.class</field>
         <field name="arch" type="xml">
             <tree>
+                <field name="sequence" readonly="1"/>
                 <field name="name"/>
                 <field name="capacity"/>
                 <field name="total_students"/>
@@ -22,6 +23,11 @@
         <field name="arch" type="xml">
             <form>
                 <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="sequence" readonly="1"/>
+                        </h1>
+                    </div>
                     <group>
                         <group>
                             <field name="name"/>
@@ -37,16 +43,15 @@
                         </group>
                     </group>
                     <notebook>
+                        <!--    Students page     -->
                         <page string="Students" name="students">
-                            <field name="student_ids" readonly="0">
-                                <tree create="1" delete="1" edit="1">
-                                    <field name="student_id" />
+                            <field name="student_ids">
+                                <tree>
+                                    <field name="email" />
                                 </tree>
-                                <form>
+                                <form string="Create Student">
                                     <group>
-                                        <group>
-                                            <field name="student_id" optional="show"/>
-                                        </group>
+                                        <field name="email" />
                                     </group>
                                 </form>
                             </field>
@@ -59,12 +64,9 @@
                                 </tree>
                                 <form>
                                     <group>
-                                        <group>
                                             <field name="name"/>
-                                        </group>
-                                        <group>
                                             <field name="code"/>
-                                        </group>
+
                                     </group>
                                 </form>
                             </field>
@@ -96,6 +98,10 @@
                         <div t-attf-class="on_kanban_global_click">
                             <div class="on_kanban_details">
                                 <ul>
+                                    <li>
+                                        Class Ref :
+                                        <field name="sequence" readonly="1"/>
+                                    </li>
                                     <li>
                                         Name :
                                         <field name="name"/>

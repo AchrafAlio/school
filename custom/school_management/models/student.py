@@ -1,16 +1,21 @@
 # -*- coding: utf-8 -*-
 import datetime
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 
 
 class SchoolStudent(models.Model):
     _name = "school.student"
     # _inherits = {'res.partner': 'partner_id'}
-    # _inherit = ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "School Student"
 
+    school_name = fields.Char(string="School Name", default="West High School", readonly=True)
+    academic_year = fields.Char(string="Academic Year")
+    student_ref = fields.Char(string='Student ID', copy=False, readonly=True, required=True,
+                              default=lambda self: _('New'))
     # Admission Request fields
+
     first_name = fields.Char(string='First Name', required=True)
     last_name = fields.Char(string='Last Name', required=True)
     name = fields.Char(string='Name', compute='full_name')
@@ -21,11 +26,11 @@ class SchoolStudent(models.Model):
     street2 = fields.Char(string='Street2')
     country = fields.Char(string='Country')
     city = fields.Char(string='City')
-    state_adress = fields.Char(string='State')
+    state_address = fields.Char(string='State Address')
     zip_code = fields.Char(string='Zip Code')
     phone_number = fields.Char(string='Phone Number')
     mobile_number = fields.Char(string='Mobile Number')
-    email = fields.Char(string='Email' , required=True)
+    email = fields.Char(string='Email', required=True)
 
     # Student Request fields
     gender = fields.Selection([
@@ -43,26 +48,39 @@ class SchoolStudent(models.Model):
         ('others', 'Others')
     ], required=True, default='single')
     remarks = fields.Char(string='Remarks')
-
-    class_id = fields.Many2one(comodel_name='school.class', string='Class')
-    student_id = fields.Many2one(comodel_name='school.student', string='Student')
-
     state = fields.Selection([('new', 'New'), ('approved', 'Approved'), ('alumni', 'Alumni'),
                               ('terminate', 'Terminate'), ('cancel', 'Cancelled')],
                              string='Status', default="new")
+
+    class_id = fields.Many2one('school.class', string='Class')
+    # student_id = fields.Many2one(comodel_name='school.student', string='Student')
     standard_id = fields.Many2one(comodel_name="school.standard", string='Standard')
     user_id = fields.Many2one(comodel_name='res.users', string='Student user')
-                                # related='res.users.id', related_sudo=True,
-                                # compute_sudo=True, store=True, readonly=True)
+    medium_id = fields.Many2one(comodel_name='school.medium', string='Medium')
+    division_id = fields.Many2one(comodel_name='school.division', string='Division')
+    # related='res.users.id', related_sudo=True,
+    # compute_sudo=True, store=True, readonly=True)
+
+    @api.model
+    def create(self, vals):
+        if vals.get('student_ref', _('New')) == _('New'):
+            seq_date = str(datetime.date.today().year)+"/"+str(datetime.date.today().month)+"/"
+            vals['student_ref'] = seq_date+self.env['ir.sequence'].next_by_code('school.student') or _('New')
+        res = super(SchoolStudent, self).create(vals)
+        print("vals ============> ", vals['student_ref'] )
+        print("res =============> ", res)
+        return res
 
     def action_new(self):
         for rec in self:
             rec.state = 'new'
 
     def create_user(self):
-        user_id = self.env["res.users"].create(
-            {"login": self.email, "name": self.name}
-        )
+        vals = {
+            "login": self.email,
+            "name": self.name
+        }
+        user_id = self.env["res.users"].create(vals)
         return user_id
 
     def action_approved(self):
@@ -78,11 +96,6 @@ class SchoolStudent(models.Model):
                 # add a group to this user
                 group = self.env.ref('school_management.group_school_student')
                 self.user_id.groups_id += group
-                # users = self.env['res.users'].search(
-                #     [])  # if you not want to set group to all user then set proper domain instead of []
-                #
-                # group_id = self.env.ref('school_management.group_school_student')
-                # group_id.users = [(4, self.user_id) for user in users]
             else:
                 rec.state = 'cancel'
 
@@ -100,7 +113,10 @@ class SchoolStudent(models.Model):
 
     def full_name(self):
         for rec in self:
-            rec.name = rec.first_name + ' ' + rec.last_name
+            if rec.first_name and rec.last_name:
+                rec.name = rec.first_name + ' ' + rec.last_name
+            else:
+                rec.name = ''
 
     def get_age(self):
         for rec in self:
@@ -117,3 +133,4 @@ class SchoolStudent(models.Model):
     def on_change_birth_date(self):
         for rec in self:
             rec.get_age()
+

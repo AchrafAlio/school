@@ -11,6 +11,7 @@
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',
+        'data/data.xml',
         'views/res_config_settings_views.xml',
         'views/class_view.xml',
         'views/standard_view.xml',
