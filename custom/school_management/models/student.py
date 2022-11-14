@@ -52,7 +52,7 @@ class SchoolStudent(models.Model):
                               ('terminate', 'Terminate'), ('cancel', 'Cancelled')],
                              string='Status', default="new")
 
-    class_id = fields.Many2one('school.class', string='Class')
+    class_id = fields.Many2one(comodel_name='school.class', string='Class')
     # student_id = fields.Many2one(comodel_name='school.student', string='Student')
     standard_id = fields.Many2one(comodel_name="school.standard", string='Standard')
     user_id = fields.Many2one(comodel_name='res.users', string='Student user')

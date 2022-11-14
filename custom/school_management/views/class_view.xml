@@ -21,7 +21,7 @@
         <field name="name">school.class.form</field>
         <field name="model">school.class</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Class Information">
                 <sheet>
                     <div class="oe_title">
                         <h1>
@@ -37,7 +37,9 @@
                         </group>
                         <group>
                             <field name="color"/>
-                            <field name="standard_id"/>
+                            <field name="standard_id" widget="selection" placeholder="Standard"/>
+                            <!--                             <field name="division_id" widget="selection" placeholder="Division"/>-->
+<!--                            <field name="medium_id" widget="selection" placeholder="Medium"/>-->
                             <field name="teacher_id"/>
                             <field name="classroom_id"/>
                         </group>
@@ -45,13 +47,17 @@
                     <notebook>
                         <!--    Students page     -->
                         <page string="Students" name="students">
-                            <field name="student_ids">
-                                <tree>
-                                    <field name="email" />
+                            <field name="student_ids" nolabel="1" widget="section_and_note_one2many">
+                                <tree string="Student Information" editable="bottom">
+<!--                                    <field name="student_ref"/>-->
+                                    <field name="first_name" mode="tree"/>
+                                    <field name="last_name" mode="tree"/>
+                                    <field name="email" mode="tree"/>
                                 </tree>
-                                <form string="Create Student">
+                                <form string="Student Information">
                                     <group>
-                                        <field name="email" />
+                                        <field name="name"/>
+                                        <field name="email"/>
                                     </group>
                                 </form>
                             </field>
@@ -64,8 +70,8 @@
                                 </tree>
                                 <form>
                                     <group>
-                                            <field name="name"/>
-                                            <field name="code"/>
+                                        <field name="name"/>
+                                        <field name="code"/>
 
                                     </group>
                                 </form>

@@ -21,7 +21,8 @@ class SchoolClass(models.Model):
 
     # student_ids = fields.Many2many(comodel_name='school.student', string="Students")
 
-    student_ids = fields.One2many('school.student', 'class_id')
+    student_ids = fields.One2many(comodel_name='school.student', inverse_name='class_id',
+                                  string='Class students', store=True)
     subject_ids = fields.One2many(comodel_name='school.subject', inverse_name='class_id', string="Subjects")
 
     @api.model
@@ -30,7 +31,7 @@ class SchoolClass(models.Model):
             vals['sequence'] = self.env['ir.sequence'].next_by_code('school.class') or _('New')
         res = super(SchoolClass, self).create(vals)
         print("vals ============> ", vals['sequence'])
-        print("res =============> ", res)
+        print("res =============> ", vals['student_ids'])
         return res
 
     def _remaining_seats(self):
