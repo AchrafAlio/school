@@ -58,26 +58,6 @@ class SchoolStandard(models.Model):
     subject_id = fields.Many2one('school.subject', string='Subject')
 
 
-class SchoolMedium(models.Model):
-    _name = "school.medium"
-    _description = "School Medium"
-
-    name = fields.Char(string='Name', required=True)
-    sequence = fields.Char(string='Sequence')
-    code = fields.Char(string='Code')
-    description = fields.Char(string='Description')
-
-
-class SchoolDivision(models.Model):
-    _name = "school.division"
-    _description = "School Division"
-
-    name = fields.Char(string='Name', required=True)
-    sequence = fields.Char(string='Sequence')
-    code = fields.Char(string='Code')
-    description = fields.Char(string='Description')
-
-
 class SchoolClassroom(models.Model):
     _name = "school.classroom"
     _inherit = ['mail.thread', 'mail.activity.mixin']

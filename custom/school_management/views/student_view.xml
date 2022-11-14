@@ -56,14 +56,14 @@
                         <group string="Class Information">
                             <field name="class_id" placeholder="Class" nolabel="1"
                                    attrs="{'readonly':[('state','=','new')]}"/>
-                            <!--                            <field name="standard_id" placeholder="Standard" nolabel="1"-->
-                            <!--                            attrs="{'readonly':[('state','=','new')]}"/>-->
-                            <!--                            <br/>-->
-                            <!--                            <field name="medium_id" placeholder="Medium" nolabel="1"-->
-                            <!--                            attrs="{'readonly':[('state', '=' ,'new' )]}"/>-->
-                            <!--                            <br/>-->
-                            <!--                            <field name="division_id" placeholder="Division" nolabel="1"-->
-                            <!--                            attrs="{'readonly':[('state', '=' ,'new' )]}"/>-->
+                            <field name="standard_id" placeholder="Standard" nolabel="1"
+                                   attrs="{'readonly':[('state','=','new')]}"/>
+                            <br/>
+                            <field name="medium_id" placeholder="Medium" nolabel="1"
+                                   attrs="{'readonly':[('state', '=' ,'new' )]}"/>
+                            <br/>
+                            <field name="division_id" placeholder="Division" nolabel="1"
+                                   attrs="{'readonly':[('state', '=' ,'new' )]}"/>
                         </group>
                     </group>
                     <hr/>
