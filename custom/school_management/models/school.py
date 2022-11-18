@@ -7,19 +7,20 @@ class SchoolClass(models.Model):
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "School Class"
 
-    name = fields.Char(string='Name', required=True)
-    sequence = fields.Char(string='Class Sequence', copy=False, readonly=True, required=True,
+    # name = fields.Char(string='Name', compute="_name_compose", readonly=True)
+    sequence = fields.Char(string='Class Sequence', copy=False, compute="_name_compose", readonly=True, required=True,
                            default=lambda self: _('New'))
     capacity = fields.Integer(string='Capacity')
     total_students = fields.Integer(string='Total Students', compute="_total_students")
     remaining_seats = fields.Integer(string='Remaining Seats', compute="_remaining_seats")
+    division = fields.Selection([('A', 'A'), ('B', 'B'), ('C', 'C')], default='A')
+    medium = fields.Selection([('arabic','Arabic'),('english','English'),('french','French'),
+                               ('urdu', 'Urdu')], default='arabic')
     color = fields.Char(string='Color')
-
     standard_id = fields.Many2one(comodel_name='school.standard', string="Standard")
+    standard_name = fields.Char(related="standard_id.name", store=True)
     teacher_id = fields.Many2one(comodel_name='school.teacher', string="Teacher")
     classroom_id = fields.Many2one(comodel_name='school.classroom', string="Room Number")
-
-    # student_ids = fields.Many2many(comodel_name='school.student', string="Students")
 
     student_ids = fields.One2many(comodel_name='school.student', inverse_name='class_id',
                                   string='Class students', store=True)
@@ -27,13 +28,18 @@ class SchoolClass(models.Model):
 
     @api.model
     def create(self, vals):
+        print("vals ============> ", vals)
+        print("self.env ============> ", self.env)
+        print("division =============> ", vals['division'])
         if vals.get('sequence', _('New')) == _('New'):
-            vals['sequence'] = self.env['ir.sequence'].next_by_code('school.class') or _('New')
+            vals['sequence'] = self.sequence
+                # self.env['ir.sequence'].next_by_code('school.class') or _('New')
         res = super(SchoolClass, self).create(vals)
-        print("vals ============> ", vals['sequence'])
-        print("res =============> ", vals['student_ids'])
+
         return res
 
+    def _name_compose(self):
+        self.sequence = str(self.standard_id.name) + "["+self.division+"]"
     def _remaining_seats(self):
         for rec in self:
             rec.remaining_seats = rec.capacity - rec.total_students

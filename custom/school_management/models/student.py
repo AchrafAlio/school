@@ -54,10 +54,10 @@ class SchoolStudent(models.Model):
 
     class_id = fields.Many2one(comodel_name='school.class', string='Class')
     # student_id = fields.Many2one(comodel_name='school.student', string='Student')
-    standard_id = fields.Char(string='Standard', related="class_id.standard_id.name")
+    standard_id = fields.Char(string='Standard', related="class_id.standard_id.name", readonly=True)
     user_id = fields.Many2one(comodel_name='res.users', string='Student user')
-    medium_id = fields.Char( string='Medium')
-    division_id = fields.Char( string='Division')
+    medium = fields.Selection( string='Medium', related="class_id.medium", readonly=True)
+    division = fields.Selection( string='Division', related="class_id.division", readonly=True)
     # related='res.users.id', related_sudo=True,
     # compute_sudo=True, store=True, readonly=True)
 

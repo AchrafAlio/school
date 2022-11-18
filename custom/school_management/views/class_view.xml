@@ -7,7 +7,6 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="sequence" readonly="1"/>
-                <field name="name"/>
                 <field name="capacity"/>
                 <field name="total_students"/>
                 <field name="remaining_seats"/>
@@ -30,7 +29,7 @@
                     </div>
                     <group>
                         <group>
-                            <field name="name"/>
+                            <field name="sequence"/>
                             <field name="capacity"/>
                             <field name="total_students"/>
                             <field name="remaining_seats"/>
@@ -38,8 +37,8 @@
                         <group>
                             <field name="color"/>
                             <field name="standard_id" widget="selection" placeholder="Standard"/>
-                            <!--                             <field name="division_id" widget="selection" placeholder="Division"/>-->
-<!--                            <field name="medium_id" widget="selection" placeholder="Medium"/>-->
+                            <field name="division" />
+                            <field name="medium" />
                             <field name="teacher_id"/>
                             <field name="classroom_id"/>
                         </group>
@@ -94,7 +93,7 @@
         <field name="model">school.class</field>
         <field name="arch" type="xml">
             <kanban default_order="id asc">
-                <field name="name"/>
+                <field name="sequence"/>
                 <field name="capacity"/>
                 <field name="total_students"/>
                 <field name="remaining_seats"/>
@@ -110,7 +109,7 @@
                                     </li>
                                     <li>
                                         Name :
-                                        <field name="name"/>
+                                        <field name="sequence"/>
                                     </li>
                                     <li>
                                         Capacity :
@@ -143,7 +142,7 @@
         <field name="model">school.class</field>
         <field name="arch" type="xml">
             <search>
-                <field name="name"/>
+                <field name="sequence"/>
                 <field name="capacity"/>
                 <separator/>
                 <filter string="Red" name="red" domain="[('color', '=', 'red')]"/>
