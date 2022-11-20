@@ -7,7 +7,7 @@
     'category': 'Productivity/Discuss',
     'website': 'https://www.softifi.com',
     'license': 'LGPL-3',
-    'depends': ['base', 'mail'],
+    'depends': ['base', 'mail','hr'],
     'data': [
         'security/security.xml',
         'security/ir.model.access.csv',

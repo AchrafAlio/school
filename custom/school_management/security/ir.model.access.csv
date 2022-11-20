@@ -22,11 +22,3 @@ access_school_student_student,access.school.student,model_school_student,group_s
 access_school_teacher,access.school.teacher,model_school_teacher,school_management.group_school_administrator,1,1,1,1
 access_school_teacher_teacher,access.school.teacher,model_school_teacher,group_school_teacher,1,1,0,0
 access_school_teacher_student,access.school.teacher,model_school_teacher,group_school_student,1,0,0,0
-,,,,,,,
-access_school_medium,access.school.medium,model_school_medium,school_management.group_school_administrator,1,1,1,1
-access_school_medium_teacher,access.school.medium,model_school_medium,group_school_teacher,1,0,0,0
-access_school_medium_student,access.school.medium,model_school_medium,group_school_student,1,0,0,0
-,,,,,,,
-access_school_division,access.school.division,model_school_division,school_management.group_school_administrator,1,1,1,1
-access_school_division_teacher,access.school.division,model_school_division,group_school_teacher,1,0,0,0
-access_school_division_student,access.school.division,model_school_division,group_school_student,1,0,0,0

@@ -2,6 +2,7 @@
 import datetime
 
 from odoo import api, fields, models, _
+from odoo.exceptions import AccessDenied, ValidationError, UserError
 
 
 class SchoolStudent(models.Model):
@@ -52,14 +53,16 @@ class SchoolStudent(models.Model):
                               ('terminate', 'Terminate'), ('cancel', 'Cancelled')],
                              string='Status', default="new")
 
-    class_id = fields.Many2one('school.class', string='Class')
+    class_id = fields.Many2one(comodel_name='school.class', string='Class')
     # student_id = fields.Many2one(comodel_name='school.student', string='Student')
-    standard_id = fields.Many2one(comodel_name="school.standard", string='Standard')
+    standard_id = fields.Char(string='Standard', related="class_id.standard_id.name", readonly=True)
     user_id = fields.Many2one(comodel_name='res.users', string='Student user')
-    medium_id = fields.Many2one(comodel_name='school.medium', string='Medium')
-    division_id = fields.Many2one(comodel_name='school.division', string='Division')
+    medium = fields.Selection( string='Medium', related="class_id.medium", readonly=True)
+    division = fields.Selection( string='Division', related="class_id.division", readonly=True)
     # related='res.users.id', related_sudo=True,
     # compute_sudo=True, store=True, readonly=True)
+
+
 
     @api.model
     def create(self, vals):
@@ -98,6 +101,13 @@ class SchoolStudent(models.Model):
                 self.user_id.groups_id += group
             else:
                 rec.state = 'cancel'
+
+    @api.onchange("class_id")
+    def check(self):
+        print(self.class_id.sequence)
+        if self.state == "approved":
+            if self.class_id.remaining_seats <= 0:
+                raise ValidationError("No More Available Seats")
 
     def action_alumni(self):
         for rec in self:
