@@ -2,6 +2,7 @@
 import datetime
 
 from odoo import api, fields, models, _
+from odoo.exceptions import AccessDenied, ValidationError, UserError
 
 
 class SchoolStudent(models.Model):
@@ -61,6 +62,8 @@ class SchoolStudent(models.Model):
     # related='res.users.id', related_sudo=True,
     # compute_sudo=True, store=True, readonly=True)
 
+
+
     @api.model
     def create(self, vals):
         if vals.get('student_ref', _('New')) == _('New'):
@@ -98,6 +101,13 @@ class SchoolStudent(models.Model):
                 self.user_id.groups_id += group
             else:
                 rec.state = 'cancel'
+
+    @api.onchange("class_id")
+    def check(self):
+        print(self.class_id.sequence)
+        if self.state == "approved":
+            if self.class_id.remaining_seats <= 0:
+                raise ValidationError("No More Available Seats")
 
     def action_alumni(self):
         for rec in self:

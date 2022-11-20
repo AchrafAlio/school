@@ -6,10 +6,12 @@
         <field name="model">school.class</field>
         <field name="arch" type="xml">
             <tree>
+
                 <field name="sequence" readonly="1"/>
                 <field name="capacity"/>
                 <field name="total_students"/>
                 <field name="remaining_seats"/>
+                <field name="classroom_id"/>
                 <field name="color"/>
             </tree>
         </field>
@@ -63,17 +65,18 @@
                         </page>
                         <page string="Subjects" name="subjects">
                             <field name="subject_ids" readonly="0">
-                                <tree create="1" delete="1" edit="1">
+                                <tree editable="bottom" create="1" delete="1" edit="1">
                                     <field name="name"/>
                                     <field name="code" optional="show"/>
+                                    <field name="teacher_ids" widget="many2many_tags"/>
                                 </tree>
-                                <form>
-                                    <group>
-                                        <field name="name"/>
-                                        <field name="code"/>
-
-                                    </group>
-                                </form>
+<!--                                <form>-->
+<!--                                    <group>-->
+<!--                                        <field name="name"/>-->
+<!--                                        <field name="code"/>-->
+<!--                                        <field name="teachers"/>-->
+<!--                                    </group>-->
+<!--                                </form>-->
                             </field>
                         </page>
                     </notebook>
@@ -109,6 +112,7 @@
                                     </li>
                                     <li>
                                         Name :
+
                                         <field name="sequence"/>
                                     </li>
                                     <li>
@@ -142,6 +146,7 @@
         <field name="model">school.class</field>
         <field name="arch" type="xml">
             <search>
+
                 <field name="sequence"/>
                 <field name="capacity"/>
                 <separator/>
