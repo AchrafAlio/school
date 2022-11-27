@@ -13,9 +13,9 @@
 
                     <button id="button_cancel" name="action_cancel" states="new"
                             confirm="Are you sure that you need to cancel ?"
-                            class="ml-1 btn-outline-danger rounded-pill"
+                            class="ml-1 btn-danger rounded-pill"
                             groups="school_management.group_school_administrator"
-                            string="Cancel" type="object"/>
+                            string="Cancel Student" type="object"/>
 
                     <button id="button_alumni" name="action_alumni" states="approved" icon="fa-archive"
                             groups="school_management.group_school_administrator"
@@ -54,6 +54,11 @@
                             <field name="academic_year" placeholder="Academic Year" nolabel="1"/>
                         </group>
                         <group string="Class Information">
+<!--                            <button id="button_open_wizard" name="open_wizard" string="Open wizard using custom method"-->
+<!--                            class="btn-primary" type="object"/>-->
+<!--                            <button id="button_open_wizard_action" name="school_management.action_create_class"-->
+<!--                             string="Open wizard using action" class="btn-primary" type="action"/>-->
+
                             <field name="class_id" placeholder="Class" nolabel="1"
                                    attrs="{'readonly':[('state','=','new')]}"/><br/>
                             <field name="standard_id" placeholder="Standard" nolabel="1"

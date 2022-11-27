@@ -57,20 +57,19 @@ class SchoolStudent(models.Model):
     # student_id = fields.Many2one(comodel_name='school.student', string='Student')
     standard_id = fields.Char(string='Standard', related="class_id.standard_id.name", readonly=True)
     user_id = fields.Many2one(comodel_name='res.users', string='Student user')
-    medium = fields.Selection( string='Medium', related="class_id.medium", readonly=True)
-    division = fields.Selection( string='Division', related="class_id.division", readonly=True)
+    medium = fields.Selection(string='Medium', related="class_id.medium", readonly=True)
+    division = fields.Selection(string='Division', related="class_id.division", readonly=True)
+
     # related='res.users.id', related_sudo=True,
     # compute_sudo=True, store=True, readonly=True)
-
-
 
     @api.model
     def create(self, vals):
         if vals.get('student_ref', _('New')) == _('New'):
-            seq_date = str(datetime.date.today().year)+"/"+str(datetime.date.today().month)+"/"
-            vals['student_ref'] = seq_date+self.env['ir.sequence'].next_by_code('school.student') or _('New')
+            seq_date = str(datetime.date.today().year) + "/" + str(datetime.date.today().month) + "/"
+            vals['student_ref'] = seq_date + self.env['ir.sequence'].next_by_code('school.student') or _('New')
         res = super(SchoolStudent, self).create(vals)
-        print("vals ============> ", vals['student_ref'] )
+        print("vals ============> ", vals['student_ref'])
         print("res =============> ", res)
         return res
 
@@ -86,12 +85,27 @@ class SchoolStudent(models.Model):
         user_id = self.env["res.users"].create(vals)
         return user_id
 
+    # def open_wizard(self):
+    #     print("open_wizard call")
+    #     return self.env['ir.actions.act_window']._for_xml_id("school_management.action_create_class")
+        # return {
+        #     'type': 'ir.actions.act_window',
+        #     'res_model': 'school.class.wizard',
+        #     'view_id': self.env.ref('school_management.view_create_class_form').id,
+        #     'context': {'default_order_id': self.id},
+        #     'view_mode': 'form',
+        #     'target': 'new'
+        # }
+
     def action_approved(self):
         for rec in self:
-            # check age
+            # check the age of the student
             admission_age = self.env['ir.config_parameter'].sudo().get_param('school_management.student_admission_age')
             print("adm age ", admission_age, ' age : ', rec.age, " res : ", int(admission_age) == int(rec.age))
             if int(admission_age) == int(rec.age):
+                # call wizard to create class of the student
+                print("open_wizard call")
+                return self.env['ir.actions.act_window']._for_xml_id("school_management.action_create_class")
                 rec.state = 'approved'
                 rec.admission_date = datetime.date.today()
                 # create new student user
@@ -100,7 +114,8 @@ class SchoolStudent(models.Model):
                 group = self.env.ref('school_management.group_school_student')
                 self.user_id.groups_id += group
             else:
-                rec.state = 'cancel'
+                raise ValidationError("The age must be equal to "+ admission_age+ " year(s).")
+                # rec.state = 'cancel'
 
     @api.onchange("class_id")
     def check(self):
@@ -143,4 +158,3 @@ class SchoolStudent(models.Model):
     def on_change_birth_date(self):
         for rec in self:
             rec.get_age()
-

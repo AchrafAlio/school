@@ -13,6 +13,7 @@
         'security/ir.model.access.csv',
         'data/data.xml',
         'views/res_config_settings_views.xml',
+        'wizard/create_class_view.xml',
         'views/class_view.xml',
         'views/standard_view.xml',
         'views/classroom_view.xml',

@@ -1,0 +1,1248 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* school_management
+#
+msgid ""
+msgstr "إدارة المدرسة"
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-11-25 23:23+0000\n"
+"PO-Revision-Date: 2022-11-25 23:23+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.res_config_settings_view_form
+msgid "<span class=\"o_form_label\">Student Admission Age</span>"
+msgstr "سن قبول الطالب"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_student_card
+#: model_terms:ir.ui.view,arch_db:school_management.report_student_detail
+msgid ""
+"<span>\n"
+"                                                            <strong>Birth Date</strong>\n"
+"                                                        </span>"
+msgstr "تاريخ الولادة"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_student_card
+#: model_terms:ir.ui.view,arch_db:school_management.report_student_detail
+msgid ""
+"<span>\n"
+"                                                            <strong>Blood Group</strong>\n"
+"                                                        </span>"
+msgstr "فصيلة الدم"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_student_card
+#: model_terms:ir.ui.view,arch_db:school_management.report_student_detail
+msgid ""
+"<span>\n"
+"                                                            <strong>Division</strong>\n"
+"                                                        </span>"
+msgstr "شعبة"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_student_card
+#: model_terms:ir.ui.view,arch_db:school_management.report_student_detail
+msgid ""
+"<span>\n"
+"                                                            <strong>Medium</strong>\n"
+"                                                        </span>"
+msgstr "لغة الدراسة"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_student_card
+#: model_terms:ir.ui.view,arch_db:school_management.report_student_detail
+msgid ""
+"<span>\n"
+"                                                            <strong>Roll No.</strong>\n"
+"                                                        </span>"
+msgstr "رقم القائمة"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_student_card
+#: model_terms:ir.ui.view,arch_db:school_management.report_student_detail
+msgid ""
+"<span>\n"
+"                                                            <strong>Standard</strong>\n"
+"                                                        </span>"
+msgstr "المستوى الدراسي"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.report_student_card
+#: model_terms:ir.ui.view,arch_db:school_management.report_student_detail
+msgid "<span>:</span>"
+msgstr ""
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.res_config_settings_view_form
+msgid "<span>years</span>"
+msgstr "سنوات"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__academic_year
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Academic Year"
+msgstr "السنة الدراسية"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__message_needaction
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__message_needaction
+#: model:ir.model.fields,field_description:school_management.field_school_student__message_needaction
+#: model:ir.model.fields,field_description:school_management.field_school_subject__message_needaction
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__message_needaction
+msgid "Action Needed"
+msgstr "الإجراءات اللازمة"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__activity_ids
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__activity_ids
+#: model:ir.model.fields,field_description:school_management.field_school_student__activity_ids
+#: model:ir.model.fields,field_description:school_management.field_school_subject__activity_ids
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__activity_ids
+msgid "Activities"
+msgstr "أنشطة"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__activity_exception_decoration
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__activity_exception_decoration
+#: model:ir.model.fields,field_description:school_management.field_school_student__activity_exception_decoration
+#: model:ir.model.fields,field_description:school_management.field_school_subject__activity_exception_decoration
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__activity_exception_decoration
+msgid "Activity Exception Decoration"
+msgstr "زخرفة النشاط الاستثنائي"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__activity_state
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__activity_state
+#: model:ir.model.fields,field_description:school_management.field_school_student__activity_state
+#: model:ir.model.fields,field_description:school_management.field_school_subject__activity_state
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__activity_state
+msgid "Activity State"
+msgstr "حالة النشاط"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__activity_type_icon
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__activity_type_icon
+#: model:ir.model.fields,field_description:school_management.field_school_student__activity_type_icon
+#: model:ir.model.fields,field_description:school_management.field_school_subject__activity_type_icon
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__activity_type_icon
+msgid "Activity Type Icon"
+msgstr "رمز نوع النشاط"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Address"
+msgstr "العنوان"
+
+#. module: school_management
+#: model:res.groups,name:school_management.group_school_administrator
+msgid "Administrator"
+msgstr ""
+
+#. module: school_management
+#: model:ir.ui.menu,name:school_management.school_school_admission_root_menu
+msgid "Admission"
+msgstr "تسجيل"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__admission_date
+msgid "Admission Date"
+msgstr "تاريخ التسجيل"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_kanban
+msgid "Admission Date :"
+msgstr "تاريخ التسجيل"
+
+#. module: school_management
+#: model:ir.actions.act_window,name:school_management.action_student_admission_request
+#: model:ir.ui.menu,name:school_management.school_school_admission_register_menu
+msgid "Admission Register"
+msgstr "سجل التسجيل"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__age
+msgid "Age"
+msgstr "العمر"
+
+#. module: school_management
+#: model:ir.model.fields.selection,name:school_management.selection__school_student__state__alumni
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Alumni"
+msgstr "الخريجين"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Approve"
+msgstr "وافق"
+
+#. module: school_management
+#: model:ir.model.fields.selection,name:school_management.selection__school_student__state__approved
+msgid "Approved"
+msgstr "موافق عليه"
+
+#. module: school_management
+#: model:ir.model.fields.selection,name:school_management.selection__school_class__medium__arabic
+msgid "Arabic"
+msgstr "عربي"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+msgid "Are you sure that you need to cancel ?"
+msgstr "هل أنت متأكد أنك بحاجة إلى الإلغاء ؟"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__message_attachment_count
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__message_attachment_count
+#: model:ir.model.fields,field_description:school_management.field_school_student__message_attachment_count
+#: model:ir.model.fields,field_description:school_management.field_school_subject__message_attachment_count
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__message_attachment_count
+msgid "Attachment Count"
+msgstr "عدد المرفقات"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__birth_date
+msgid "Birth Date"
+msgstr "تاريخ الولادة"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Birthdate"
+msgstr "تاريخ الولادة"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_create_class_form
+msgid "Cancel"
+msgstr "الغاء"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+msgid "Cancel Student"
+msgstr "الغاء الطالب"
+
+#. module: school_management
+#: model:ir.model.fields.selection,name:school_management.selection__school_student__state__cancel
+msgid "Cancelled"
+msgstr "ملغي"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__capacity
+msgid "Capacity"
+msgstr "طاقة الاستيعاب"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_class_kanban
+msgid "Capacity :"
+msgstr "طاقة الاستيعاب"
+
+#. module: school_management
+#: model:ir.module.category,description:school_management.module_category_school
+msgid "Category for school"
+msgstr "فئة للمدرسة"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__city
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "City"
+msgstr "مدينة"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__class_id
+#: model:ir.model.fields,field_description:school_management.field_school_subject__class_id
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_create_class_form
+msgid "Class"
+msgstr "فصل"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class_wizard__class_id
+msgid "Class Id"
+msgstr "معرف الفصل"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_class_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Class Information"
+msgstr "بيانات الفصل"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_class_kanban
+msgid "Class Ref :"
+msgstr "معرف الفصل"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__sequence
+msgid "Class Sequence"
+msgstr "تسلسل الفصل"
+
+#. module: school_management
+#: model:ir.model,name:school_management.model_school_class_wizard
+msgid "Class Wizard"
+msgstr "معالج الفصل"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__student_ids
+msgid "Class students"
+msgstr "طلاب الفصل"
+
+#. module: school_management
+#: model:ir.actions.act_window,name:school_management.action_school_class
+#: model:ir.ui.menu,name:school_management.school_config_standards_classes_menu
+msgid "Classes"
+msgstr "الفصول"
+
+#. module: school_management
+#: model:ir.ui.menu,name:school_management.school_config_standards_classrooms_menu
+msgid "Classrooms"
+msgstr "الفصول الدراسية"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_standard__code
+#: model:ir.model.fields,field_description:school_management.field_school_subject__code
+msgid "Code"
+msgstr "الرمز"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__color
+#: model_terms:ir.ui.view,arch_db:school_management.view_class_search
+msgid "Color"
+msgstr "اللون"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_class_kanban
+msgid "Color :"
+msgstr " اللون:"
+
+#. module: school_management
+#: model:ir.model,name:school_management.model_res_config_settings
+msgid "Config Settings"
+msgstr "تهيئة الإعدادات "
+
+#. module: school_management
+#: model:ir.ui.menu,name:school_management.config_root_menu
+msgid "Configuration"
+msgstr "الاعدادات"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_create_class_form
+msgid "Confirm Class"
+msgstr "الموافقة على الفصل"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__country
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Country"
+msgstr "الدولة"
+
+#. module: school_management
+#: model:ir.actions.act_window,name:school_management.action_create_class
+msgid "Create Class"
+msgstr "انشاء فصل جديد"
+
+#. module: school_management
+#: model_terms:ir.actions.act_window,help:school_management.action_school_class
+msgid "Create your first class"
+msgstr "أنشئ صفك الأول"
+
+#. module: school_management
+#: model_terms:ir.actions.act_window,help:school_management.action_school_classroom
+msgid "Create your first classroom"
+msgstr "أنشئ فصلك الدراسي الأول"
+
+#. module: school_management
+#: model_terms:ir.actions.act_window,help:school_management.action_school_standard
+msgid "Create your first standard"
+msgstr "أنشئ المستوى الدراسي الأول"
+
+#. module: school_management
+#: model_terms:ir.actions.act_window,help:school_management.action_student_profile
+msgid "Create your first student"
+msgstr "أنشئ الطالب الاول"
+
+#. module: school_management
+#: model_terms:ir.actions.act_window,help:school_management.action_student_admission_request
+msgid "Create your first student admission request"
+msgstr "أنشئ طلب تسجيل الطالب الاول"
+
+#. module: school_management
+#: model_terms:ir.actions.act_window,help:school_management.action_school_subject
+msgid "Create your first subject"
+msgstr "أنشئ الموضوع الاول"
+
+#. module: school_management
+#: model_terms:ir.actions.act_window,help:school_management.action_teacher_profile
+msgid "Create your first teacher"
+msgstr "أنشئ المعلم الاول"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__create_uid
+#: model:ir.model.fields,field_description:school_management.field_school_class_wizard__create_uid
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__create_uid
+#: model:ir.model.fields,field_description:school_management.field_school_standard__create_uid
+#: model:ir.model.fields,field_description:school_management.field_school_student__create_uid
+#: model:ir.model.fields,field_description:school_management.field_school_subject__create_uid
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__create_uid
+msgid "Created by"
+msgstr "انشأ من قبل"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__create_date
+#: model:ir.model.fields,field_description:school_management.field_school_class_wizard__create_date
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__create_date
+#: model:ir.model.fields,field_description:school_management.field_school_standard__create_date
+#: model:ir.model.fields,field_description:school_management.field_school_student__create_date
+#: model:ir.model.fields,field_description:school_management.field_school_subject__create_date
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__create_date
+msgid "Created on"
+msgstr "انشأ في"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_standard__description
+msgid "Description"
+msgstr "وصف"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__display_name
+#: model:ir.model.fields,field_description:school_management.field_school_class_wizard__display_name
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__display_name
+#: model:ir.model.fields,field_description:school_management.field_school_standard__display_name
+#: model:ir.model.fields,field_description:school_management.field_school_student__display_name
+#: model:ir.model.fields,field_description:school_management.field_school_subject__display_name
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__display_name
+msgid "Display Name"
+msgstr "اسم العرض"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__division
+#: model:ir.model.fields,field_description:school_management.field_school_student__division
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Division"
+msgstr "القسم"
+
+#. module: school_management
+#: model:ir.model.fields.selection,name:school_management.selection__school_student__marital_status__divorced
+msgid "Divorced"
+msgstr "مطلق"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__email
+msgid "Email"
+msgstr "البريد الالكتروني"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Email Address"
+msgstr "عنوان البريد الالكتروني"
+
+#. module: school_management
+#: model:ir.model.fields.selection,name:school_management.selection__school_class__medium__english
+msgid "English"
+msgstr "أنجليزي"
+
+#. module: school_management
+#: model:ir.model.fields.selection,name:school_management.selection__school_student__gender__female
+msgid "Female"
+msgstr "مؤنث"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__first_name
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "First Name"
+msgstr "الاسم الاول"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__message_follower_ids
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__message_follower_ids
+#: model:ir.model.fields,field_description:school_management.field_school_student__message_follower_ids
+#: model:ir.model.fields,field_description:school_management.field_school_subject__message_follower_ids
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__message_follower_ids
+msgid "Followers"
+msgstr "المتابعون"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__message_partner_ids
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__message_partner_ids
+#: model:ir.model.fields,field_description:school_management.field_school_student__message_partner_ids
+#: model:ir.model.fields,field_description:school_management.field_school_subject__message_partner_ids
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__message_partner_ids
+msgid "Followers (Partners)"
+msgstr "المتابعون (الشركاء)"
+
+#. module: school_management
+#: model:ir.model.fields,help:school_management.field_school_class__activity_type_icon
+#: model:ir.model.fields,help:school_management.field_school_classroom__activity_type_icon
+#: model:ir.model.fields,help:school_management.field_school_student__activity_type_icon
+#: model:ir.model.fields,help:school_management.field_school_subject__activity_type_icon
+#: model:ir.model.fields,help:school_management.field_school_teacher__activity_type_icon
+msgid "Font awesome icon e.g. fa-tasks"
+msgstr ""
+
+#. module: school_management
+#: model:ir.model.fields.selection,name:school_management.selection__school_class__medium__french
+msgid "French"
+msgstr "فرنسي"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__gender
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Gender"
+msgstr "الجنس"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_kanban
+msgid "Gender :"
+msgstr "الجنس"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "General Information"
+msgstr "المعلومات العامة"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_search
+msgid "Group By"
+msgstr "مجموعة من"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_class_search
+msgid "Group by"
+msgstr "مجموعة من"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__has_message
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__has_message
+#: model:ir.model.fields,field_description:school_management.field_school_student__has_message
+#: model:ir.model.fields,field_description:school_management.field_school_subject__has_message
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__has_message
+msgid "Has Message"
+msgstr "رسالة"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__id
+#: model:ir.model.fields,field_description:school_management.field_school_class_wizard__id
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__id
+#: model:ir.model.fields,field_description:school_management.field_school_standard__id
+#: model:ir.model.fields,field_description:school_management.field_school_student__id
+#: model:ir.model.fields,field_description:school_management.field_school_subject__id
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__id
+msgid "ID"
+msgstr "المعرف"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__activity_exception_icon
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__activity_exception_icon
+#: model:ir.model.fields,field_description:school_management.field_school_student__activity_exception_icon
+#: model:ir.model.fields,field_description:school_management.field_school_subject__activity_exception_icon
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__activity_exception_icon
+msgid "Icon"
+msgstr "أيقونة"
+
+#. module: school_management
+#: model:ir.model.fields,help:school_management.field_school_class__activity_exception_icon
+#: model:ir.model.fields,help:school_management.field_school_classroom__activity_exception_icon
+#: model:ir.model.fields,help:school_management.field_school_student__activity_exception_icon
+#: model:ir.model.fields,help:school_management.field_school_subject__activity_exception_icon
+#: model:ir.model.fields,help:school_management.field_school_teacher__activity_exception_icon
+msgid "Icon to indicate an exception activity."
+msgstr "رمز للإشارة إلى نشاط استثناء"
+
+#. module: school_management
+#: model:ir.model.fields,help:school_management.field_school_class__message_needaction
+#: model:ir.model.fields,help:school_management.field_school_class__message_unread
+#: model:ir.model.fields,help:school_management.field_school_classroom__message_needaction
+#: model:ir.model.fields,help:school_management.field_school_classroom__message_unread
+#: model:ir.model.fields,help:school_management.field_school_student__message_needaction
+#: model:ir.model.fields,help:school_management.field_school_student__message_unread
+#: model:ir.model.fields,help:school_management.field_school_subject__message_needaction
+#: model:ir.model.fields,help:school_management.field_school_subject__message_unread
+#: model:ir.model.fields,help:school_management.field_school_teacher__message_needaction
+#: model:ir.model.fields,help:school_management.field_school_teacher__message_unread
+msgid "If checked, new messages require your attention."
+msgstr "إذا تم تحديدها ، فإن الرسائل الجديدة تتطلب انتباهك"
+
+#. module: school_management
+#: model:ir.model.fields,help:school_management.field_school_class__message_has_error
+#: model:ir.model.fields,help:school_management.field_school_classroom__message_has_error
+#: model:ir.model.fields,help:school_management.field_school_student__message_has_error
+#: model:ir.model.fields,help:school_management.field_school_subject__message_has_error
+#: model:ir.model.fields,help:school_management.field_school_teacher__message_has_error
+msgid "If checked, some messages have a delivery error."
+msgstr "إذا تم تحديده ، فإن بعض الرسائل بها خطأ في التسليم"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__message_is_follower
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__message_is_follower
+#: model:ir.model.fields,field_description:school_management.field_school_student__message_is_follower
+#: model:ir.model.fields,field_description:school_management.field_school_subject__message_is_follower
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__message_is_follower
+msgid "Is Follower"
+msgstr "تابع"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class____last_update
+#: model:ir.model.fields,field_description:school_management.field_school_class_wizard____last_update
+#: model:ir.model.fields,field_description:school_management.field_school_classroom____last_update
+#: model:ir.model.fields,field_description:school_management.field_school_standard____last_update
+#: model:ir.model.fields,field_description:school_management.field_school_student____last_update
+#: model:ir.model.fields,field_description:school_management.field_school_subject____last_update
+#: model:ir.model.fields,field_description:school_management.field_school_teacher____last_update
+msgid "Last Modified on"
+msgstr "تاريخ آخر تعديل"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__last_name
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Last Name"
+msgstr "اسم العائلة"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__write_uid
+#: model:ir.model.fields,field_description:school_management.field_school_class_wizard__write_uid
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__write_uid
+#: model:ir.model.fields,field_description:school_management.field_school_standard__write_uid
+#: model:ir.model.fields,field_description:school_management.field_school_student__write_uid
+#: model:ir.model.fields,field_description:school_management.field_school_subject__write_uid
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__write_uid
+msgid "Last Updated by"
+msgstr "آخر تحديث بواسطة"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__write_date
+#: model:ir.model.fields,field_description:school_management.field_school_class_wizard__write_date
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__write_date
+#: model:ir.model.fields,field_description:school_management.field_school_standard__write_date
+#: model:ir.model.fields,field_description:school_management.field_school_student__write_date
+#: model:ir.model.fields,field_description:school_management.field_school_subject__write_date
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__write_date
+msgid "Last Updated on"
+msgstr "آخر تحديث في"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__message_main_attachment_id
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__message_main_attachment_id
+#: model:ir.model.fields,field_description:school_management.field_school_student__message_main_attachment_id
+#: model:ir.model.fields,field_description:school_management.field_school_subject__message_main_attachment_id
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__message_main_attachment_id
+msgid "Main Attachment"
+msgstr "المرفق الرئيسي"
+
+#. module: school_management
+#: model:ir.model.fields.selection,name:school_management.selection__school_student__gender__male
+msgid "Male"
+msgstr "مذكر"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__marital_status
+msgid "Marital Status"
+msgstr "الحالة الإجتماعية"
+
+#. module: school_management
+#: model:ir.model.fields.selection,name:school_management.selection__school_student__marital_status__married
+msgid "Married"
+msgstr "متزوج"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__medium
+#: model:ir.model.fields,field_description:school_management.field_school_student__medium
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Medium"
+msgstr "لغة الدراسة"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__message_has_error
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__message_has_error
+#: model:ir.model.fields,field_description:school_management.field_school_student__message_has_error
+#: model:ir.model.fields,field_description:school_management.field_school_subject__message_has_error
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__message_has_error
+msgid "Message Delivery error"
+msgstr "خطأ في تسليم الرسالة"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__message_ids
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__message_ids
+#: model:ir.model.fields,field_description:school_management.field_school_student__message_ids
+#: model:ir.model.fields,field_description:school_management.field_school_subject__message_ids
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__message_ids
+msgid "Messages"
+msgstr "الرسائل"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__mobile_number
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Mobile Number"
+msgstr "رقم الهاتف المحمول"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__my_activity_date_deadline
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__my_activity_date_deadline
+#: model:ir.model.fields,field_description:school_management.field_school_student__my_activity_date_deadline
+#: model:ir.model.fields,field_description:school_management.field_school_subject__my_activity_date_deadline
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__my_activity_date_deadline
+msgid "My Activity Deadline"
+msgstr "الموعد النهائي لنشاطي"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__standard_name
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__name
+#: model:ir.model.fields,field_description:school_management.field_school_standard__name
+#: model:ir.model.fields,field_description:school_management.field_school_student__name
+#: model:ir.model.fields,field_description:school_management.field_school_subject__name
+msgid "Name"
+msgstr "الاسم"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_class_kanban
+msgid "Name :"
+msgstr "الاسم :"
+
+#. module: school_management
+#: code:addons/school_management/models/school.py:0
+#: code:addons/school_management/models/school.py:0
+#: code:addons/school_management/models/school.py:0
+#: code:addons/school_management/models/student.py:0
+#: code:addons/school_management/models/student.py:0
+#: code:addons/school_management/models/student.py:0
+#: code:addons/school_management/models/student.py:0
+#: model:ir.model.fields.selection,name:school_management.selection__school_student__state__new
+#, python-format
+msgid "New"
+msgstr "جديد"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__activity_date_deadline
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__activity_date_deadline
+#: model:ir.model.fields,field_description:school_management.field_school_student__activity_date_deadline
+#: model:ir.model.fields,field_description:school_management.field_school_subject__activity_date_deadline
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__activity_date_deadline
+msgid "Next Activity Deadline"
+msgstr "الموعد النهائي للنشاط التالي"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__activity_summary
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__activity_summary
+#: model:ir.model.fields,field_description:school_management.field_school_student__activity_summary
+#: model:ir.model.fields,field_description:school_management.field_school_subject__activity_summary
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__activity_summary
+msgid "Next Activity Summary"
+msgstr "ملخص النشاط التالي"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__activity_type_id
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__activity_type_id
+#: model:ir.model.fields,field_description:school_management.field_school_student__activity_type_id
+#: model:ir.model.fields,field_description:school_management.field_school_subject__activity_type_id
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__activity_type_id
+msgid "Next Activity Type"
+msgstr "نوع النشاط التالي"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__message_needaction_counter
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__message_needaction_counter
+#: model:ir.model.fields,field_description:school_management.field_school_student__message_needaction_counter
+#: model:ir.model.fields,field_description:school_management.field_school_subject__message_needaction_counter
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__message_needaction_counter
+msgid "Number of Actions"
+msgstr "عدد الإجراءات"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__message_has_error_counter
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__message_has_error_counter
+#: model:ir.model.fields,field_description:school_management.field_school_student__message_has_error_counter
+#: model:ir.model.fields,field_description:school_management.field_school_subject__message_has_error_counter
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__message_has_error_counter
+msgid "Number of errors"
+msgstr "عدد الاخطاء"
+
+#. module: school_management
+#: model:ir.model.fields,help:school_management.field_school_class__message_needaction_counter
+#: model:ir.model.fields,help:school_management.field_school_classroom__message_needaction_counter
+#: model:ir.model.fields,help:school_management.field_school_student__message_needaction_counter
+#: model:ir.model.fields,help:school_management.field_school_subject__message_needaction_counter
+#: model:ir.model.fields,help:school_management.field_school_teacher__message_needaction_counter
+msgid "Number of messages which requires an action"
+msgstr "عدد الرسائل التي تتطلب اتخاذ إجراء"
+
+#. module: school_management
+#: model:ir.model.fields,help:school_management.field_school_class__message_has_error_counter
+#: model:ir.model.fields,help:school_management.field_school_classroom__message_has_error_counter
+#: model:ir.model.fields,help:school_management.field_school_student__message_has_error_counter
+#: model:ir.model.fields,help:school_management.field_school_subject__message_has_error_counter
+#: model:ir.model.fields,help:school_management.field_school_teacher__message_has_error_counter
+msgid "Number of messages with delivery error"
+msgstr "عدد الرسائل التي بها خطأ في التسليم"
+
+#. module: school_management
+#: model:ir.model.fields,help:school_management.field_school_class__message_unread_counter
+#: model:ir.model.fields,help:school_management.field_school_classroom__message_unread_counter
+#: model:ir.model.fields,help:school_management.field_school_student__message_unread_counter
+#: model:ir.model.fields,help:school_management.field_school_subject__message_unread_counter
+#: model:ir.model.fields,help:school_management.field_school_teacher__message_unread_counter
+msgid "Number of unread messages"
+msgstr "عدد الرسائل غير المقروءة"
+
+#. module: school_management
+#: model:ir.model.fields.selection,name:school_management.selection__school_student__gender__others
+#: model:ir.model.fields.selection,name:school_management.selection__school_student__marital_status__others
+msgid "Others"
+msgstr "آخرون"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Personal Information"
+msgstr "معلومات شخصية"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__phone_number
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Phone Number"
+msgstr "رقم الهاتف"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__picture
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__picture
+msgid "Picture"
+msgstr "صورة"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_teacher_kanban
+msgid "Picture :"
+msgstr "صورة :"
+
+#. module: school_management
+#: model:ir.ui.menu,name:school_management.school_school_profiles_root_menu
+msgid "Profiles"
+msgstr "الملفات الشخصية"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_class_search
+msgid "Red"
+msgstr "أحمر"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__remaining_seats
+msgid "Remaining Seats"
+msgstr "المقاعد المتبقية"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_class_kanban
+msgid "Remaining Seats :"
+msgstr "المقاعد المتبقية :"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__remarks
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Remarks"
+msgstr "ملاحضات"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__activity_user_id
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__activity_user_id
+#: model:ir.model.fields,field_description:school_management.field_school_student__activity_user_id
+#: model:ir.model.fields,field_description:school_management.field_school_subject__activity_user_id
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__activity_user_id
+msgid "Responsible User"
+msgstr "مستخدم مسؤول"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__roll_number
+msgid "Roll number"
+msgstr "رقم القائمة"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__classroom_id
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__room_number
+msgid "Room Number"
+msgstr "رقم القائمة"
+
+#. module: school_management
+#: model:ir.ui.menu,name:school_management.school_config_school_menu
+#: model:ir.ui.menu,name:school_management.school_root_menu
+#: model_terms:ir.ui.view,arch_db:school_management.res_config_settings_view_form
+msgid "School"
+msgstr "المدرسة"
+
+#. module: school_management
+#: model:ir.model,name:school_management.model_school_class
+msgid "School Class"
+msgstr "صف مدرسي"
+
+#. module: school_management
+#: model:ir.model,name:school_management.model_school_classroom
+msgid "School Classroom"
+msgstr "قاعة دراسية"
+
+#. module: school_management
+#: model:ir.ui.menu,name:school_management.school_config_config_root_menu
+msgid "School Configuration"
+msgstr "اعدادات المدرسة"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "School Information"
+msgstr "معلومات المدرسة"
+
+#. module: school_management
+#: model:ir.module.category,name:school_management.module_category_school
+#: model:ir.ui.menu,name:school_management.school_management_root_menu
+#: model_terms:ir.ui.view,arch_db:school_management.res_config_settings_view_form
+msgid "School Management"
+msgstr "إدارة المدرسة"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__school_name
+msgid "School Name"
+msgstr "اسم المدرسة"
+
+#. module: school_management
+#: model:ir.model,name:school_management.model_school_standard
+msgid "School Standard"
+msgstr "المستوى الدراسي"
+
+#. module: school_management
+#: model:ir.model,name:school_management.model_school_student
+msgid "School Student"
+msgstr "الطالب"
+
+#. module: school_management
+#: model:ir.model,name:school_management.model_school_subject
+msgid "School Subject"
+msgstr "المادة"
+
+#. module: school_management
+#: model:ir.model,name:school_management.model_school_teacher
+msgid "School Teacher"
+msgstr "المعلم"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_standard__sequence
+msgid "Sequence"
+msgstr "تسلسل"
+
+#. module: school_management
+#: model:ir.actions.act_window,name:school_management.school_config_settings_action
+msgid "Settings"
+msgstr "إعدادات"
+
+#. module: school_management
+#: model:ir.model.fields.selection,name:school_management.selection__school_student__marital_status__single
+msgid "Single"
+msgstr "أعزب"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__standard_id
+#: model:ir.model.fields,field_description:school_management.field_school_student__standard_id
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_class_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Standard"
+msgstr "المستوى الدراسي"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_kanban
+msgid "Standard :"
+msgstr "المستوى الدراسي :"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_subject__standard_ids
+#: model:ir.ui.menu,name:school_management.school_config_standards_root_menu
+#: model:ir.ui.menu,name:school_management.school_config_standards_standards_menu
+#: model_terms:ir.ui.view,arch_db:school_management.view_subject_form
+msgid "Standards"
+msgstr "المستويات الدراسية"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "الحالة"
+msgstr ""
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__state_address
+msgid "State Address"
+msgstr "عنوان الولاية"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__state
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_search
+msgid "Status"
+msgstr "حالة"
+
+#. module: school_management
+#: model:ir.model.fields,help:school_management.field_school_class__activity_state
+#: model:ir.model.fields,help:school_management.field_school_classroom__activity_state
+#: model:ir.model.fields,help:school_management.field_school_student__activity_state
+#: model:ir.model.fields,help:school_management.field_school_subject__activity_state
+#: model:ir.model.fields,help:school_management.field_school_teacher__activity_state
+msgid ""
+"Status based on activities\n"
+"Overdue: Due date is already passed\n"
+"Today: Activity date is today\n"
+"Planned: Future activities."
+msgstr ""
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Street..."
+msgstr "شارع..."
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__street1
+msgid "Street1"
+msgstr "شارع1"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__street2
+msgid "Street2"
+msgstr "شارع2"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Street2..."
+msgstr "شارع2..."
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_subject__student_id
+#: model:res.groups,name:school_management.group_school_student
+msgid "Student"
+msgstr "الطالب"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_res_config_settings__student_admission_age
+msgid "Student Admission Age"
+msgstr "سن قبول الطالب"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_tree
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_tree
+msgid "Student Admission Register"
+msgstr "سجل قبول الطالب"
+
+#. module: school_management
+#: model:ir.actions.report,name:school_management.report_student_cards
+msgid "Student Card"
+msgstr "بطاقة طالب"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__code
+msgid "Student Code"
+msgstr "رمز الطالب"
+
+#. module: school_management
+#: model:ir.actions.report,name:school_management.report_student_details
+msgid "Student Details"
+msgstr "بيانات الطالب"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__student_ref
+msgid "Student ID"
+msgstr "معرف الطالب"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_class_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Student Information"
+msgstr "معلومات الطالب"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_kanban
+msgid "Student Ref :"
+msgstr "مرجع الطالب"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__user_id
+msgid "Student user"
+msgstr "مستخدم الطالب"
+
+#. module: school_management
+#: model:ir.actions.act_window,name:school_management.action_student_profile
+#: model:ir.ui.menu,name:school_management.school_school_profiles_students_menu
+#: model_terms:ir.ui.view,arch_db:school_management.view_class_form
+msgid "Students"
+msgstr "الطلاب"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_standard__subject_id
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__subject_id
+msgid "Subject"
+msgstr "المادة"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_teacher_kanban
+msgid "Subject Id :"
+msgstr "معرف المادة :"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__subject_ids
+#: model:ir.ui.menu,name:school_management.school_config_subjects_root_menu
+#: model:ir.ui.menu,name:school_management.school_config_subjects_subjects_menu
+#: model_terms:ir.ui.view,arch_db:school_management.view_class_form
+msgid "Subjects"
+msgstr "المواد"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__teacher_id
+#: model:res.groups,name:school_management.group_school_teacher
+msgid "Teacher"
+msgstr "المعلم"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_teacher_kanban
+msgid "Teacher Email :"
+msgstr "البريد الالكتروني للمعلم"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__name
+msgid "Teacher Name"
+msgstr "اسم المعلم"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_teacher_kanban
+msgid "Teacher Name :"
+msgstr "اسم المعلم :"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__email
+msgid "Teacher email"
+msgstr "البريد الالكتروني للمعلم"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__hr_id
+msgid "Teacher hr"
+msgstr "المعلم (موارد بشرية)"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__user_id
+msgid "Teacher user"
+msgstr "المعلم (مستخدم)"
+
+#. module: school_management
+#: model:ir.actions.act_window,name:school_management.action_teacher_profile
+#: model:ir.model.fields,field_description:school_management.field_school_subject__teacher_ids
+#: model:ir.ui.menu,name:school_management.school_school_profiles_teachers_menu
+#: model_terms:ir.ui.view,arch_db:school_management.view_subject_form
+msgid "Teachers"
+msgstr "المعلمين"
+
+#. module: school_management
+#: model:ir.model.fields.selection,name:school_management.selection__school_student__state__terminate
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "Terminate"
+msgstr "إنهاء"
+
+#. module: school_management
+#: model:ir.model.constraint,message:school_management.constraint_school_class_unique_standard_division_class
+msgid "This class has already been created"
+msgstr ""
+
+#. module: school_management
+#: model:ir.model.constraint,message:school_management.constraint_school_class_unique_class_room
+msgid "This class room has already been occupied"
+msgstr "تم إستعمال هذا الفصل من قبل"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__total_students
+msgid "Total Students"
+msgstr "مجموع الطلاب"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_class_kanban
+msgid "Total Students :"
+msgstr "مجموع الطلاب :"
+
+#. module: school_management
+#: model:ir.model.fields,help:school_management.field_school_class__activity_exception_decoration
+#: model:ir.model.fields,help:school_management.field_school_classroom__activity_exception_decoration
+#: model:ir.model.fields,help:school_management.field_school_student__activity_exception_decoration
+#: model:ir.model.fields,help:school_management.field_school_subject__activity_exception_decoration
+#: model:ir.model.fields,help:school_management.field_school_teacher__activity_exception_decoration
+msgid "Type of the exception activity on record."
+msgstr "نوع نشاط الاستثناء المسجل"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__message_unread
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__message_unread
+#: model:ir.model.fields,field_description:school_management.field_school_student__message_unread
+#: model:ir.model.fields,field_description:school_management.field_school_subject__message_unread
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__message_unread
+msgid "Unread Messages"
+msgstr "رسائل غير مقروءة"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_class__message_unread_counter
+#: model:ir.model.fields,field_description:school_management.field_school_classroom__message_unread_counter
+#: model:ir.model.fields,field_description:school_management.field_school_student__message_unread_counter
+#: model:ir.model.fields,field_description:school_management.field_school_subject__message_unread_counter
+#: model:ir.model.fields,field_description:school_management.field_school_teacher__message_unread_counter
+msgid "Unread Messages Counter"
+msgstr "عداد الرسائل غير المقروءة"
+
+#. module: school_management
+#: model:ir.model.fields.selection,name:school_management.selection__school_class__medium__urdu
+msgid "Urdu"
+msgstr "اوردو"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_teacher_kanban
+msgid "User Id :"
+msgstr "معرف المستخدم :"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_form
+#: model_terms:ir.ui.view,arch_db:school_management.view_student_form
+msgid "ZIP"
+msgstr "الرمز البريدي"
+
+#. module: school_management
+#: model:ir.model.fields,field_description:school_management.field_school_student__zip_code
+msgid "Zip Code"
+msgstr "الرمز البريدي"
+
+#. module: school_management
+#: model:ir.actions.act_window,name:school_management.action_school_classroom
+msgid "classrooms"
+msgstr "القاعات الدراسية"
+
+#. module: school_management
+#: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_kanban
+msgid "image"
+msgstr "صورة"
+
+#. module: school_management
+#: model:ir.actions.act_window,name:school_management.action_school_standard
+msgid "standards"
+msgstr "المستويات الدراسية"
+
+#. module: school_management
+#: model:ir.actions.act_window,name:school_management.action_school_subject
+msgid "subjects"
+msgstr "المواد الدراسية"
