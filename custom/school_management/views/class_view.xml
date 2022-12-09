@@ -12,7 +12,7 @@
                 <field name="total_students"/>
                 <field name="remaining_seats"/>
                 <field name="classroom_id"/>
-                <field name="color"/>
+                <field name="color" widget="color"/>
             </tree>
         </field>
     </record>
@@ -37,7 +37,7 @@
                             <field name="remaining_seats"/>
                         </group>
                         <group>
-                            <field name="color"/>
+                            <field name="color" widget="color"/>
                             <field name="standard_id" widget="selection" placeholder="Standard"/>
                             <field name="division" />
                             <field name="medium" />
@@ -100,7 +100,7 @@
                 <field name="capacity"/>
                 <field name="total_students"/>
                 <field name="remaining_seats"/>
-                <field name="color"/>
+                <field name="color" widget="color"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div t-attf-class="on_kanban_global_click">
@@ -129,7 +129,7 @@
                                     </li>
                                     <li>
                                         Color :
-                                        <field name="color"/>
+                                        <field name="color" widget="color"/>
                                     </li>
                                 </ul>
                             </div>

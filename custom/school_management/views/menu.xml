@@ -120,5 +120,19 @@
             action="action_school_subject"
             sequence="0"/>
 
+    <!--    School Management => Reminder  -->
+    <menuitem id="reminder_root_menu"
+              name="Reminder"
+              parent="school_management_root_menu"
+              groups="group_school_administrator,group_school_teacher,group_school_student"
+              sequence="30"/>
+
+    <!--    School Management => Reminder => Reminder  -->
+    <menuitem id="school_reminder_root_menu"
+              name="Reminder"
+              parent="school_management.reminder_root_menu"
+              groups="group_school_administrator,group_school_teacher,group_school_student"
+              action="action_student_reminder"
+              sequence="0"/>
 
 </odoo>

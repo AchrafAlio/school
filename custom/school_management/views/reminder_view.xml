@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_reminder_tree" model="ir.ui.view">
+        <field name="name">school.reminder.tree</field>
+        <field name="model">school.reminder</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="user_id"/>
+                <field name="student_user_id"/>
+                <field name="student_id"/>
+                <field name="message"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_reminder_form" model="ir.ui.view">
+        <field name="name">school.reminder.form</field>
+        <field name="model">school.reminder</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <header>
+                        <button name="action_send_notification" string="Send message"
+                                class="oe_highlight" type="object"/>
+                    </header>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="user_id"/>
+                            <field name="student_id"/>
+                            <field name="message"/>
+                        </group>
+                    </group>
+                </sheet>
+<!--                <div class="oe_chatter">-->
+<!--                    <field name="message_follower_ids"/>-->
+<!--                    <field name="activity_ids"/>-->
+<!--                    <field name="message_ids"/>-->
+<!--                </div>-->
+            </form>
+        </field>
+    </record>
+    <record id="view_reminder_kanban" model="ir.ui.view">
+        <field name="name">school.reminder.kanban</field>
+        <field name="model">school.reminder</field>
+        <field name="arch" type="xml">
+            <kanban default_order="id asc">
+                <field name="name"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="on_kanban_global_click">
+                            <div class="on_kanban_details">
+                                <ul>
+                                    <li>
+                                        Teacher Name :
+                                        <field name="name"/>
+                                    </li>
+                                    <li>
+                                        Teacher id Creator:
+                                        <field name="user_id"/>
+                                    </li>
+<!--                                    <li>-->
+<!--                                        User id logged in :-->
+<!--                                        <field name="current_user_id"/>-->
+<!--                                    </li>-->
+                                    <li>
+                                        Student id :
+                                        <field name="student_id"/>
+                                    </li>
+                                    <li>
+                                        Message :
+                                        <field name="message"/>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="action_student_reminder" model="ir.actions.act_window">
+        <field name="name">Reminders</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.reminder</field>
+        <field name="view_mode">tree,kanban,form</field>
+<!--        <field name="domain">[('user_id', '=', '9')]</field>-->
+<!--        <field name="domain">[]</field>-->
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first reminder
+            </p>
+        </field>
+    </record>
+
+
+</odoo>

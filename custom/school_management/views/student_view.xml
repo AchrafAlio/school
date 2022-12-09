@@ -7,7 +7,7 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <button id="button_approved" name="action_approved" states="new"
+                    <button id="button_approved" name="action_approved" states="new,cancel"
                             groups="school_management.group_school_administrator" icon="fa-check"
                             string="Approve" class="btn-primary" type="object"/>
 
@@ -54,13 +54,14 @@
                             <field name="academic_year" placeholder="Academic Year" nolabel="1"/>
                         </group>
                         <group string="Class Information">
-<!--                            <button id="button_open_wizard" name="open_wizard" string="Open wizard using custom method"-->
-<!--                            class="btn-primary" type="object"/>-->
-<!--                            <button id="button_open_wizard_action" name="school_management.action_create_class"-->
-<!--                             string="Open wizard using action" class="btn-primary" type="action"/>-->
+                            <!--                            <button id="button_open_wizard" name="open_wizard" string="Open wizard using custom method"-->
+                            <!--                            class="btn-primary" type="object"/>-->
+                            <!--                            <button id="button_open_wizard_action" name="school_management.action_create_class"-->
+                            <!--                             string="Open wizard using action" class="btn-primary" type="action"/>-->
 
                             <field name="class_id" placeholder="Class" nolabel="1"
-                                   attrs="{'readonly':[('state','=','new')]}"/><br/>
+                                   attrs="{'readonly':[('state','=','new')]}"/>
+                            <br/>
                             <field name="standard_id" placeholder="Standard" nolabel="1"
                                    attrs="{'readonly':[('state','=','new')]}"/>
                             <br/>
@@ -140,7 +141,7 @@
         <field name="name">school.student.admission.request.kanban</field>
         <field name="model">school.student</field>
         <field name="arch" type="xml">
-            <kanban >
+            <kanban>
                 <field name="name"/>
                 <field name="email"/>
                 <templates>
@@ -173,7 +174,7 @@
                                         <td valign="top" align="left" style="padding-left:10px;">
                                             <table>
                                                 <tr>
-                                                    <td>Student Ref :</td>
+                                                    <td>Reference :</td>
                                                     <td>
                                                         <b>
                                                             <field name="student_ref"/>
@@ -189,10 +190,10 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Admission Date :</td>
+                                                    <td>Email :</td>
                                                     <td>
                                                         <b>
-                                                            <field name="admission_date"/>
+                                                            <field name="email"/>
                                                         </b>
                                                     </td>
                                                 </tr>
@@ -201,6 +202,14 @@
                                                     <td>
                                                         <b>
                                                             <field name="gender"/>
+                                                        </b>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Status :</td>
+                                                    <td>
+                                                        <b>
+                                                            <field name="state"/>
                                                         </b>
                                                     </td>
                                                 </tr>

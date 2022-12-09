@@ -26,3 +26,11 @@ access_school_teacher_student,access.school.teacher,model_school_teacher,group_s
 access_school_class_wizard,access.school.class.wizard,model_school_class_wizard,school_management.group_school_administrator,1,1,1,1
 access_school_class_wizard_teacher,access.school.class.wizard,model_school_class_wizard,group_school_teacher,1,1,0,0
 access_school_class_wizard_student,access.school.class.wizard,model_school_class_wizard,group_school_student,1,0,0,0
+,,,,,,,
+access_school_cancel_student_wizard,access.school.cancel.student.wizard,model_school_cancel_student_wizard,school_management.group_school_administrator,1,1,1,1
+access_school_cancel_student_wizard_teacher,access.school.cancel.student.wizard,model_school_cancel_student_wizard,group_school_teacher,1,1,0,0
+access_school_cancel_student_wizard_student,access.school.cancel.student.wizard,model_school_cancel_student_wizard,group_school_student,1,0,0,0
+,,,,,,,
+access_school_reminder,access.school.reminder,model_school_reminder,school_management.group_school_administrator,1,1,1,1
+access_school_reminder_teacher,access.school.reminder,model_school_reminder,group_school_teacher,1,1,1,1
+access_school_reminder_student,access.school.reminder,model_school_reminder,group_school_student,1,1,1,1

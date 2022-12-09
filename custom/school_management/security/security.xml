@@ -48,4 +48,28 @@
         <field name="perm_create" eval="False"/>
         <field name="perm_unlink" eval="False"/>
     </record>
+
+<!--    Rule teacher see and modify only his reminders-->
+    <record model="ir.rule" id="teacher_reminder_record_rule">
+        <field name="name">See and modify only his remiders</field>
+        <field name="model_id" ref="model_school_reminder"/>
+        <field name="domain_force">[('user_id', '=', user.id)]</field>
+        <field name="groups" eval="[(4, ref('group_school_teacher'))]"/>
+        <field name="perm_read" eval="True"/>
+        <field name="perm_write" eval="True"/>
+        <field name="perm_create" eval="False"/>
+        <field name="perm_unlink" eval="False"/>
+    </record>
+
+<!--    Rule student see and modify only his reminders-->
+<!--    <record model="ir.rule" id="student_reminder_record_rule">-->
+<!--        <field name="name">See and modify only his remiders</field>-->
+<!--        <field name="model_id" ref="model_school_reminder"/>-->
+<!--        <field name="domain_force">[('student_user_id', '=', user.id)]</field>-->
+<!--        <field name="groups" eval="[(4, ref('group_school_student'))]"/>-->
+<!--        <field name="perm_read" eval="True"/>-->
+<!--        <field name="perm_write" eval="True"/>-->
+<!--        <field name="perm_create" eval="False"/>-->
+<!--        <field name="perm_unlink" eval="False"/>-->
+<!--    </record>-->
 </odoo>
