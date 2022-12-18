@@ -18,7 +18,7 @@
     <menuitem id="school_school_admission_root_menu"
               name="Admission"
               parent="school_management.school_root_menu"
-              groups="group_school_administrator"
+              groups="school_management.group_school_administrator"
               sequence="0"/>
 
     <!--    School Management => School => Admission => Admission Register -->
@@ -26,6 +26,7 @@
             id="school_school_admission_register_menu"
             name="Admission Register"
             parent="school_management.school_school_admission_root_menu"
+            groups="group_school_administrator"
             action="action_student_admission_request"
             sequence="0"/>
 

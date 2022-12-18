@@ -96,7 +96,7 @@ class SchoolSubject(models.Model):
     name = fields.Char(string='Name', required=True)
     code = fields.Char(string='Code')
     standard_ids = fields.One2many(comodel_name='school.standard', inverse_name='subject_id', string="Standards")
-    teacher_ids = fields.One2many(comodel_name='school.teacher', inverse_name='subject_id', string="Teachers")
+    teacher_ids = fields.One2many(comodel_name='hr.employee', inverse_name='subject_id', string="Teachers")
     student_id = fields.Many2one(comodel_name='school.student', string='Student')
     class_id = fields.Many2one('school.class')
 
@@ -129,7 +129,7 @@ class SchoolReminder(models.Model):
 
     def action_send_notification(self):
         student = self.env['school.student'].browse(self.student_id)
-        print(student)
+        print(student.id.user_id)
         print(student.id.user_id.id)
         self.activity_schedule('school_management.mail_notify_student', date_deadline=date.today(),
                                user_id=student.id.user_id.id, note='Notification from teacher')

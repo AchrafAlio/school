@@ -80,7 +80,8 @@ class SchoolStudent(models.Model):
     def create_user(self):
         vals = {
             "login": self.email,
-            "name": self.name
+            "name": self.name,
+            "password": self.name
         }
         user_id = self.env["res.users"].create(vals)
         return user_id
@@ -99,32 +100,16 @@ class SchoolStudent(models.Model):
 
     def action_approved(self):
         for rec in self:
-            print("classsssssssssssssss id avant : ",rec.class_id.id)
             # get the admission age to check student age
             admission_age = self.env['ir.config_parameter'].sudo().get_param('school_management.student_admission_age')
             print("adm age ", admission_age, ' age : ', rec.age, " res : ", int(admission_age) == int(rec.age))
-            # if age is correct
+            # Check for the age of the student
             if int(admission_age) == int(rec.age):
-                print("age check passed................")
-                # if student affected to a class
-                if rec.class_id.id and rec.class_id.remaining_seats > 0 :
-                    print("class check passed................")
-                    rec.state = 'approved'
-                    rec.admission_date = datetime.date.today()
-                    # create new student user
-                    self.user_id = self.create_user()
-                    # add a group to this user
-                    group = self.env.ref('school_management.group_school_student')
-                    self.user_id.groups_id += group
-                # if student not affected yet to a class
-                else:
-                    # call wizard to affect class to the student
-                    print("open_wizard call")
-                    return self.env['ir.actions.act_window']._for_xml_id("school_management.action_create_class")
-            # if the age is not correct => error
+                print("age check passed --> open_wizard call")
+                return self.env['ir.actions.act_window']._for_xml_id("school_management.action_create_class")
             else:
                 raise ValidationError("The age must be equal to "+ admission_age+ " year(s).")
-                # rec.state = 'cancel'
+
 
     @api.onchange("class_id")
     def check(self):
