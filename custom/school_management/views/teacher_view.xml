@@ -5,12 +5,37 @@
         <field name="name">hr.employee.tree.teacher</field>
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_tree"/>
-        <field name="arch" type="xml">
+        <field name="arch" type="xml" >
+
             <xpath expr="//field[@name='name']" position="after">
-                <field name="email" optional="show" string="Teacher Email"/>
+                <field name="email"  string="Teacher Email"/>
             </xpath>
             <xpath expr="//field[@name='email']" position="after">
-                <field name="subject_id" optional="show" string="Subject ID"/>
+                <field name="subject_id"  string="Subject ID"/>
+            </xpath>
+            <xpath expr="//field[@name='work_phone']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='work_email']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='activity_ids']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='activity_date_deadline']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='activity_ids']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='department_id']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='job_id']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='parent_id']" position="attributes">
+                <attribute name="invisible">True</attribute>
             </xpath>
         </field>
         <!--            <field name="subject_id"/>-->
@@ -20,9 +45,8 @@
         <field name="model">hr.employee</field>
         <field name="inherit_id" ref="hr.view_employee_form"/>
         <field name="arch" type="xml">
-
             <xpath expr="//field[@name='name']" position="after">
-                     <field name="email" placeholder="Teacher's email"/>
+                <field name="email" placeholder="Teacher's email"/>
             </xpath>
 
             <xpath expr="//page[@name='hr_settings']" position="after">
@@ -32,7 +56,7 @@
                             <b>School name</b>
                         </span>
                         <xpath expr="//field[@name='name']" position="after">
-                            <field name="email"/>
+                            <field name="school_name"/>
                         </xpath>
 
                         <span>

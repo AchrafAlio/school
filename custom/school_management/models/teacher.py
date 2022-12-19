@@ -11,6 +11,12 @@ class SchoolTeacher(models.Model):
     email = fields.Char(string='Teacher email', required=True)
     picture = fields.Binary(string='Picture')
     subject_id = fields.Many2one(comodel_name='school.subject', string='Subject')
+    school_name = fields.Char(string="School Name", store=False,
+                              default=lambda self: self.env['ir.config_parameter'].sudo().get_param(
+                                  'school_management.school_name'))
+    class_ids = fields.One2many(comodel_name="school.class", inverse_name="teacher_id",
+                                string="Class ids")
+
     # user_id = fields.Many2one(comodel_name='hr.employee', string='Teacher user')
     # hr_id = fields.Many2one(comodel_name='hr.employee', string='Teacher hr')
     # category_ids = fields.Char("Category ids")
@@ -20,6 +26,7 @@ class SchoolTeacher(models.Model):
             {"login": self.email, "name": self.name, "password": self.name}
         )
         return user_id
+
     #
     # def create_hr(self):
     #     hr_id = self.env["hr.employee"].create(
@@ -38,7 +45,6 @@ class SchoolTeacher(models.Model):
         res.user_id = res.create_user()
         # add a group to this user
         group = self.env.ref('school_management.group_school_teacher')
-
 
         res_groups = self.env['res.groups']
 

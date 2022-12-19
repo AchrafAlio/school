@@ -4,6 +4,13 @@ from odoo.exceptions import ValidationError
 from datetime import date
 
 
+AVAILABLE_PRIORITIES = [
+    ('0', 'Low'),
+    ('1', 'Medium'),
+    ('2', 'High'),
+    ('3', 'Very High'),
+]
+
 class SchoolClass(models.Model):
     _name = "school.class"
     _inherit = ['mail.thread', 'mail.activity.mixin']
@@ -27,7 +34,10 @@ class SchoolClass(models.Model):
     student_ids = fields.One2many(comodel_name='school.student', inverse_name='class_id',
                                   string='Class students', store=True)
     subject_ids = fields.Many2many(comodel_name='school.subject', string="Subjects")
-
+    user_id = fields.Many2one( comodel_name="res.users", string='User ID', default=lambda self: self._context.get('uid'), store=False)
+    priority = fields.Selection(
+        AVAILABLE_PRIORITIES, string='Priority', index=True,
+        default=AVAILABLE_PRIORITIES[0][0])
     def _name_compose(self):
         for rec in self:
             rec.sequence = str(rec.standard_id.name) + "[" + rec.division + "]"
