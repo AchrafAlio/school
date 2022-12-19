@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="mail_notify_student" model="mail.activity.type">
+<field name="name">Home work</field>
+<field name="res_model">school.student</field>
+</record>
+
+</odoo>

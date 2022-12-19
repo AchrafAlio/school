@@ -12,7 +12,7 @@
                 <field name="total_students"/>
                 <field name="remaining_seats"/>
                 <field name="classroom_id"/>
-                <field name="color"/>
+                <field name="color" widget="color"/>
             </tree>
         </field>
     </record>
@@ -37,11 +37,11 @@
                             <field name="remaining_seats"/>
                         </group>
                         <group>
-                            <field name="color"/>
+                            <field name="color" widget="color"/>
                             <field name="standard_id" widget="selection" placeholder="Standard"/>
-                            <field name="division" />
-                            <field name="medium" />
-                            <field name="teacher_id"/>
+                            <field name="division"/>
+                            <field name="medium"/>
+                            <!--                            <field name="teacher_id"/>-->
                             <field name="classroom_id"/>
                         </group>
                     </group>
@@ -50,7 +50,7 @@
                         <page string="Students" name="students">
                             <field name="student_ids" nolabel="1" widget="section_and_note_one2many">
                                 <tree string="Student Information" editable="bottom">
-<!--                                    <field name="student_ref"/>-->
+                                    <!--                                    <field name="student_ref"/>-->
                                     <field name="first_name" mode="tree"/>
                                     <field name="last_name" mode="tree"/>
                                     <field name="email" mode="tree"/>
@@ -68,15 +68,15 @@
                                 <tree editable="bottom" create="1" delete="1" edit="1">
                                     <field name="name"/>
                                     <field name="code" optional="show"/>
-                                    <field name="teacher_ids" widget="many2many_tags"/>
+                                    <!--                                    <field name="teacher_ids" widget="many2many_tags"/>-->
                                 </tree>
-<!--                                <form>-->
-<!--                                    <group>-->
-<!--                                        <field name="name"/>-->
-<!--                                        <field name="code"/>-->
-<!--                                        <field name="teachers"/>-->
-<!--                                    </group>-->
-<!--                                </form>-->
+                                <!--                                <form>-->
+                                <!--                                    <group>-->
+                                <!--                                        <field name="name"/>-->
+                                <!--                                        <field name="code"/>-->
+                                <!--                                        <field name="teachers"/>-->
+                                <!--                                    </group>-->
+                                <!--                                </form>-->
                             </field>
                         </page>
                     </notebook>
@@ -95,6 +95,84 @@
         <field name="name">school.class.kanban</field>
         <field name="model">school.class</field>
         <field name="arch" type="xml">
+
+
+            <!--            <kanban default_group_by="stage_id" class="o_kanban_small_column o_opportunity_kanban"-->
+            <!--                    on_create="quick_create" quick_create_view="crm.quick_create_opportunity_form"-->
+            <!--                    archivable="false" sample="1">-->
+            <!--                    <field name="stage_id" options='{"group_by_tooltip": {"requirements": "Description"}}'/>-->
+            <!--                    <field name="probability"/>-->
+            <!--                    <field name="color"/>-->
+            <!--                    <field name="priority"/>-->
+            <!--                    <field name="expected_revenue"/>-->
+            <!--                    <field name="kanban_state"/>-->
+            <!--                    <field name="activity_date_deadline"/>-->
+            <!--                    <field name="user_email"/>-->
+            <!--                    <field name="user_id"/>-->
+            <!--                    <field name="partner_id"/>-->
+            <!--                    <field name="activity_summary"/>-->
+            <!--                    <field name="active"/>-->
+            <!--                    <field name="company_currency"/>-->
+            <!--                    <field name="activity_state" />-->
+            <!--                    <field name="activity_ids" />-->
+
+            <!--                    <templates>-->
+            <!--                        <t t-name="kanban-box">-->
+            <!--                            <t t-set="lost_ribbon" t-value="!record.active.raw_value and-->
+            <!--                            record.probability and record.probability.raw_value == 0"/>-->
+            <!--                            <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''}-->
+            <!--                            #{lost_ribbon ? 'oe_kanban_card_ribbon' : ''} oe_kanban_global_click oe_kanban_card-->
+            <!--                            d-flex flex-column">-->
+
+            <!--                                <div class="o_dropdown_kanban dropdown">-->
+            <!--                                    <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown" data-display="static" href="#" aria-label="Dropdown menu" title="Dropdown menu">-->
+            <!--                                        <span class="fa fa-ellipsis-v"/>-->
+            <!--                                    </a>-->
+            <!--                                    <div class="dropdown-menu" role="menu">-->
+            <!--                                        <t t-if="widget.editable"><a role="menuitem" type="edit" class="dropdown-item">Edit</a></t>-->
+            <!--                                        <t t-if="widget.deletable"><a role="menuitem" type="delete" class="dropdown-item">Delete</a></t>-->
+            <!--                                        <ul class="oe_kanban_colorpicker" data-field="color"/>-->
+            <!--                                    </div>-->
+            <!--                                </div>-->
+            <!--                                <div class="oe_kanban_content flex-grow-1">-->
+            <!--                                    <div class="o_kanban_record_title oe_kanban_details">-->
+            <!--                                        <strong><field name="name"/></strong>-->
+            <!--                                    </div>-->
+            <!--                                    <div class="o_kanban_record_subtitle">-->
+            <!--                                        <t t-if="record.expected_revenue.raw_value">-->
+            <!--                                            <field name="expected_revenue" widget="monetary" options="{'currency_field': 'company_currency'}"/>-->
+            <!--                                            <span t-if="record.recurring_revenue and record.recurring_revenue.raw_value"> + </span>-->
+            <!--                                        </t>-->
+            <!--                                        <t t-if="record.recurring_revenue and record.recurring_revenue.raw_value">-->
+            <!--                                            <field name="recurring_revenue" widget="monetary" options="{'currency_field': 'company_currency'}"/>-->
+            <!--                                            <field name="recurring_plan"/>-->
+            <!--                                        </t>-->
+            <!--                                    </div>-->
+            <!--                                    <div>-->
+            <!--                                        <span class="o_text_overflow" t-if="record.partner_id.value" t-esc="record.partner_id.value"></span>-->
+            <!--                                    </div>-->
+            <!--                                    <div>-->
+            <!--                                        <field name="tag_ids" widget="many2many_tags" options="{'color_field': 'color'}"/>-->
+            <!--                                    </div>-->
+            <!--                                </div>-->
+            <!--                                            <div class="oe_kanban_footer">-->
+            <!--                                                <div class="o_kanban_record_bottom">-->
+            <!--                                                    <div class="oe_kanban_bottom_left">-->
+<!--                                                                    <field name="priority" widget="priority" groups="base.group_user"/>-->
+<!--                                                                    <field name="activity_ids" widget="kanban_activity"/>-->
+            <!--                                                    </div>-->
+            <!--                                                    <div class="oe_kanban_bottom_right">-->
+            <!--                                                        <field name="user_id" widget="many2one_avatar_user"/>-->
+            <!--                                                    </div>-->
+            <!--                                                </div>-->
+            <!--                                            </div>-->
+            <!--                                <div class="oe_clear"/>-->
+            <!--                            </div>-->
+            <!--                        </t>-->
+            <!--                    </templates>-->
+            <!--                </kanban>-->
+
+
             <kanban default_order="id asc">
                 <field name="sequence"/>
                 <field name="capacity"/>
@@ -103,37 +181,65 @@
                 <field name="color"/>
                 <templates>
                     <t t-name="kanban-box">
-                        <div t-attf-class="on_kanban_global_click">
-                            <div class="on_kanban_details">
-                                <ul>
-                                    <li>
-                                        Class Ref :
-                                        <field name="sequence" readonly="1"/>
-                                    </li>
-                                    <li>
-                                        Name :
+                        <t t-name="kanban-box">
+                            <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''} #{lost_ribbon ? 'oe_kanban_card_ribbon' : ''} oe_kanban_global_click oe_kanban_card d-flex flex-column">
+                                <div class="o_dropdown_kanban dropdown">
+                                    <a class="dropdown-toggle o-no-caret btn" role="button" data-toggle="dropdown"
+                                       data-display="static"
+                                       href="#" aria-label="Dropdown menu" title="Dropdown menu">
+                                        <span class="fa fa-ellipsis-v"/>
+                                    </a>
+                                    <div class="dropdown-menu" role="menu">
+                                        <t t-if="widget.editable">
+                                            <a role="menuitem" type="edit" class="dropdown-item">Edit</a>
+                                        </t>
+                                        <t t-if="widget.deletable">
+                                            <a role="menuitem" type="delete" class="dropdown-item">Delete</a>
+                                        </t>
+                                        <ul class="oe_kanban_colorpicker" data-field="color"/>
+                                    </div>
 
-                                        <field name="sequence"/>
-                                    </li>
-                                    <li>
-                                        Capacity :
-                                        <field name="capacity"/>
-                                    </li>
-                                    <li>
-                                        Total Students :
-                                        <field name="total_students"/>
-                                    </li>
-                                    <li>
-                                        Remaining Seats :
-                                        <field name="remaining_seats"/>
-                                    </li>
-                                    <li>
-                                        Color :
-                                        <field name="color"/>
-                                    </li>
-                                </ul>
+
+                                </div>
+
+                                <div class="oe_kanban_content flex-grow-1">
+                                    <div class="o_kanban_record_title oe_kanban_details">
+                                        <strong>
+                                            <field name="sequence"/>
+                                        </strong>
+                                    </div>
+                                    <ul>
+                                        <li>
+                                            Capacity :
+                                            <field name="capacity"/>
+                                        </li>
+                                        <li>
+                                            Total Students :
+                                            <field name="total_students"/>
+                                        </li>
+                                        <li>
+                                            Remaining Seats :
+                                            <field name="remaining_seats"/>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                                <div class="oe_kanban_footer">
+                                    <div class="o_kanban_record_bottom">
+                                        <div class="oe_kanban_bottom_left">
+                                            <field name="priority" widget="priority" />
+<!--                                            <field name="activity_ids" widget="kanban_activity"/>-->
+                                        </div>
+                                        <div class="oe_kanban_bottom_right">
+                                            <field name="user_id" widget="many2one_avatar_user"/>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                        </div>
+
+                        </t>
                     </t>
                 </templates>
             </kanban>

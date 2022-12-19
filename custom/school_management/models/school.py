@@ -1,7 +1,15 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
+from datetime import date
 
+
+AVAILABLE_PRIORITIES = [
+    ('0', 'Low'),
+    ('1', 'Medium'),
+    ('2', 'High'),
+    ('3', 'Very High'),
+]
 
 class SchoolClass(models.Model):
     _name = "school.class"
@@ -26,7 +34,10 @@ class SchoolClass(models.Model):
     student_ids = fields.One2many(comodel_name='school.student', inverse_name='class_id',
                                   string='Class students', store=True)
     subject_ids = fields.Many2many(comodel_name='school.subject', string="Subjects")
-
+    user_id = fields.Many2one( comodel_name="res.users", string='User ID', default=lambda self: self._context.get('uid'), store=False)
+    priority = fields.Selection(
+        AVAILABLE_PRIORITIES, string='Priority', index=True,
+        default=AVAILABLE_PRIORITIES[0][0])
     def _name_compose(self):
         for rec in self:
             rec.sequence = str(rec.standard_id.name) + "[" + rec.division + "]"
@@ -36,16 +47,6 @@ class SchoolClass(models.Model):
         print(self.sequence)
         for record in self:
             print(record.sequence)
-            # if record.date_end < fields.Date.today():
-            #     raise ValidationError("The end date cannot be set in the past")
-        # all records passed the test, don't return anything
-
-    # @api.onchange('sequence')
-    # def loop(self):
-    #     if self.sequence:
-    #         for rec in self:
-    #                if self.sequence == rec.sequence:
-    #                    raise ValidationError("This class has already been created")
 
     _sql_constraints = [
         ('unique_standard_division_class', 'unique (standard_id,division)', 'This class has already been created'),
@@ -54,9 +55,6 @@ class SchoolClass(models.Model):
 
     @api.model
     def create(self, vals):
-        print("vals ============> ", vals)
-        print("self.env ============> ", self.env)
-        print("division =============> ", vals['division'])
         if vals.get('sequence', _('New')) == _('New'):
             vals['sequence'] = self.sequence
             # self.env['ir.sequence'].next_by_code('school.class') or _('New')
@@ -70,7 +68,6 @@ class SchoolClass(models.Model):
 
     @api.onchange('student_ids')
     def _total_students(self):
-        print("student_ids changed!!!!!!!!!!!!!!!!")
         for rec in self:
             rec.total_students = 0
             for student in rec.student_ids:
@@ -109,6 +106,89 @@ class SchoolSubject(models.Model):
     name = fields.Char(string='Name', required=True)
     code = fields.Char(string='Code')
     standard_ids = fields.One2many(comodel_name='school.standard', inverse_name='subject_id', string="Standards")
-    teacher_ids = fields.One2many(comodel_name='school.teacher', inverse_name='subject_id', string="Teachers")
+    teacher_ids = fields.One2many(comodel_name='hr.employee', inverse_name='subject_id', string="Teachers")
     student_id = fields.Many2one(comodel_name='school.student', string='Student')
     class_id = fields.Many2one('school.class')
+
+
+class SchoolReminder(models.Model):
+    _name = "school.reminder"
+    _inherit = ['mail.thread', 'mail.activity.mixin']
+    _description = "School Reminder"
+
+    def get_user_name(self):
+        # find the user with the current uses id
+        user = self.env['res.users'].browse(self._context.get('uid'))
+        # get the record for the user in res.users to have login(name) and id
+        record = self.env["res.users"].search([('id', '=', user.id)])
+        return record.login
+
+    def get_student_user_id(self):
+        for rec in self:
+            rec.student_user_id = rec.env['school.student'].browse(rec.student_id).id.user_id.id
+
+    # the name of the user who creates the notification activity
+    name = fields.Char(string='Name', default=get_user_name, required=True, readonly=True)
+    # the id of the user who creates the notification activity
+    user_id = fields.Char(string='User ID', default=lambda self: self._context.get('uid'), readonly=True)
+    # the current user id not saved in table
+    current_user_id = fields.Char(string="current uid", default=lambda self: self._context.get('uid'))
+    student_id = fields.Many2one(comodel_name='school.student', string='Student')
+    student_user_id = fields.Char( string="Student user id" , compute="get_student_user_id")
+    message = fields.Char(string="Message", required=True)
+
+    def action_send_notification(self):
+        student = self.env['school.student'].browse(self.student_id)
+        print(student.id.user_id)
+        print(student.id.user_id.id)
+        self.activity_schedule('school_management.mail_notify_student', date_deadline=date.today(),
+                               user_id=student.id.user_id.id, note='Notification from teacher')
+
+    # @api.model
+    # def create(self, vals):
+    #     # get the current user id from context
+    #     context = self._context
+    #     print(context)
+    #     current_uid = context.get('uid')
+    #     # find the user with the current uses id
+    #     user = self.env['res.users'].browse(current_uid)
+    #     # get the record for the user in res.users to have login(name) and id
+    #     record = self.env["res.users"].search([('id', '=', user.id)])
+    #     vals['name'] = record.login
+    #     vals['user_id'] = record.id
+    #     res = super(SchoolReminder, self).create(vals)
+    #     return res
+
+    # get the current user student_id
+    # student_user = self.env['res.users'].browse(self.student_id)
+    # affect current user id to the field user_id
+    # self.user_id = user.id
+    # user.id.notify_danger(message="Teacher notification")
+    # message = _("Connection Test Successful!")
+    # action = self.env.ref('school_management.action_student_reminder')
+    # return {
+    #     'type': 'ir.actions.client',
+    #     'tag': 'display_notification',
+    #     'params': {
+    #         'title': _('The following ......'),
+    #         'message': message,
+    #         'type': 'warning',
+    #         'links': [{
+    #             'label': self.name,
+    #             'url': f'#action={action.id}&id={self.id}&model=school.reminder',
+    #         }],
+    #         'sticky': True,
+    #     }
+    #
+    # }
+
+    # @api.onchange('student_id')
+    # def _get_name(self):
+    #     # get the current user id
+    #     context = self._context
+    #     print(context)
+    #     current_uid = context.get('uid')
+    #     user = self.env['res.users'].browse(current_uid)
+    #     record = self.env["res.users"].search([('id', '=', user.id)])
+    #     self.name = record.login
+    #     self.user_id = record.id

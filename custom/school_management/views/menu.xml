@@ -18,7 +18,7 @@
     <menuitem id="school_school_admission_root_menu"
               name="Admission"
               parent="school_management.school_root_menu"
-              groups="group_school_administrator"
+              groups="school_management.group_school_administrator"
               sequence="0"/>
 
     <!--    School Management => School => Admission => Admission Register -->
@@ -26,6 +26,7 @@
             id="school_school_admission_register_menu"
             name="Admission Register"
             parent="school_management.school_school_admission_root_menu"
+            groups="group_school_administrator"
             action="action_student_admission_request"
             sequence="0"/>
 
@@ -120,5 +121,19 @@
             action="action_school_subject"
             sequence="0"/>
 
+    <!--    School Management => Reminder  -->
+    <menuitem id="reminder_root_menu"
+              name="Reminder"
+              parent="school_management_root_menu"
+              groups="group_school_administrator,group_school_teacher,group_school_student"
+              sequence="30"/>
+
+    <!--    School Management => Reminder => Reminder  -->
+    <menuitem id="school_reminder_root_menu"
+              name="Reminder"
+              parent="school_management.reminder_root_menu"
+              groups="group_school_administrator,group_school_teacher,group_school_student"
+              action="action_student_reminder"
+              sequence="0"/>
 
 </odoo>

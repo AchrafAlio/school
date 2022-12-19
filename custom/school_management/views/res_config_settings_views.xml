@@ -13,12 +13,17 @@
                         <h2>School Management</h2>
                         <div class="row mt16 o_settings_container" id="school_setting">
                             <div class="col-12 col-lg-6 o_setting_box">
-                                <div class="o_setting_left_pane"/>
                                 <div class="o_setting_right_pane">
                                     <span class="o_form_label">Student Admission Age</span>
                                     <div class="text-muted content-group mt16">
                                         <field name="student_admission_age" class="text-center oe_inline"/>
                                         <span>years</span>
+                                    </div>
+                                </div>
+                                <div class="o_setting_right_pane">
+                                    <span class="o_form_label">School Name</span>
+                                    <div class="text-muted content-group mt16">
+                                        <field name="school_name" class="text-center oe_inline"/>
                                     </div>
                                 </div>
                             </div>

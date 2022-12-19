@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <record id="view_create_class_form" model="ir.ui.view">
-        <field name="name">school.create.class.form</field>
-        <field name="model">school.class.wizard</field>
+    <record id="view_cancel_student_form" model="ir.ui.view">
+        <field name="name">school.cancel.student.form</field>
+        <field name="model">school.cancel.student.wizard</field>
         <field name="arch" type="xml">
             <form>
                 <group>
-                    <field name="class_id" placeholder="Class" nolabel="1"/>
+                    <field name="remarks" placeholder="Remarks" nolabel="1"/>
                     <br/>
                 </group>
                 <footer>
@@ -20,10 +20,10 @@
         </field>
     </record>
 
-    <record id="action_create_class" model="ir.actions.act_window">
-        <field name="name">Create Class</field>
+    <record id="action_cancel_student" model="ir.actions.act_window">
+        <field name="name">Cancel Student</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">school.class.wizard</field>
+        <field name="res_model">school.cancel.student.wizard</field>
         <field name="view_mode">form</field>
         <field name="target">new</field>
     </record>
