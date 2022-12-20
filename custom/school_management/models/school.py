@@ -38,6 +38,7 @@ class SchoolClass(models.Model):
     priority = fields.Selection(
         AVAILABLE_PRIORITIES, string='Priority', index=True,
         default=AVAILABLE_PRIORITIES[0][0])
+
     def _name_compose(self):
         for rec in self:
             rec.sequence = str(rec.standard_id.name) + "[" + rec.division + "]"
@@ -106,7 +107,7 @@ class SchoolSubject(models.Model):
     name = fields.Char(string='Name', required=True)
     code = fields.Char(string='Code')
     standard_ids = fields.One2many(comodel_name='school.standard', inverse_name='subject_id', string="Standards")
-    teacher_ids = fields.One2many(comodel_name='hr.employee', inverse_name='subject_id', string="Teachers")
+    teacher_ids = fields.One2many(comodel_name='school.teacher', inverse_name='subject_id', string="Teachers")
     student_id = fields.Many2one(comodel_name='school.student', string='Student')
     class_id = fields.Many2one('school.class')
 
