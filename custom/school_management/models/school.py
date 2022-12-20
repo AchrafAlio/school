@@ -38,6 +38,7 @@ class SchoolClass(models.Model):
     priority = fields.Selection(
         AVAILABLE_PRIORITIES, string='Priority', index=True,
         default=AVAILABLE_PRIORITIES[0][0])
+
     def _name_compose(self):
         for rec in self:
             rec.sequence = str(rec.standard_id.name) + "[" + rec.division + "]"

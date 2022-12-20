@@ -16,10 +16,10 @@ class SchoolTeacher(models.Model):
                                   'school_management.school_name'))
     class_ids = fields.One2many(comodel_name="school.class", inverse_name="teacher_id",
                                 string="Class ids")
-
+    # employee_id = fields.Many2one(comodel_name="hr.empoyee", string="Employee ID")
     # user_id = fields.Many2one(comodel_name='hr.employee', string='Teacher user')
     # hr_id = fields.Many2one(comodel_name='hr.employee', string='Teacher hr')
-    # category_ids = fields.Char("Category ids")
+    category_ids = fields.Char("Category ids")
 
     def create_user(self):
         user_id = self.env["res.users"].create(
@@ -45,22 +45,5 @@ class SchoolTeacher(models.Model):
         res.user_id = res.create_user()
         # add a group to this user
         group = self.env.ref('school_management.group_school_teacher')
-
-        res_groups = self.env['res.groups']
-
-        copy = res.user_id.groups_id
-        # full list              empty object
-        res.user_id.groups_id = res_groups
-        # assign the teacher id group
-        # res.user_id.groups_id += group
-
-        for hold in copy:
-            if hold.id != 14 and hold.id != 13:
-                res_groups += hold
-
-        res.user_id.groups_id = res_groups
         res.user_id.groups_id += group
-        print(res.user_id.groups_id)
-        # print(res.user_id.groups_id[0])
-        # print( group, res.user_id.groups_id,res.user_id.groups_id[7].id)
         return res
