@@ -40,7 +40,7 @@
     <!--   Rule : Teacher see and modify only his profile  -->
     <record model="ir.rule" id="teacher_record_rule">
         <field name="name">See and modify only his profile</field>
-        <field name="model_id" ref="model_hr_employee"/>
+        <field name="model_id" ref="model_school_teacher"/>
         <field name="domain_force">[('user_id', '=', user.id)]</field>
         <field name="groups" eval="[(4, ref('group_school_teacher'))]"/>
         <field name="perm_read" eval="True"/>

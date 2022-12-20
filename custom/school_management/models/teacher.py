@@ -3,7 +3,7 @@ from odoo import api, fields, models
 
 
 class SchoolTeacher(models.Model):
-    _name = "hr.employee"
+    _name = "school.teacher"
     _inherit = 'hr.employee'
     _description = "School Teacher"
 
@@ -36,7 +36,7 @@ class SchoolTeacher(models.Model):
     #          }
     #     )
     #     return hr_id
-    #
+    #   -
     @api.model
     def create(self, vals):
         # create a new teacher
