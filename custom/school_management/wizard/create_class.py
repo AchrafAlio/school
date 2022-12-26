@@ -10,22 +10,22 @@ class CreateClassWizard(models.TransientModel):
     class_id = fields.Many2one(comodel_name="school.class", string="Class Id")
 
     def confirm_class(self):
-        print('wizard')
+        print('wizard..........................')
         active_id = self.env.context.get('active_id')
-        student_id = self.env['school.student'].browse(active_id)
+        student = self.env['school.student'].browse(active_id)
+        print("active_id : ", active_id, "   student : ", student)
         if self.class_id.remaining_seats > 0:
             # write change
-            student_id.class_id = self.class_id
-            student_id.state = 'approved'
+            student.class_id = self.class_id
+            student.state = 'approved'
+            student.admission_date = datetime.date.today()
 
-            student_id.admission_date = datetime.date.today()
-
-            # create new student user
-            student_id.user_id = student_id.create_user()
+            # create new user for the student
+            student.user_id = student.create_user()
+            print("student.user_id  : ", student.user_id, type(student.user_id))
             # add a group to this user
             group = self.env.ref('school_management.group_school_student')
-            student_id.user_id.groups_id += group
+            student.user_id.groups_id += group
 
         else:
             raise ValidationError("No more seats available in this class, choose another one")
-

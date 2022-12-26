@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
     <record id="view_standard_tree" model="ir.ui.view">
         <field name="name">school.standard.tree</field>
         <field name="model">school.standard</field>
@@ -12,6 +13,7 @@
             </tree>
         </field>
     </record>
+
     <record id="view_standard_form" model="ir.ui.view">
         <field name="name">school.standard.form</field>
         <field name="model">school.standard</field>
@@ -22,7 +24,6 @@
                         <group>
                             <field name="name"/>
                             <field name="sequence"/>
-
                         </group>
                         <group>
                             <field name="code"/>
@@ -30,6 +31,11 @@
                         </group>
                     </group>
                 </sheet>
+                 <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
@@ -45,6 +51,7 @@
             </search>
         </field>
     </record>
+
     <record id="action_school_standard" model="ir.actions.act_window">
         <field name="name">standards</field>
         <field name="type">ir.actions.act_window</field>

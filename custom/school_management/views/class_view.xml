@@ -6,7 +6,6 @@
         <field name="model">school.class</field>
         <field name="arch" type="xml">
             <tree>
-
                 <field name="sequence" readonly="1"/>
                 <field name="capacity"/>
                 <field name="total_students"/>
@@ -31,17 +30,15 @@
                     </div>
                     <group>
                         <group>
-                            <field name="sequence"/>
                             <field name="capacity"/>
                             <field name="total_students"/>
                             <field name="remaining_seats"/>
                         </group>
                         <group>
                             <field name="color" widget="color" invisible="1"/>
-                            <field name="standard_id" widget="selection" placeholder="Standard" required="1"/>
-                            <field name="division" widget="selection" placeholder="Division" required="1"/>
-                            <field name="medium" widget="selection" placeholder="Medium" required="1"/>
-                            <!--                            <field name="teacher_id"/>-->
+                            <field name="standard_id" widget="selection" required="1"/>
+                            <field name="division" widget="selection" required="1"/>
+                            <field name="medium" widget="selection" required="1"/>
                             <field name="classroom_id"/>
                         </group>
                     </group>
@@ -50,7 +47,6 @@
                         <page string="Students" name="students">
                             <field name="student_ids" nolabel="1" widget="section_and_note_one2many">
                                 <tree string="Student Information" editable="bottom">
-                                    <!--                                    <field name="student_ref"/>-->
                                     <field name="first_name" mode="tree"/>
                                     <field name="last_name" mode="tree"/>
                                     <field name="email" mode="tree"/>

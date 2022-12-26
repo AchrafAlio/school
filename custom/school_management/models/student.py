@@ -7,7 +7,6 @@ from odoo.exceptions import ValidationError
 
 class SchoolStudent(models.Model):
     _name = "school.student"
-    # _inherits = {'res.partner': 'partner_id'}
     _inherit = ['mail.thread', 'mail.activity.mixin']
     _description = "School Student"
 
@@ -15,8 +14,8 @@ class SchoolStudent(models.Model):
     academic_year = fields.Char(string="Academic Year")
     student_ref = fields.Char(string='Student ID', copy=False, readonly=True, required=True,
                               default=lambda self: _('New'))
-    # Admission Request fields
 
+    # Admission Request fields
     first_name = fields.Char(string='First Name', required=True)
     last_name = fields.Char(string='Last Name', required=True)
     name = fields.Char(string='Name', compute='full_name')
@@ -54,14 +53,11 @@ class SchoolStudent(models.Model):
                              string='Status', default="new")
 
     class_id = fields.Many2one(comodel_name='school.class', string='Class')
-    # student_id = fields.Many2one(comodel_name='school.student', string='Student')
     standard_id = fields.Char(string='Standard', related="class_id.standard_id.name", readonly=True)
     user_id = fields.Many2one(comodel_name='res.users', string='Student user')
     medium = fields.Selection(string='Medium', related="class_id.medium", readonly=True)
     division = fields.Selection(string='Division', related="class_id.division", readonly=True)
-
-    # related='res.users.id', related_sudo=True,
-    # compute_sudo=True, store=True, readonly=True)
+    cant_edit = fields.Boolean(string="Can Edit", compute="_cant_edit_compute", default=lambda self: False)
 
     @api.model
     def create(self, vals):
@@ -69,8 +65,6 @@ class SchoolStudent(models.Model):
             seq_date = str(datetime.date.today().year) + "/" + str(datetime.date.today().month) + "/"
             vals['student_ref'] = seq_date + self.env['ir.sequence'].next_by_code('school.student') or _('New')
         res = super(SchoolStudent, self).create(vals)
-        print("vals ============> ", vals['student_ref'])
-        print("res =============> ", res)
         return res
 
     def action_new(self):
@@ -80,23 +74,13 @@ class SchoolStudent(models.Model):
     def create_user(self):
         vals = {
             "login": self.email,
-            "name": self.name,
-            "password": self.name
+            "name": self.first_name,
+            "password": self.first_name,
+            "email": self.email
         }
-        user_id = self.env["res.users"].create(vals)
-        return user_id
-
-    # def open_wizard(self):
-    #     print("open_wizard call")
-    #     return self.env['ir.actions.act_window']._for_xml_id("school_management.action_create_class")
-        # return {
-        #     'type': 'ir.actions.act_window',
-        #     'res_model': 'school.class.wizard',
-        #     'view_id': self.env.ref('school_management.view_create_class_form').id,
-        #     'context': {'default_order_id': self.id},
-        #     'view_mode': 'form',
-        #     'target': 'new'
-        # }
+        user = self.env["res.users"].create(vals)
+        # print("function create_user : ", user)
+        return user
 
     def action_approved(self):
         for rec in self:
@@ -108,8 +92,7 @@ class SchoolStudent(models.Model):
                 print("age check passed --> open_wizard call")
                 return self.env['ir.actions.act_window']._for_xml_id("school_management.action_create_class")
             else:
-                raise ValidationError("The age must be equal to "+ admission_age+ " year(s).")
-
+                raise ValidationError("The age must be equal to " + admission_age + " year(s).")
 
     @api.onchange("class_id")
     def check(self):
@@ -154,3 +137,20 @@ class SchoolStudent(models.Model):
     def on_change_birth_date(self):
         for rec in self:
             rec.get_age()
+
+    def _cant_edit_compute(self):
+        # get the current user
+        context = self._context
+        current_uid = context.get('uid')
+        user = self.env['res.users'].browse(current_uid)
+
+        # get the student group
+        group = self.env.ref('school_management.group_school_student')
+        # print(user , group.id, user.groups_id)
+
+        if group in user.groups_id:
+            print('it is a student')
+            self.cant_edit = True
+        else:
+            print('it is not a student')
+            self.cant_edit = False

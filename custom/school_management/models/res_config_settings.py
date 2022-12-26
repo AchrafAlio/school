@@ -9,4 +9,4 @@ class ResConfigSettings(models.TransientModel):
 
     student_admission_age = fields.Integer(string='Student Admission Age',
                                            config_parameter="school_management.student_admission_age")
-    school_name = fields.Char(String="School Name", config_parameter="school_management.school_name")
+    school_name = fields.Char(string="School Name", config_parameter="school_management.school_name")

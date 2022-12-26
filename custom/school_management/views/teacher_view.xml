@@ -1,79 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <!--    <record id="view_employee_tree_inherit_teacher" model="ir.ui.view">-->
-    <!--        <field name="name">hr.employee.tree.teacher</field>-->
-    <!--        <field name="model">hr.employee</field>-->
-    <!--        <field name="inherit_id" ref="hr.view_employee_tree"/>-->
-    <!--        <field name="arch" type="xml" >-->
-
-    <!--            <xpath expr="//field[@name='name']" position="after">-->
-    <!--                <field name="email"  string="Teacher Email"/>-->
-    <!--            </xpath>-->
-    <!--            <xpath expr="//field[@name='email']" position="after">-->
-    <!--                <field name="subject_id"  string="Subject ID"/>-->
-    <!--            </xpath>-->
-    <!--            <xpath expr="//field[@name='work_phone']" position="attributes">-->
-    <!--                <attribute name="invisible">True</attribute>-->
-    <!--            </xpath>-->
-    <!--            <xpath expr="//field[@name='work_email']" position="attributes">-->
-    <!--                <attribute name="invisible">True</attribute>-->
-    <!--            </xpath>-->
-    <!--            <xpath expr="//field[@name='activity_ids']" position="attributes">-->
-    <!--                <attribute name="invisible">True</attribute>-->
-    <!--            </xpath>-->
-    <!--            <xpath expr="//field[@name='activity_date_deadline']" position="attributes">-->
-    <!--                <attribute name="invisible">True</attribute>-->
-    <!--            </xpath>-->
-    <!--            <xpath expr="//field[@name='activity_ids']" position="attributes">-->
-    <!--                <attribute name="invisible">True</attribute>-->
-    <!--            </xpath>-->
-    <!--            <xpath expr="//field[@name='department_id']" position="attributes">-->
-    <!--                <attribute name="invisible">True</attribute>-->
-    <!--            </xpath>-->
-    <!--            <xpath expr="//field[@name='job_id']" position="attributes">-->
-    <!--                <attribute name="invisible">True</attribute>-->
-    <!--            </xpath>-->
-    <!--            <xpath expr="//field[@name='parent_id']" position="attributes">-->
-    <!--                <attribute name="invisible">True</attribute>-->
-    <!--            </xpath>-->
-    <!--        </field>-->
-    <!--        &lt;!&ndash;            <field name="subject_id"/>&ndash;&gt;-->
-    <!--    </record>-->
-    <!--    <record id="view_employee_form_inherit_teacher" model="ir.ui.view">-->
-    <!--        <field name="name">hr.employee.form.teacher</field>-->
-    <!--        <field name="model">hr.employee</field>-->
-    <!--        <field name="inherit_id" ref="hr.view_employee_form"/>-->
-    <!--        <field name="arch" type="xml">-->
-    <!--            <xpath expr="//field[@name='name']" position="after">-->
-    <!--                <field name="email" placeholder="Teacher's email"/>-->
-    <!--            </xpath>-->
-
-    <!--            <xpath expr="//page[@name='hr_settings']" position="after">-->
-    <!--                <page string="Teacher/administrator" name="teacher_administrator">-->
-    <!--                    <group string="School information">-->
-    <!--                        <span>-->
-    <!--                            <b>School name</b>-->
-    <!--                        </span>-->
-    <!--                        <xpath expr="//field[@name='name']" position="after">-->
-    <!--                            <field name="school_name"/>-->
-    <!--                        </xpath>-->
-
-    <!--                        <span>-->
-    <!--                            <b>Subject</b>-->
-    <!--                        </span>-->
-    <!--                        <xpath expr="//field[@name='email']" position="after">-->
-    <!--                            <field name="subject_id"/>-->
-    <!--                        </xpath>-->
-    <!--                    </group>-->
-    <!--                </page>-->
-    <!--            </xpath>-->
-
-    <!--        </field>-->
-    <!--        &lt;!&ndash;            <field name="subject_id"/>&ndash;&gt;-->
-    <!--    </record>-->
-
-
     <record id="view_teacher_tree" model="ir.ui.view">
         <field name="name">school.teacher.tree</field>
         <field name="model">school.teacher</field>
@@ -81,37 +8,41 @@
             <tree>
                 <field name="name"/>
                 <field name="email"/>
-                <!--                <field name="picture" widget="image"/>-->
                 <field name="subject_id"/>
-                <!--                        <field name="user_id"/>-->
+                <field name="school_name"/>
 
             </tree>
         </field>
     </record>
+
     <record id="view_teacher_form" model="ir.ui.view">
         <field name="name">school.teacher.form</field>
         <field name="model">school.teacher</field>
         <field name="arch" type="xml">
-            <form>
+            <form string="Teacher">
                 <sheet>
-                     <div class="oe_inline">
-                        <separator string="New Teacher"/>
-                        <field name="picture" widget='image' class="oe_avatar oe_right"
-                               style="max-width:100px;max-height:100px"/>
-                         <div class="oe_title">
-                            <group>
-                                <field name="name" />
-                                <field name="email" />
-                                <field name="subject_id" />
-                            </group>
-                        </div>
-                     </div>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_open_teacher_employee" type="object"
+                                class="oe_stat_button" icon="fa-solid fa-user">
+                            <field name="employee_id" class="o_stat_value" widget="many2one_barcode"/>
+                        </button>
+                    </div>
+                    <field name="picture" widget='image' class="oe_avatar oe_right"
+                           style="max-width:100px;max-height:100px"/>
+                    <div class="oe_title">
+                        <group>
+                            <field name="name"/>
+                            <field name="email"/>
+                            <field name="subject_id"/>
+                            <field name="school_name"/>
+                        </group>
+                    </div>
                 </sheet>
-                <!--                    <div class="oe_chatter">-->
-                <!--                        <field name="message_follower_ids"/>-->
-                <!--                        <field name="activity_ids"/>-->
-                <!--                        <field name="message_ids"/>-->
-                <!--                    </div>-->
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
@@ -123,115 +54,83 @@
         <field name="arch" type="xml">
             <kanban default_order="id asc">
                 <field name="name"/>
-                <field name="picture" />
+                <field name="picture"/>
                 <templates>
-
-
-
-
-                 <t t-name="kanban-box">
-                       <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record">
-                           <field name="picture" widget="image" class="o_kanban_image_fill_left" options="{'zoom': true, 'zoom_delay': 1000, 'background': true, 'preventClicks': false}"/>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click o_kanban_record_has_image_fill o_hr_kanban_record">
+                            <field name="picture" widget="image" class="o_kanban_image_fill_left"
+                                   options="{'zoom': true, 'zoom_delay': 1000, 'background': true, 'preventClicks': false}"/>
 
                             <div class="oe_kanban_details">
-                               <div class="o_kanban_record_top">
-                                   <div class="o_kanban_record_headings">
-                                       <strong class="o_kanban_record_title">
-                                            <div class="float-right"  name="name">
+                                <div class="o_kanban_record_top">
+                                    <div class="o_kanban_record_headings">
+                                        <strong class="o_kanban_record_title">
+                                            <div class="float-right" name="name">
                                                 <!-- Employee is present/connected and it is normal according to his work schedule  -->
-                                                <span class="fa fa-circle text-success" role="img" aria-label="Present" title="Present" name="name">
+                                                <span class="fa fa-circle text-success" role="img" aria-label="Present"
+                                                      title="Present" name="name">
                                                 </span>
                                             </div>
                                             <div class="float-right" name="email">
                                                 <!-- Employee is connected but according to his work schedule,
                                                      he should not work for now  -->
-                                                <span class="fa fa-circle-o text-success" role="img" aria-label="Present but not active" title="Present but not active" name="email">
+                                                <span class="fa fa-circle-o text-success" role="img"
+                                                      aria-label="Present but not active" title="Present but not active"
+                                                      name="email">
                                                 </span>
                                             </div>
-                                           <div class="float-right" name="subject_id">
+                                            <div class="float-right" name="subject_id">
                                                 <!-- Employee is not here but according to his work schedule, he should be connected -->
-                                                <span class="fa fa-circle text-warning" role="img" aria-label="To define" title="To define" name="subject_id">
+                                                <span class="fa fa-circle text-warning" role="img"
+                                                      aria-label="To define" title="To define" name="subject_id">
                                                 </span>
                                             </div>
-                                            <field name="name" placeholder="Employee's Name"/>
-                                       </strong>
-                                       <span class="o_kanban_record_subtitle"><field name="name"/></span>
-                                       <span class="o_kanban_record_subtitle"><field name="email"/></span>
-                                       <span class="o_kanban_record_subtitle"><field name="subject_id"/></span>
-                                   </div>
-                               </div>
-                               <field name="category_ids" widget="many2many_tags" options="{'color_field': 'color'}" groups="hr.group_hr_manager"/>
-<!--                               <ul>-->
-<!--                                   <li id="last_login"/>-->
-<!--                                   <li t-if="record.work_email.raw_value" class="o_text_overflow"><field name="work_email"/></li>-->
-<!--                                   <li t-if="record.work_phone.raw_value" class="o_force_ltr"><field name="work_phone"/></li>-->
-<!--                               </ul>-->
-                           </div>
-                           <div class="oe_kanban_content position-absolute fixed-bottom mr-2 o_hr_employee_kanban_bottom">
-                               <div class="o_kanban_record_bottom">
-                                   <div class="oe_kanban_bottom_left"/>
-                                   <div class="oe_kanban_bottom_right float-right">
-<!--                                       <a title="Chat" icon="fa-comments" href="#" class="ml8 o_employee_chat_btn" attrs="{'invisible': [('user_id','=', False)]}" role="button"><i class="fa fa-comments"/></a>-->
-                                       <div class="hr_activity_container">
-                                           <field name="activity_ids" widget="kanban_activity"/>
-                                       </div>
-                                   </div>
-                               </div>
-                           </div>
-                       </div>
-                       </t>
+                                        </strong>
+                                        <span class="o_kanban_record_subtitle">
+                                            <b>
+                                                <field name="name"/>
+                                            </b>
+                                        </span>
+                                        <br></br>
+                                        <span class="o_kanban_record_subtitle">
+                                            <field name="email"/>
+                                        </span>
+                                        <span class="o_kanban_record_subtitle">
+                                            <field name="subject_id"/>
+                                        </span>
+                                    </div>
+                                </div>
 
-
-
-
-<!--                    <t t-name="kanban-box">-->
-<!--                        <div t-attf-class="on_kanban_global_click">-->
-<!--                            <div class="on_kanban_details">-->
-<!--                                <ul>-->
-<!--                                    <li>-->
-<!--                                        Teacher Name :-->
-<!--                                        <field name="name"/>-->
-<!--                                    </li>-->
-<!--                                    <li>-->
-<!--                                        Teacher Email :-->
-<!--                                        <field name="email"/>-->
-<!--                                    </li>-->
-<!--&lt;!&ndash;                                    <li>&ndash;&gt;-->
-<!--&lt;!&ndash;                                        Picture :&ndash;&gt;-->
-<!--&lt;!&ndash;                                        <field name="picture" widget="image" class="oe_avatar oe_right"&ndash;&gt;-->
-<!--&lt;!&ndash;                                               style="max-width:100px;max-height:100px"/>&ndash;&gt;-->
-<!--&lt;!&ndash;                                    </li>&ndash;&gt;-->
-<!--                                    <li>-->
-<!--                                        Subject Id :-->
-<!--                                        <field name="subject_id"/>-->
-<!--                                    </li>-->
-<!--                                    &lt;!&ndash;                                        <li>&ndash;&gt;-->
-<!--                                    &lt;!&ndash;                                            User Id :&ndash;&gt;-->
-<!--                                    &lt;!&ndash;                                            <field name="user_id"/>&ndash;&gt;-->
-<!--                                    &lt;!&ndash;                                        </li>&ndash;&gt;-->
-
-<!--                                </ul>-->
-<!--                            </div>-->
-<!--                        </div>-->
-<!--                    </t>-->
-
-
-
+                            </div>
+                            <div class="oe_kanban_content position-absolute fixed-bottom mr-2 o_hr_employee_kanban_bottom">
+                                <div class="o_kanban_record_bottom">
+                                    <div class="oe_kanban_bottom_left"/>
+                                    <div class="oe_kanban_bottom_right float-right">
+                                        <div class="hr_activity_container">
+                                            <field name="activity_ids" widget="kanban_activity"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
                 </templates>
             </kanban>
         </field>
     </record>
+
     <record id="view_teacher_search" model="ir.ui.view">
         <field name="name">school.teacher.search</field>
         <field name="model">school.teacher</field>
         <field name="arch" type="xml">
             <search>
                 <field name="name"/>
-                <field name="picture" widget="image"/>
+                <field name="subject_id"/>
                 <separator/>
             </search>
         </field>
     </record>
+
     <record id="action_teacher_profile" model="ir.actions.act_window">
         <field name="name">Teachers</field>
         <field name="type">ir.actions.act_window</field>

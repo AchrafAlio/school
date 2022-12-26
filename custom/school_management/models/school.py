@@ -3,13 +3,13 @@ from odoo import api, fields, models, _
 from odoo.exceptions import ValidationError
 from datetime import date
 
-
 AVAILABLE_PRIORITIES = [
     ('0', 'Low'),
     ('1', 'Medium'),
     ('2', 'High'),
     ('3', 'Very High'),
 ]
+
 
 class SchoolClass(models.Model):
     _name = "school.class"
@@ -34,7 +34,8 @@ class SchoolClass(models.Model):
     student_ids = fields.One2many(comodel_name='school.student', inverse_name='class_id',
                                   string='Class students', store=True)
     subject_ids = fields.Many2many(comodel_name='school.subject', string="Subjects")
-    user_id = fields.Many2one( comodel_name="res.users", string='User ID', default=lambda self: self._context.get('uid'), store=False)
+    user_id = fields.Many2one(comodel_name="res.users", string='User ID', default=lambda self: self._context.get('uid'),
+                              store=False)
     priority = fields.Selection(
         AVAILABLE_PRIORITIES, string='Priority', index=True,
         default=AVAILABLE_PRIORITIES[0][0])
@@ -78,6 +79,7 @@ class SchoolClass(models.Model):
 class SchoolStandard(models.Model):
     _name = "school.standard"
     _description = "School Standard"
+    _inherit= ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Name', required=True)
     sequence = fields.Char(string='Sequence')
@@ -118,7 +120,7 @@ class SchoolReminder(models.Model):
     _description = "School Reminder"
 
     def get_user_name(self):
-        # find the user with the current uses id
+        # find the user with the current user id
         user = self.env['res.users'].browse(self._context.get('uid'))
         # get the record for the user in res.users to have login(name) and id
         record = self.env["res.users"].search([('id', '=', user.id)])
@@ -131,11 +133,13 @@ class SchoolReminder(models.Model):
     # the name of the user who creates the notification activity
     name = fields.Char(string='Name', default=get_user_name, required=True, readonly=True)
     # the id of the user who creates the notification activity
-    user_id = fields.Char(string='User ID', default=lambda self: self._context.get('uid'), readonly=True)
+    # user_id = fields.Char(string='User ID', default=lambda self: self._context.get('uid'), readonly=True)
+    user_id = fields.Many2one(comodel_name='res.users', string='Student user',
+                              default=lambda self: self._context.get('uid'), readonly=True)
     # the current user id not saved in table
     current_user_id = fields.Char(string="current uid", default=lambda self: self._context.get('uid'))
-    student_id = fields.Many2one(comodel_name='school.student', string='Student')
-    student_user_id = fields.Char( string="Student user id" , compute="get_student_user_id")
+    student_id = fields.Many2one(comodel_name='school.student', string='Student', required=True)
+    student_user_id = fields.Char(string="Student user id", compute="get_student_user_id")
     message = fields.Char(string="Message", required=True)
 
     def action_send_notification(self):
@@ -144,52 +148,3 @@ class SchoolReminder(models.Model):
         print(student.id.user_id.id)
         self.activity_schedule('school_management.mail_notify_student', date_deadline=date.today(),
                                user_id=student.id.user_id.id, note='Notification from teacher')
-
-    # @api.model
-    # def create(self, vals):
-    #     # get the current user id from context
-    #     context = self._context
-    #     print(context)
-    #     current_uid = context.get('uid')
-    #     # find the user with the current uses id
-    #     user = self.env['res.users'].browse(current_uid)
-    #     # get the record for the user in res.users to have login(name) and id
-    #     record = self.env["res.users"].search([('id', '=', user.id)])
-    #     vals['name'] = record.login
-    #     vals['user_id'] = record.id
-    #     res = super(SchoolReminder, self).create(vals)
-    #     return res
-
-    # get the current user student_id
-    # student_user = self.env['res.users'].browse(self.student_id)
-    # affect current user id to the field user_id
-    # self.user_id = user.id
-    # user.id.notify_danger(message="Teacher notification")
-    # message = _("Connection Test Successful!")
-    # action = self.env.ref('school_management.action_student_reminder')
-    # return {
-    #     'type': 'ir.actions.client',
-    #     'tag': 'display_notification',
-    #     'params': {
-    #         'title': _('The following ......'),
-    #         'message': message,
-    #         'type': 'warning',
-    #         'links': [{
-    #             'label': self.name,
-    #             'url': f'#action={action.id}&id={self.id}&model=school.reminder',
-    #         }],
-    #         'sticky': True,
-    #     }
-    #
-    # }
-
-    # @api.onchange('student_id')
-    # def _get_name(self):
-    #     # get the current user id
-    #     context = self._context
-    #     print(context)
-    #     current_uid = context.get('uid')
-    #     user = self.env['res.users'].browse(current_uid)
-    #     record = self.env["res.users"].search([('id', '=', user.id)])
-    #     self.name = record.login
-    #     self.user_id = record.id

@@ -21,6 +21,7 @@
         'views/subject_view.xml',
         'views/student_view.xml',
         'views/teacher_view.xml',
+        'views/hr_employee_view.xml',
         'views/reminder_view.xml',
         'report/student_card.xml',
         'report/student_details_template.xml',
