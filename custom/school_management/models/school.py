@@ -28,12 +28,14 @@ class SchoolClass(models.Model):
     color = fields.Char(string='Color')
     standard_id = fields.Many2one(comodel_name='school.standard', string="Standard")
     standard_name = fields.Char(related="standard_id.name", store=True)
-    teacher_id = fields.Many2one(comodel_name='school.teacher', string="Teacher")
-    classroom_id = fields.Many2one(comodel_name='school.classroom', string="Room Number")
 
+    classroom_id = fields.Many2one(comodel_name='school.classroom', string="Room Number")
     student_ids = fields.One2many(comodel_name='school.student', inverse_name='class_id',
                                   string='Class students', store=True)
-    subject_ids = fields.Many2many(comodel_name='school.subject', string="Subjects")
+    teacher_ids = fields.Many2many(comodel_name='school.teacher', string="Teachers")
+    # , compute="_sujects_teachers")
+    subject_ids = fields.Many2many(comodel_name='school.subject', string="Subjects",
+                                   )
     user_id = fields.Many2one(comodel_name="res.users", string='User ID', default=lambda self: self._context.get('uid'),
                               store=False)
     priority = fields.Selection(
@@ -75,11 +77,16 @@ class SchoolClass(models.Model):
             for student in rec.student_ids:
                 rec.total_students += 1
 
+    def _sujects_teachers(self):
+        for subject in self.subject_ids:
+            print(subject, subject.teacher_ids)
+            self.teacher_ids += subject.teacher_ids
+
 
 class SchoolStandard(models.Model):
     _name = "school.standard"
     _description = "School Standard"
-    _inherit= ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Name', required=True)
     sequence = fields.Char(string='Sequence')

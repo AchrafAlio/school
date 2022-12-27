@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class SchoolTeacher(models.Model):
@@ -10,12 +11,11 @@ class SchoolTeacher(models.Model):
     name = fields.Char(string='Teacher Name', required=True)
     email = fields.Char(string='Teacher email', required=True)
     picture = fields.Binary(string='Picture')
-    subject_id = fields.Many2one(comodel_name='school.subject', string='Subject')
     school_name = fields.Char(string="School Name",
                               default=lambda self: self.env['ir.config_parameter'].sudo().get_param(
                                   'school_management.school_name'), readonly=True)
-    class_ids = fields.One2many(comodel_name="school.class", inverse_name="teacher_id",
-                                string="Class ids")
+    subject_id = fields.Many2one(comodel_name='school.subject', string='Subject')
+    class_ids = fields.Many2many(comodel_name="school.class", string="Class ids")
     employee_id = fields.Many2one(comodel_name="hr.employee", string="Employee ID")
     user_id = fields.Many2one(comodel_name="res.users", string="User ID")
 
@@ -50,6 +50,20 @@ class SchoolTeacher(models.Model):
         # add a group to this user
         group = self.env.ref('school_management.group_school_teacher')
         teacher.employee_id.user_id.groups_id += group
+
+        # check constraint : the subject must be not redundant in the same class
+        print("subject_id : ", teacher.subject_id, "class_ids", teacher.class_ids)
+        for cl in teacher.class_ids:
+            # clas = self.env['school.class'].sudo().browse(cl)
+            # print("class--------------> ", clas)
+            print(cl, cl.sequence, cl.subject_ids)
+            if teacher.subject_id in cl.subject_ids:
+                print(">>>>>>>>>>>>>>>>>>>>>>>>Redundance")
+                print(teacher.subject_id, " is affected to another teacher ")
+                raise ValidationError("Subject ( "+str(teacher.subject_id.name)+
+                                      " ) is affected to another teacher in Class ( "+str(cl.sequence)+" )")
+            else:
+                cl.subject_ids += teacher.subject_id
 
         return teacher
 

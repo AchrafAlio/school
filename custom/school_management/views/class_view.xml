@@ -11,6 +11,8 @@
                 <field name="total_students"/>
                 <field name="remaining_seats"/>
                 <field name="classroom_id"/>
+                <field name="teacher_ids" widget="many2many_tags"/>
+                <field name="subject_ids" widget="many2many_tags"/>
                 <field name="color" widget="color" invisible="1"/>
             </tree>
         </field>
@@ -64,7 +66,7 @@
                                 <tree editable="bottom" create="1" delete="1" edit="1">
                                     <field name="name"/>
                                     <field name="code" optional="show"/>
-                                    <!--                                    <field name="teacher_ids" widget="many2many_tags"/>-->
+                                    <field name="teacher_ids" widget="many2many_tags"/>
                                 </tree>
                                 <!--                                <form>-->
                                 <!--                                    <group>-->
@@ -138,6 +140,14 @@
                                         <li>
                                             Remaining Seats :
                                             <field name="remaining_seats"/>
+                                        </li>
+                                        <li>
+                                            Teachers :
+                                            <field name="teacher_ids" widget="many2many_tags"/>
+                                        </li>
+                                        <li>
+                                            Teachers :
+                                            <field name="subject_ids" widget="many2many_tags"/>
                                         </li>
 
                                     </ul>
