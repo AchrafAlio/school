@@ -13,16 +13,17 @@
             </tree>
         </field>
     </record>
+
     <record id="view_reminder_form" model="ir.ui.view">
         <field name="name">school.reminder.form</field>
         <field name="model">school.reminder</field>
         <field name="arch" type="xml">
             <form>
-                <sheet>
-                    <header>
+                <header>
                         <button name="action_send_notification" string="Send message"
                                 class="oe_highlight" type="object"/>
-                    </header>
+                </header>
+                <sheet>
                     <group>
                         <group>
                             <field name="name"/>
@@ -40,6 +41,7 @@
             </form>
         </field>
     </record>
+
     <record id="view_reminder_kanban" model="ir.ui.view">
         <field name="name">school.reminder.kanban</field>
         <field name="model">school.reminder</field>
@@ -61,7 +63,7 @@
                                     </li>
                                     <li>
                                         Student id :
-                                        <field name="student_id"/>
+                                        <field name="student_id" />
                                     </li>
                                     <li>
                                         Message :
@@ -88,6 +90,5 @@
             </p>
         </field>
     </record>
-
 
 </odoo>

@@ -138,7 +138,8 @@ class SchoolReminder(models.Model):
                               default=lambda self: self._context.get('uid'), readonly=True)
     # the current user id not saved in table
     current_user_id = fields.Char(string="current uid", default=lambda self: self._context.get('uid'))
-    student_id = fields.Many2one(comodel_name='school.student', string='Student', required=True)
+    student_id = fields.Many2one(comodel_name='school.student', string='Student', required=True,
+                                 domain="[('state','=','approved')]")
     student_user_id = fields.Char(string="Student user id", compute="get_student_user_id")
     message = fields.Char(string="Message", required=True)
 

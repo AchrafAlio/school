@@ -21,10 +21,11 @@
         <field name="arch" type="xml">
             <form string="Teacher">
                 <sheet>
-                    <div class="oe_button_box" name="button_box">
+                    <div class="oe_button_box" name="button_box" >
                         <button name="action_open_teacher_employee" type="object"
                                 class="oe_stat_button" icon="fa-solid fa-user">
-                            <field name="employee_id" class="o_stat_value" widget="many2one_barcode"/>
+                            <field name="employee_id" class="o_stat_value oe_read_only" widget="many2one_barcode"/>
+
                         </button>
                     </div>
                     <field name="picture" widget='image' class="oe_avatar oe_right"
