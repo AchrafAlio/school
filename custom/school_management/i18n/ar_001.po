@@ -1034,7 +1034,7 @@ msgstr "أحمر"
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.view_admission_request_kanban
 msgid "Reference :"
-msgstr ""
+msgstr "مرجع"
 
 #. module: school_management
 #: model:ir.model.fields,field_description:school_management.field_hr_employee__teacher_id
@@ -1058,7 +1058,7 @@ msgstr "المقاعد المتبقية :"
 #: model_terms:ir.ui.view,arch_db:school_management.view_cancel_student_form
 #: model_terms:ir.ui.view,arch_db:school_management.view_student_form
 msgid "Remarks"
-msgstr "ملاحضات"
+msgstr "ملاحظات"
 
 #. module: school_management
 #: model:ir.ui.menu,name:school_management.reminder_root_menu
