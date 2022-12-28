@@ -28,12 +28,14 @@ class SchoolClass(models.Model):
     color = fields.Char(string='Color')
     standard_id = fields.Many2one(comodel_name='school.standard', string="Standard")
     standard_name = fields.Char(related="standard_id.name", store=True)
-    teacher_id = fields.Many2one(comodel_name='school.teacher', string="Teacher")
-    classroom_id = fields.Many2one(comodel_name='school.classroom', string="Room Number")
 
+    classroom_id = fields.Many2one(comodel_name='school.classroom', string="Room Number")
     student_ids = fields.One2many(comodel_name='school.student', inverse_name='class_id',
                                   string='Class students', store=True)
-    subject_ids = fields.Many2many(comodel_name='school.subject', string="Subjects")
+    teacher_ids = fields.Many2many(comodel_name='school.teacher', string="Teachers")
+    # , compute="_sujects_teachers")
+    subject_ids = fields.Many2many(comodel_name='school.subject', string="Subjects",
+                                   )
     user_id = fields.Many2one(comodel_name="res.users", string='User ID', default=lambda self: self._context.get('uid'),
                               store=False)
     priority = fields.Selection(
@@ -75,11 +77,16 @@ class SchoolClass(models.Model):
             for student in rec.student_ids:
                 rec.total_students += 1
 
+    def _sujects_teachers(self):
+        for subject in self.subject_ids:
+            print(subject, subject.teacher_ids)
+            self.teacher_ids += subject.teacher_ids
+
 
 class SchoolStandard(models.Model):
     _name = "school.standard"
     _description = "School Standard"
-    _inherit= ['mail.thread', 'mail.activity.mixin']
+    _inherit = ['mail.thread', 'mail.activity.mixin']
 
     name = fields.Char(string='Name', required=True)
     sequence = fields.Char(string='Sequence')
@@ -133,13 +140,11 @@ class SchoolReminder(models.Model):
     # the name of the user who creates the notification activity
     name = fields.Char(string='Name', default=get_user_name, required=True, readonly=True)
     # the id of the user who creates the notification activity
-    # user_id = fields.Char(string='User ID', default=lambda self: self._context.get('uid'), readonly=True)
-    user_id = fields.Many2one(comodel_name='res.users', string='Student user',
+    user_id = fields.Many2one(comodel_name='res.users', string='Current uid',
                               default=lambda self: self._context.get('uid'), readonly=True)
-    # the current user id not saved in table
-    current_user_id = fields.Char(string="current uid", default=lambda self: self._context.get('uid'))
+    class_id = fields.Many2one(comodel_name="school.class", string="Class")
     student_id = fields.Many2one(comodel_name='school.student', string='Student', required=True,
-                                 domain="[('state','=','approved')]")
+                                 domain="[('class_id','=', class_id)]")
     student_user_id = fields.Char(string="Student user id", compute="get_student_user_id")
     message = fields.Char(string="Message", required=True)
 

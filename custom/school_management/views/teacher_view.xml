@@ -9,6 +9,7 @@
                 <field name="name"/>
                 <field name="email"/>
                 <field name="subject_id"/>
+                <field name="class_ids" widget="many2many_tags"/>
                 <field name="school_name"/>
 
             </tree>
@@ -35,6 +36,7 @@
                             <field name="name"/>
                             <field name="email"/>
                             <field name="subject_id"/>
+                            <field name="class_ids" widget="many2many_tags"/>
                             <field name="school_name"/>
                         </group>
                     </div>
@@ -98,6 +100,8 @@
                                         </span>
                                         <span class="o_kanban_record_subtitle">
                                             <field name="subject_id"/>
+                                        </span> <span class="o_kanban_record_subtitle">
+                                            <field name="class_ids"/>
                                         </span>
                                     </div>
                                 </div>

@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import api, fields, models
+from odoo.exceptions import ValidationError
 
 
 class SchoolTeacher(models.Model):
@@ -10,12 +11,11 @@ class SchoolTeacher(models.Model):
     name = fields.Char(string='Teacher Name', required=True)
     email = fields.Char(string='Teacher email', required=True)
     picture = fields.Binary(string='Picture')
-    subject_id = fields.Many2one(comodel_name='school.subject', string='Subject')
     school_name = fields.Char(string="School Name",
                               default=lambda self: self.env['ir.config_parameter'].sudo().get_param(
                                   'school_management.school_name'), readonly=True)
-    class_ids = fields.One2many(comodel_name="school.class", inverse_name="teacher_id",
-                                string="Class ids")
+    subject_id = fields.Many2one(comodel_name='school.subject', string='Subject')
+    class_ids = fields.Many2many(comodel_name="school.class", string="Class ids")
     employee_id = fields.Many2one(comodel_name="hr.employee", string="Employee ID")
     user_id = fields.Many2one(comodel_name="res.users", string="User ID")
 
@@ -41,15 +41,21 @@ class SchoolTeacher(models.Model):
         print("employee id : ", employee)
         return employee
 
+    """ Create new teacher , create new employee, affect it to teacher and add a group to this user.
+    check constraint : the subject must be not redundant in the same class, 
+    if it is ok add the subject to the class"""
     @api.model
     def create(self, vals):
-        # create a new teacher
         teacher = super(SchoolTeacher, self).create(vals)
-        # create new employee and affect it to teacher
         teacher.employee_id = teacher.create_employee()
-        # add a group to this user
         group = self.env.ref('school_management.group_school_teacher')
         teacher.employee_id.user_id.groups_id += group
+        for cl in teacher.class_ids:
+            if teacher.subject_id in cl.subject_ids:
+                raise ValidationError("Subject ( "+str(teacher.subject_id.name)+
+                                      " ) is affected to another teacher in Class ( "+str(cl.sequence)+" )")
+            else:
+                cl.subject_ids += teacher.subject_id
 
         return teacher
 
