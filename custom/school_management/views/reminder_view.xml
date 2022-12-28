@@ -6,7 +6,8 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="user_id" invisible="1"/>
+                <field name="user_id"/>
+                <field name="class_id"/>
                 <field name="student_user_id"/>
                 <field name="student_id"/>
                 <field name="message"/>
@@ -28,6 +29,7 @@
                         <group>
                             <field name="name"/>
                             <field name="user_id" invisible="1"/>
+                            <field name="class_id" />
                             <field name="student_id" />
                             <field name="message"/>
                         </group>
@@ -58,11 +60,15 @@
                                         <field name="name"/>
                                     </li>
                                     <li>
-                                        Teacher id Creator:
+                                        Teacher id:
                                         <field name="user_id"/>
                                     </li>
                                     <li>
-                                        Student id :
+                                        Class:
+                                        <field name="class_id"/>
+                                    </li>
+                                    <li>
+                                        Student :
                                         <field name="student_id" />
                                     </li>
                                     <li>

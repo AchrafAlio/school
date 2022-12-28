@@ -146,7 +146,7 @@
                                             <field name="teacher_ids" widget="many2many_tags"/>
                                         </li>
                                         <li>
-                                            Teachers :
+                                            Subjects :
                                             <field name="subject_ids" widget="many2many_tags"/>
                                         </li>
 

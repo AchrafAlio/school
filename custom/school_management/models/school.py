@@ -140,13 +140,11 @@ class SchoolReminder(models.Model):
     # the name of the user who creates the notification activity
     name = fields.Char(string='Name', default=get_user_name, required=True, readonly=True)
     # the id of the user who creates the notification activity
-    # user_id = fields.Char(string='User ID', default=lambda self: self._context.get('uid'), readonly=True)
-    user_id = fields.Many2one(comodel_name='res.users', string='Student user',
+    user_id = fields.Many2one(comodel_name='res.users', string='Current uid',
                               default=lambda self: self._context.get('uid'), readonly=True)
-    # the current user id not saved in table
-    current_user_id = fields.Char(string="current uid", default=lambda self: self._context.get('uid'))
+    class_id = fields.Many2one(comodel_name="school.class", string="Class")
     student_id = fields.Many2one(comodel_name='school.student', string='Student', required=True,
-                                 domain="[('state','=','approved')]")
+                                 domain="[('class_id','=', class_id)]")
     student_user_id = fields.Char(string="Student user id", compute="get_student_user_id")
     message = fields.Char(string="Message", required=True)
 
