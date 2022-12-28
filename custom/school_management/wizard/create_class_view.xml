@@ -21,7 +21,7 @@
     </record>
 
     <record id="action_create_class" model="ir.actions.act_window">
-        <field name="name">Create Class</field>
+        <field name="name">Choose a Class</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">school.class.wizard</field>
         <field name="view_mode">form</field>

@@ -41,25 +41,17 @@ class SchoolTeacher(models.Model):
         print("employee id : ", employee)
         return employee
 
+    """ Create new teacher , create new employee, affect it to teacher and add a group to this user.
+    check constraint : the subject must be not redundant in the same class, 
+    if it is ok add the subject to the class"""
     @api.model
     def create(self, vals):
-        # create a new teacher
         teacher = super(SchoolTeacher, self).create(vals)
-        # create new employee and affect it to teacher
         teacher.employee_id = teacher.create_employee()
-        # add a group to this user
         group = self.env.ref('school_management.group_school_teacher')
         teacher.employee_id.user_id.groups_id += group
-
-        # check constraint : the subject must be not redundant in the same class
-        print("subject_id : ", teacher.subject_id, "class_ids", teacher.class_ids)
         for cl in teacher.class_ids:
-            # clas = self.env['school.class'].sudo().browse(cl)
-            # print("class--------------> ", clas)
-            print(cl, cl.sequence, cl.subject_ids)
             if teacher.subject_id in cl.subject_ids:
-                print(">>>>>>>>>>>>>>>>>>>>>>>>Redundance")
-                print(teacher.subject_id, " is affected to another teacher ")
                 raise ValidationError("Subject ( "+str(teacher.subject_id.name)+
                                       " ) is affected to another teacher in Class ( "+str(cl.sequence)+" )")
             else:
