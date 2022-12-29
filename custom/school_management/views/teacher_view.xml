@@ -29,8 +29,11 @@
                             <span class="oe_edit_only">Teacher Employee</span>
                         </button>
                     </div>
-                    <field name="picture" widget='image' class="oe_avatar oe_right"
+                    <div>
+                         <field name="picture" widget="image" class="oe_avatar oe_right"
                            style="max-width:100px;max-height:100px"/>
+                    </div>
+
                     <div class="oe_title">
                         <group>
                             <field name="name"/>
@@ -69,22 +72,22 @@
                                         <strong class="o_kanban_record_title">
                                             <div class="float-right" name="name">
                                                 <!-- Employee is present/connected and it is normal according to his work schedule  -->
-                                                <span class="fa fa-circle text-success" role="img" aria-label="Present"
-                                                      title="Present" name="name">
+                                                <span class='fa fa-circle text-success' role='img' aria-label='Present'
+                                                      title='Present' name='name'>
                                                 </span>
                                             </div>
                                             <div class="float-right" name="email">
                                                 <!-- Employee is connected but according to his work schedule,
                                                      he should not work for now  -->
-                                                <span class="fa fa-circle-o text-success" role="img"
-                                                      aria-label="Present but not active" title="Present but not active"
-                                                      name="email">
+                                                <span class='fa fa-circle-o text-success' role='img'
+                                                      aria-label='Present but not active" title="Present but not active'
+                                                      name='email'>
                                                 </span>
                                             </div>
                                             <div class="float-right" name="subject_id">
                                                 <!-- Employee is not here but according to his work schedule, he should be connected -->
-                                                <span class="fa fa-circle text-warning" role="img"
-                                                      aria-label="To define" title="To define" name="subject_id">
+                                                <span class='fa fa-circle text-warning' role='img'
+                                                      aria-label='To define' title='To define' name='subject_id'>
                                                 </span>
                                             </div>
                                         </strong>

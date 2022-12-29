@@ -22,7 +22,7 @@ msgid ""
 "                                                </span>"
 msgstr ""
 "<span class=\"fa fa-circle text-success\" role=\"img\" aria-label=\"Present\" title=\"Present\" name=\"name\">\n"
-"
+"                                                </span>"
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.view_teacher_kanban
@@ -31,7 +31,7 @@ msgid ""
 "                                                </span>"
 msgstr ""
 "<span class=\"fa fa-circle text-warning\" role=\"img\" aria-label=\"To define\" title=\"To define\" name=\"subject_id\">\n"
-"
+"                                                </span>"
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.view_teacher_kanban
@@ -40,7 +40,7 @@ msgid ""
 "                                                </span>"
 msgstr ""
 "<span class=\"fa fa-circle-o text-success\" role=\"img\" aria-label=\"Present but not active\" title=\"Present but not active\" name=\"email\">\n"
-"
+"                                                </span>"
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.res_config_settings_view_form
@@ -624,7 +624,7 @@ msgstr "المتابعون (الشركاء)"
 #: model:ir.model.fields,help:school_management.field_school_subject__activity_type_icon
 #: model:ir.model.fields,help:school_management.field_school_teacher__activity_type_icon
 msgid "Font awesome icon e.g. fa-tasks"
-msgstr "ايقونات فونت اوسم مثل fa-tasks "
+msgstr "ايقونات فونت اوسم مثل"
 
 #. module: school_management
 #: model:ir.model.fields.selection,name:school_management.selection__school_class__medium__french
