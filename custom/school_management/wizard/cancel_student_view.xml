@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
     <record id="view_cancel_student_form" model="ir.ui.view">
         <field name="name">school.cancel.student.form</field>
         <field name="model">school.cancel.student.wizard</field>
@@ -27,6 +28,5 @@
         <field name="view_mode">form</field>
         <field name="target">new</field>
     </record>
-
 
 </odoo>

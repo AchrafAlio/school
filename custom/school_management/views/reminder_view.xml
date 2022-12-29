@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
     <record id="view_reminder_tree" model="ir.ui.view">
         <field name="name">school.reminder.tree</field>
         <field name="model">school.reminder</field>

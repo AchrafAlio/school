@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
     <record id="view_create_class_form" model="ir.ui.view">
         <field name="name">school.create.class.form</field>
         <field name="model">school.class.wizard</field>
@@ -14,9 +15,7 @@
                             data-hotkey="q"/>
                     <button special="cancel" data-hotkey="z" string="Cancel" type="object" class="btn-secondary"/>
                 </footer>
-
             </form>
-
         </field>
     </record>
 
@@ -27,6 +26,5 @@
         <field name="view_mode">form</field>
         <field name="target">new</field>
     </record>
-
 
 </odoo>

@@ -79,24 +79,20 @@ class SchoolStudent(models.Model):
             "email": self.email
         }
         user = self.env["res.users"].create(vals)
-        # print("function create_user : ", user)
         return user
 
     def action_approved(self):
         for rec in self:
             # get the admission age to check student age
             admission_age = self.env['ir.config_parameter'].sudo().get_param('school_management.student_admission_age')
-            print("adm age ", admission_age, ' age : ', rec.age, " res : ", int(admission_age) == int(rec.age))
             # Check for the age of the student
             if int(admission_age) == int(rec.age):
-                print("age check passed --> open_wizard call")
                 return self.env['ir.actions.act_window']._for_xml_id("school_management.action_create_class")
             else:
                 raise ValidationError("The age must be equal to " + admission_age + " year(s).")
 
     @api.onchange("class_id")
     def check(self):
-        print(self.class_id.sequence)
         if self.state == "approved":
             if self.class_id.remaining_seats <= 0:
                 raise ValidationError("No More Available Seats")
@@ -113,7 +109,6 @@ class SchoolStudent(models.Model):
         for rec in self:
             # call wizard to write remarks or causes for student cancel
             return self.env['ir.actions.act_window']._for_xml_id("school_management.action_cancel_student")
-            rec.state = 'cancel'
 
     def full_name(self):
         for rec in self:
@@ -131,7 +126,6 @@ class SchoolStudent(models.Model):
             else:
                 age = 0
             rec.age = age
-            # print("birth date : ", born, " today : ", today, " age : ", rec.age)
 
     @api.onchange('birth_date')
     def on_change_birth_date(self):
@@ -143,14 +137,11 @@ class SchoolStudent(models.Model):
         context = self._context
         current_uid = context.get('uid')
         user = self.env['res.users'].browse(current_uid)
-
         # get the student group
         group = self.env.ref('school_management.group_school_student')
-        # print(user , group.id, user.groups_id)
-
         if group in user.groups_id:
-            print('it is a student')
+            # he is a student
             self.cant_edit = True
         else:
-            print('it is not a student')
+            # he is not a student
             self.cant_edit = False

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
     <record id="view_subject_tree" model="ir.ui.view">
         <field name="name">school.subject.tree</field>
         <field name="model">school.subject</field>
@@ -75,7 +76,6 @@
         </field>
     </record>
 
-
     <record id="view_subject_search" model="ir.ui.view">
         <field name="name">school.subject.search</field>
         <field name="model">school.subject</field>
@@ -86,6 +86,7 @@
             </search>
         </field>
     </record>
+
     <record id="action_school_subject" model="ir.actions.act_window">
         <field name="name">subjects</field>
         <field name="type">ir.actions.act_window</field>
@@ -98,7 +99,5 @@
             </p>
         </field>
     </record>
-
-
 
 </odoo>

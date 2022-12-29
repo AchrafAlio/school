@@ -26,7 +26,7 @@
                         <button name="action_open_teacher_employee" type="object"
                                 class="oe_stat_button" icon="fa-solid fa-user">
                             <field name="employee_id" class="o_stat_value oe_read_only" widget="many2one_barcode"/>
-
+                            <span class="oe_edit_only">Teacher Employee</span>
                         </button>
                     </div>
                     <field name="picture" widget='image' class="oe_avatar oe_right"
@@ -49,8 +49,7 @@
             </form>
         </field>
     </record>
-
-
+    
     <record id="view_teacher_kanban" model="ir.ui.view">
         <field name="name">school.teacher.kanban</field>
         <field name="model">school.teacher</field>
@@ -148,6 +147,5 @@
             </p>
         </field>
     </record>
-
 
 </odoo>

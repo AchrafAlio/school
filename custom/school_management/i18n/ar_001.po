@@ -21,6 +21,8 @@ msgid ""
 "<span class=\"fa fa-circle text-success\" role=\"img\" aria-label=\"Present\" title=\"Present\" name=\"name\">\n"
 "                                                </span>"
 msgstr ""
+"<span class=\"fa fa-circle text-success\" role=\"img\" aria-label=\"Present\" title=\"Present\" name=\"name\">\n"
+"
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.view_teacher_kanban
@@ -28,6 +30,8 @@ msgid ""
 "<span class=\"fa fa-circle text-warning\" role=\"img\" aria-label=\"To define\" title=\"To define\" name=\"subject_id\">\n"
 "                                                </span>"
 msgstr ""
+"<span class=\"fa fa-circle text-warning\" role=\"img\" aria-label=\"To define\" title=\"To define\" name=\"subject_id\">\n"
+"
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.view_teacher_kanban
@@ -35,6 +39,8 @@ msgid ""
 "<span class=\"fa fa-circle-o text-success\" role=\"img\" aria-label=\"Present but not active\" title=\"Present but not active\" name=\"email\">\n"
 "                                                </span>"
 msgstr ""
+"<span class=\"fa fa-circle-o text-success\" role=\"img\" aria-label=\"Present but not active\" title=\"Present but not active\" name=\"email\">\n"
+"
 
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.res_config_settings_view_form
@@ -1276,7 +1282,7 @@ msgstr "الطالب"
 #. module: school_management
 #: model_terms:ir.ui.view,arch_db:school_management.view_reminder_kanban
 msgid "Student :"
-msgstr ""
+msgstr "الطالب :"
 
 #. module: school_management
 #: model:ir.model.fields,field_description:school_management.field_res_config_settings__student_admission_age

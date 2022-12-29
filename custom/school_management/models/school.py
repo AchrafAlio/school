@@ -33,24 +33,16 @@ class SchoolClass(models.Model):
     student_ids = fields.One2many(comodel_name='school.student', inverse_name='class_id',
                                   string='Class students', store=True)
     teacher_ids = fields.Many2many(comodel_name='school.teacher', string="Teachers")
-    # , compute="_sujects_teachers")
     subject_ids = fields.Many2many(comodel_name='school.subject', string="Subjects",
                                    )
     user_id = fields.Many2one(comodel_name="res.users", string='User ID', default=lambda self: self._context.get('uid'),
                               store=False)
     priority = fields.Selection(
-        AVAILABLE_PRIORITIES, string='Priority', index=True,
-        default=AVAILABLE_PRIORITIES[0][0])
+        AVAILABLE_PRIORITIES, string='Priority', index=True, default=AVAILABLE_PRIORITIES[0][0])
 
     def _name_compose(self):
         for rec in self:
             rec.sequence = str(rec.standard_id.name) + "[" + rec.division + "]"
-
-    @api.onchange('sequence')
-    def _check_sequence(self):
-        print(self.sequence)
-        for record in self:
-            print(record.sequence)
 
     _sql_constraints = [
         ('unique_standard_division_class', 'unique (standard_id,division)', 'This class has already been created'),
@@ -61,7 +53,6 @@ class SchoolClass(models.Model):
     def create(self, vals):
         if vals.get('sequence', _('New')) == _('New'):
             vals['sequence'] = self.sequence
-            # self.env['ir.sequence'].next_by_code('school.class') or _('New')
         res = super(SchoolClass, self).create(vals)
 
         return res
@@ -76,11 +67,6 @@ class SchoolClass(models.Model):
             rec.total_students = 0
             for student in rec.student_ids:
                 rec.total_students += 1
-
-    def _sujects_teachers(self):
-        for subject in self.subject_ids:
-            print(subject, subject.teacher_ids)
-            self.teacher_ids += subject.teacher_ids
 
 
 class SchoolStandard(models.Model):
@@ -102,10 +88,6 @@ class SchoolClassroom(models.Model):
 
     name = fields.Char(string='Name', required=True)
     room_number = fields.Char(string='Room Number')
-
-    # _sql_constraints = [
-    #     ('unique_class_room', 'unique (name)', 'This class room has already been occupied')
-    # ]
 
 
 class SchoolSubject(models.Model):
@@ -144,13 +126,11 @@ class SchoolReminder(models.Model):
                               default=lambda self: self._context.get('uid'), readonly=True)
     class_id = fields.Many2one(comodel_name="school.class", string="Class")
     student_id = fields.Many2one(comodel_name='school.student', string='Student', required=True,
-                                 domain="[('class_id','=', class_id)]")
+                                 domain="['&',('class_id','=', class_id), ('state', '=', 'approved')]")
     student_user_id = fields.Char(string="Student user id", compute="get_student_user_id")
     message = fields.Char(string="Message", required=True)
 
     def action_send_notification(self):
         student = self.env['school.student'].browse(self.student_id)
-        print(student.id.user_id)
-        print(student.id.user_id.id)
         self.activity_schedule('school_management.mail_notify_student', date_deadline=date.today(),
                                user_id=student.id.user_id.id, note='Notification from teacher')

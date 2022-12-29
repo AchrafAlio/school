@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+
     <!--   Student Admission Request form view  -->
     <record id="view_admission_request_form" model="ir.ui.view">
         <field name="name">school.student.admission.request.form</field>
